@@ -1,0 +1,13 @@
+query getAllSpendings {
+  spendings {
+    nodes {
+      createdAt
+      id
+      categoryId
+    }
+  }
+}
+
+mutation createSpending($input: CreateSpendingInput!) {
+  createSpending(input: $input){clientMutationId}
+}
