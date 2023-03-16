@@ -1,13 +1,18 @@
-import { Routes, Route } from "react-router-dom";
-import Register from "./features/auth/register.page";
+import { useEffect, useState } from 'react'
+import reactLogo from './assets/react.svg'
+import './App.css'
+import { useCreateSpendingMutation, useGetAllSpendingsQuery } from './generated/graphql-types'
+import AppRouter from './services/router'
 
 function App() {
 
+
+
   return (
-    <Routes>
-      <Route path="/" element={<Register />} />
-    </Routes>
-  );
+   <>
+   <AppRouter/>
+   </>
+  )
 }
 
 export default App;
