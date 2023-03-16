@@ -1,12 +1,15 @@
-@import url('https://fonts.googleapis.com/css?family=Urbanist');
+@import url("https://fonts.googleapis.com/css?family=Urbanist");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  font-family: 'Urbanist', sans-serif;
+  font-family: "Urbanist", sans-serif;
 }
 
-
-
+@layer components {
+  .register-input {
+    @apply py-4 pl-4 rounded-xl border border-gray-400 bg-transparent mb-3;
+  }
+}
