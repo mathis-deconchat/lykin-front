@@ -1,0 +1,52 @@
+@keyframes falling {
+    0% {
+      transform: translateY(-150%);
+      opacity: 0;
+    }
+    60% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    80% {
+      transform: translateY(3px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+  
+  .falling {
+    animation: falling 0.1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  
+  @keyframes cursor-blink {
+    0% {
+      opacity: 0;
+    }
+  }
+  
+  .empty-number::after {
+    content: "";
+    width: 3px;
+    border-radius: 10px;
+    height: 35px;
+    background: white;
+    display: inline-block;
+    animation: cursor-blink 1.5s steps(2) infinite;
+  }
+
+  .ReactModal__Content {
+    opacity: 0;
+    transform: translateX(200px);
+    transition: all 400ms ease-out;
+  }
+  
+  .ReactModal__Content--after-open {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+  
+  .ReactModal__Content--before-close {
+    opacity: 0;
+    transform: translateX(-200px);
+  }

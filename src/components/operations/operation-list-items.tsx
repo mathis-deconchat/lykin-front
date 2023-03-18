@@ -1,8 +1,13 @@
 import React from 'react'
 
-const OperationListItems = () => {
+type OperationListItemsProps = {
+  operation?: any;
+  openModal: () => void;
+};
+
+const OperationListItems: React.FC<OperationListItemsProps> = (props) => {
   return (
-    <div className='flex mt-1 justify-between'>
+    <div className='flex mt-1 justify-between' onClick={() => props.openModal()}>
         <div className='rounded-full h-12 w-12 bg-gray-200 flex items-center justify-center align-middle'>
             <p className='text-lg font-bold'>M</p>
 
