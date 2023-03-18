@@ -14,7 +14,7 @@ const AppRouter = () => {
         </Route>
         <Route path="/login" element={<LoginPage />}></Route>
         <Route path="/register" element={<RegisterPage />} />
-        <Route path="/user-infos" element={<MultiStepForm />} />
+        <Route path="/setup-profile" element={<MultiStepForm />} />
       </Routes>
     </Router>
   );

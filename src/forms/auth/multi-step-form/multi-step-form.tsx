@@ -65,11 +65,11 @@ const MultiStepForm: React.FC<MultiStepFormProps> = () => {
 
       <form className="w-full flex flex-col  mt-14" onSubmit={handleSubmit(onSubmit)}>
         {step}
-        <div className="mt-40 flex justify-center gap-3">
+        <div className="mt-40 flex justify-center gap-6">
           <>
             {!isFirstStep && (
               <button
-                className="bg-gray-300 px-3 py-2 text-white rounded-md"
+                className="bg-gray-300 px-5 py-2 text-white rounded-full"
                 onClick={previous}
                 type="button"
               >
@@ -78,7 +78,7 @@ const MultiStepForm: React.FC<MultiStepFormProps> = () => {
             )}
 
             <button
-              className="bg-blue-600 px-3 py-2 text-white rounded-md"
+              className="bg-blue-600 px-5 py-2 text-white rounded-full"
               type="submit"
             >
               {isLastStep ? "Valider" : "Suivant"}

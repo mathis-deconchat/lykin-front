@@ -18,10 +18,6 @@ const useMultiStepForm = (steps: JSX.Element[]) => {
     });
   };
 
-  const goTo = (index: number) => {
-    setCurrentStepIndex(index);
-  };
-
   return {
     stepsNumber: steps.length,
     currentStepIndex,
@@ -30,7 +26,6 @@ const useMultiStepForm = (steps: JSX.Element[]) => {
     isLastStep: currentStepIndex === steps.length - 1,
     previous,
     next,
-    goTo,
   };
 };
 
