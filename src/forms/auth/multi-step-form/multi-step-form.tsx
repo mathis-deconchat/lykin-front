@@ -48,8 +48,11 @@ const MultiStepForm: React.FC<MultiStepFormProps> = () => {
   ]);
 
   const onSubmit: SubmitHandler<MultiStepFormInputs> = (data) => {
-    console.log(data);
-    next();
+    if (isLastStep) {
+      console.log(data);
+    } else {
+      next();
+    }
   };
 
   return (
