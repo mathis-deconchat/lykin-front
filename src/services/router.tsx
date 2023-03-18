@@ -4,7 +4,7 @@ import RegisterPage from "../pages/auth/register-page";
 import HomePage from "../pages/home/home-page";
 import MultiStepForm from "../pages/auth/multi-step-page";
 import React from "react";
-import LayoutCommon from "../layout/layout-home";
+import HomeLayout from "../layout/layout-home";
 import PageLayout from "../layout/page-layout";
 import ChartsPage from "../pages/charts/charts-page";
 import TasksPage from "../pages/tasks/tasks-page";
@@ -13,7 +13,7 @@ const AppRouter = () => {
   return (
     <Router>
       <Routes>
-        <Route element={<LayoutCommon></LayoutCommon>}>
+        <Route element={<HomeLayout></HomeLayout>}>
           <Route path="/" element={<HomePage></HomePage>}></Route>
         </Route>
         <Route path="/p" element={<PageLayout />}>
