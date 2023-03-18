@@ -7,7 +7,7 @@ const HomeHeader = () => {
 
   return (
     <>
-    <div className=" text-white w-full flex items-center justify-center">
+    <div className=" rounded-t-2xl text-white w-full flex items-center justify-center">
 
         <div className='w-full'>
 

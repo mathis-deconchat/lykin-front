@@ -21,7 +21,7 @@ const HomeHeaderUserSelection = () => {
         <div className="flex justify-between text-center">
           <div
             className={
-              "w-full rounded-full z-20  " +
+              "w-full rounded-full z-10  " +
               (user == "Tous" ? "text-gray-800" : "text-white")
             }
           >

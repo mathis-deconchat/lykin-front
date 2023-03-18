@@ -1,0 +1,16 @@
+.ReactModal__Overlay {
+    opacity: 0;
+    transform: translateY(200px), translateX(0px);
+    transition: all 100ms ease-out;
+  }
+  
+  .ReactModal__Overlay--after-open {
+    opacity: 1;
+    transform: translateY(0px), translateX(0px);
+  }
+  
+  .ReactModal__Overlay--before-close {
+    opacity: 0;
+    transform: translateY(200px), translateX(0px);
+  }
+  

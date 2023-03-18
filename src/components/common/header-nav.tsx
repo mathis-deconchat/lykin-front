@@ -1,14 +1,17 @@
-import React from 'react'
+import React, { ReactElement } from 'react'
 import { Bars3Icon } from "@heroicons/react/24/outline";
 import { BellIcon } from "@heroicons/react/24/outline";
 import { UserIcon } from "@heroicons/react/24/solid";
 
 
 
+type Props = {
+  isPage?: boolean
+}
 
-const HeaderNav = () => {
+const HeaderNav: React.FC<Props> = (props) => {
   return (
-    <div className=' z-20 top-0 h-fit w-full flex justify-between items-center mb-5 rounded-xl'>
+    <div className={' z-20 top-0 h-fit w-full flex justify-between items-center mb-5 rounded-xl'}>
 
       <div className='rounded-full p-2 bg-gray-500 ml-3 mt-6 bg-opacity-30'>
         <Bars3Icon className='h-7 w-7 text-white stroke-2 ' />
