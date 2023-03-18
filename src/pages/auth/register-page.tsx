@@ -18,7 +18,7 @@ const RegisterPage: React.FC<RegisterPageProps> = () => {
 
       <div className="grow w-full bg-gray-100 rounded-t-xl p-5 z-10">
         <div className="flex flex-col w-full mt-2 items-center justify-center z-10">
-          <p className="text-2xl font-bold mb-6">Heureux de vous revoir !</p>
+          <p className="text-2xl font-bold mb-6">Heureux de vous voir !</p>
 
           <GoogleLoginButton />
 

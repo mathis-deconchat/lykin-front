@@ -10,6 +10,18 @@
 
 @layer components {
   .register-input {
-    @apply py-4 pl-4 rounded-xl border border-gray-400 bg-transparent mb-3;
+    @apply py-4 pl-4 rounded-xl border border-gray-400 bg-transparent mb-1;
+  }
+
+  .label {
+    @apply mt-3 mb-1 pl-2;
+  }
+
+  .input-text-error {
+    @apply mb-2 pl-2 text-red-600;
+  }
+
+  .form-step-title {
+    @apply mb-1 text-center;
   }
 }

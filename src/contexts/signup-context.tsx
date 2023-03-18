@@ -19,6 +19,9 @@ export interface SignUpState {
   lastName: string;
   username: string;
   home: string;
+  address: string;
+  city: string;
+  postalCode: string;
 }
 
 export interface SignUpAction {
@@ -35,6 +38,9 @@ const initialState: SignUpState = {
   lastName: "",
   username: "",
   home: "",
+  address: "",
+  city: "",
+  postalCode: "",
 };
 
 const SignUpContext = createContext<SignUpState>(initialState);
@@ -49,6 +55,9 @@ export const SignUpProvider: React.FC<SignUpProviderProps> = ({ children }) => {
     lastName: userInfos.lastName,
     username: userInfos.username,
     home: userInfos.home,
+    address: userInfos.address,
+    city: userInfos.city,
+    postalCode: userInfos.postalCode,
   };
 
   return (

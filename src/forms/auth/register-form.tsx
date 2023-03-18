@@ -27,24 +27,6 @@ const RegisterForm: React.FC<RegisterFormProps> = () => {
 
   return (
     <form className="flex flex-col" onSubmit={handleSubmit(onSubmit)}>
-      {/* <label htmlFor="lastName">Nom</label>
-      <input
-        className="register-input"
-        {...register("lastName", { required: true })}
-        type="text"
-        placeholder="ex: Doe"
-      />
-      {errors.lastName && <span>Ce champ est obligatoire</span>}
-
-      <label htmlFor="firstName">Prénom</label>
-      <input
-        className="register-input"
-        {...register("firstName", { required: true })}
-        type="text"
-        placeholder="ex: John"
-      />
-      {errors.firstName && <span>Ce champ est obligatoire</span>} */}
-
       <label htmlFor="email">E-mail</label>
       <input
         className="register-input"
