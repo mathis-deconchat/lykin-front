@@ -4,11 +4,11 @@ import OperationPage from "./operations-page";
 
 const HomePage = () => {
   return (
-    <div className="w-full h-screen flex flex-col mb-14">
+    <div className="w-full h-full flex flex-col">
       <section className="h-1/4 flex flex-col mb-6">
         <HomeHeader/>
       </section>
-      <section className="  shadow-white shadow-2xl mb-28">
+      <section className="shadow-white shadow-2xl h-full">
         <OperationPage />
       </section>
     </div>
