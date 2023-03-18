@@ -27,35 +27,32 @@ const RegisterForm: React.FC<RegisterFormProps> = () => {
 
   return (
     <form className="flex flex-col" onSubmit={handleSubmit(onSubmit)}>
-      <label htmlFor="email">E-mail</label>
       <input
         className="register-input"
         {...register("email", { required: true })}
         type="email"
-        placeholder="ex: john.doe@yopmail.com"
+        placeholder="Email"
       />
       {errors.email && <span>Ce champ est obligatoire</span>}
 
-      <label htmlFor="password">Mot de passe</label>
       <input
         className="register-input"
         {...register("password", { required: true })}
         type="password"
-        placeholder="***********"
+        placeholder="Mot de passe"
       />
       {errors.password && <span>Ce champ est obligatoire</span>}
 
-      <label htmlFor="confirmPassword">Confirmation de mot de passe</label>
       <input
         className="register-input"
         {...register("confirmPassword", { required: true })}
         type="password"
-        placeholder="***********"
+        placeholder="Confirmer mot de passe"
       />
       {errors.confirmPassword && <span>Ce champ est obligatoire</span>}
 
       <input
-        className="mt-6 bg-blue-400 py-2 text-blue-100"
+        className="mt-6 bg-blue-600 py-2 text-blue-100 rounded-full"
         type="submit"
         value="S'inscrire"
       />
