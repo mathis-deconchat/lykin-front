@@ -1,6 +1,9 @@
 //Libraries
 import React from "react";
 
+//Components
+import SignUpStepper from "../../../components/auth/signup-stepper/signup-stepper";
+
 //Forms
 import UserDetailsForm from "./user-details-form";
 import PseudoForm from "./pseudo-form";
@@ -40,12 +43,13 @@ const MultiStepForm: React.FC<MultiStepFormProps> = () => {
     formState: { errors },
   } = useForm<MultiStepFormInputs>();
 
-  const { step, isLastStep, isFirstStep, previous, next } = useMultiStepForm([
-    <UserDetailsForm register={register} errors={errors} />,
-    <PseudoForm register={register} errors={errors} />,
-    <HomeForm register={register} errors={errors} />,
-    <HomeDetailsForm register={register} errors={errors} />,
-  ]);
+  const { step, isLastStep, isFirstStep, previous, next, stepsNumber, currentStepIndex } =
+    useMultiStepForm([
+      <UserDetailsForm register={register} errors={errors} />,
+      <PseudoForm register={register} errors={errors} />,
+      <HomeForm register={register} errors={errors} />,
+      <HomeDetailsForm register={register} errors={errors} />,
+    ]);
 
   const onSubmit: SubmitHandler<MultiStepFormInputs> = (data) => {
     if (isLastStep) {
@@ -56,29 +60,33 @@ const MultiStepForm: React.FC<MultiStepFormProps> = () => {
   };
 
   return (
-    <form className="flex flex-col w-full" onSubmit={handleSubmit(onSubmit)}>
-      {step}
-      <div className="mt-4 flex justify-center gap-3">
-        <>
-          {!isFirstStep && (
-            <button
-              className="bg-blue-400 px-3 py-2 text-blue-100 rounded-md"
-              onClick={previous}
-              type="button"
-            >
-              Précédent
-            </button>
-          )}
+    <>
+      <SignUpStepper stepsNumber={stepsNumber} currentStepIndex={currentStepIndex} />
 
-          <button
-            className="bg-blue-400 px-3 py-2 text-blue-100 rounded-md"
-            type="submit"
-          >
-            {isLastStep ? "Valider" : "Suivant"}
-          </button>
-        </>
-      </div>
-    </form>
+      <form className="w-full flex flex-col  mt-14" onSubmit={handleSubmit(onSubmit)}>
+        {step}
+        <div className="mt-40 flex justify-center gap-3">
+          <>
+            {!isFirstStep && (
+              <button
+                className="bg-gray-300 px-3 py-2 text-white rounded-md"
+                onClick={previous}
+                type="button"
+              >
+                Précédent
+              </button>
+            )}
+
+            <button
+              className="bg-blue-600 px-3 py-2 text-white rounded-md"
+              type="submit"
+            >
+              {isLastStep ? "Valider" : "Suivant"}
+            </button>
+          </>
+        </div>
+      </form>
+    </>
   );
 };
 
