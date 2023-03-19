@@ -12,8 +12,10 @@
   "dependencies": {
     "@apollo/client": "^3.7.10",
     "@heroicons/react": "^2.0.16",
+    "amazon-cognito-identity-js": "^6.1.2",
     "animate.css": "^4.1.1",
     "autoprefixer": "^10.4.13",
+    "aws-amplify": "^5.0.20",
     "clsx": "^1.2.1",
     "framer-motion": "^10.4.0",
     "graphql": "^16.6.0",
