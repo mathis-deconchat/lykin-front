@@ -1,12 +1,25 @@
 //Libraries
-import React from "react";
+import React, { SetStateAction } from "react";
+import { useFormContext } from "react-hook-form";
+import {motion} from "framer-motion";
 
 //Types
-import { StepFormProps } from "./multi-step-form";
+import { StepFormProps } from "./types/step-form-props";
+type Props = {
+  x: number;
+  // setX: React.Dispatch<SetStateAction<number>>
+}
+const UserDetailsForm: React.FC<Props> = (props) => {
 
-const UserDetailsForm: React.FC<StepFormProps> = ({ register, errors }) => {
+  const { register, formState: { errors } } = useFormContext();
   return (
     <>
+      <motion.div                            
+          initial={{ x: props.x }}
+          transition={{ duration: 1 }}
+          animate={{ x: 0 }}
+          className="w-full"
+        >
       <h5 className="form-step-title">Qui êtes-vous ?</h5>
 
       <input
@@ -28,6 +41,7 @@ const UserDetailsForm: React.FC<StepFormProps> = ({ register, errors }) => {
       {errors.firstName && (
         <span className="input-text-error">Ce champ est obligatoire</span>
       )}
+      </motion.div>
     </>
   );
 };

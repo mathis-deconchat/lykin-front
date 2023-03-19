@@ -2,7 +2,7 @@
 import React from "react";
 
 //Types
-import { StepFormProps } from "./multi-step-form";
+import { StepFormProps } from "./types/step-form-props";
 
 const HomeForm: React.FC<StepFormProps> = ({register, errors}) => {
   return (
