@@ -9,10 +9,6 @@ const HomeForm: React.FC<StepFormProps> = ({register, errors}) => {
     <>
       <h5 className="form-step-title">Saisissez un lieu :</h5>
 
-      <label className="label" htmlFor="home">
-        Lieu
-      </label>
-
       <input
         className="register-input"
         {...register("home", { required: true })}

@@ -27,7 +27,6 @@ const LoginForm: React.FC<LoginFormProps> = () => {
 
   return (
     <form className="flex flex-col" onSubmit={handleSubmit(onSubmit)}>
-      <label htmlFor="email">E-mail</label>
       <input
         className="register-input"
         {...register("email", { required: true })}
@@ -36,7 +35,6 @@ const LoginForm: React.FC<LoginFormProps> = () => {
       />
       {errors.email && <span>Ce champ est obligatoire</span>}
 
-      <label htmlFor="password">Mot de passe</label>
       <input
         className="register-input"
         {...register("password", { required: true })}
@@ -46,7 +44,7 @@ const LoginForm: React.FC<LoginFormProps> = () => {
       {errors.password && <span>Ce champ est obligatoire</span>}
 
       <input
-        className="mt-6 bg-blue-400 py-2 text-blue-100"
+        className="mt-6 bg-blue-600 py-2 text-blue-100 rounded-full"
         type="submit"
         value="Se connecter"
       />

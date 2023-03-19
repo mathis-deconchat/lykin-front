@@ -8,7 +8,7 @@ const GoogleLoginButton: React.FC<GoogleLoginButtonProps> = () => {
     <button
       aria-label="Continue with google"
       role="button"
-      className="focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-gray-700 py-3.5 px-4 border rounded-lg border-gray-700 flex items-center w-full"
+      className="focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-gray-700 py-3.5 px-4 border border-gray-700 flex items-center w-full rounded-full"
     >
       <svg
         width="19"

@@ -9,15 +9,11 @@ const PseudoForm: React.FC<StepFormProps> = ({register, errors}) => {
     <>
       <h5 className="form-step-title">Choisissez un pseudo :</h5>
 
-      <label className="label" htmlFor="username">
-        Pseudo
-      </label>
-
       <input
         className="register-input"
         {...register("username", { required: true })}
         type="text"
-        placeholder="ex: johndoe69"
+        placeholder="Pseudo"
       />
 
       {errors.username && (
