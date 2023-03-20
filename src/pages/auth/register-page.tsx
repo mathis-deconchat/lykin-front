@@ -7,7 +7,7 @@ import Divider from "../../components/common/divider";
 import AuthHeader from "../../components/auth/auth-header";
 
 //Forms
-import RegisterForm from "../../forms/auth/register-form";
+import RegisterForm from "../../components/auth/forms/auth/multi-step-form-register/step-1-register/register-form";
 
 interface RegisterPageProps {}
 

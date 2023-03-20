@@ -2,14 +2,17 @@
 import React from "react";
 
 //Components
-import AuthHeader from "../../components/auth/auth-header";
-import GoogleLoginButton from "../../components/auth/google-login-button";
-import Divider from "../../components/common/divider";
+import AuthHeader from "../../../components/auth/auth-header";
+import GoogleLoginButton from "../../../components/auth/google-login-button";
+import Divider from "../../../components/common/divider";
 
 //Forms
-import LoginForm from "../../forms/auth/login-form";
+import LoginForm from "../../../components/auth/forms/auth/login-form/login-form";
+import { useAuth } from "../../../hooks/auth/use-auth-hook";
+import { useForm } from "react-hook-form";
 
 const LoginPage = () => {
+
   return (
     <div className="h-screen w-screen bg-gradient-to-t from-blue-200 via-gray-600 to-gray-900 flex flex-col">
       <AuthHeader login={true} />

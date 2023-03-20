@@ -98,16 +98,7 @@ const KeyPadModal: React.FC<KeyPadModalProps> = (props) => {
         <div className="h-4/6 flex items-center justify-center">
           <div className="text-white text-4xl font-extrabold h-full flex items-center">
             <span className="mr-2">€</span>
-            {+keyPadValue > 0 ? (
-              euroFormatter
-                .format(+keyPadValue)
-                .split("")
-                .map((i, e) => {
-                  return <span className="falling">{i}</span>;
-                })
-            ) : (
-              <span className="empty-number mt-2 ml-2"></span>
-            )}
+            {(+keyPadValue).toLocaleString('FR-fr', {maximumFractionDigits: 2, minimumFractionDigits: 2})}
           </div>
         </div>
         <div className="h-2/6 flex p-2  items-end justify-end">
@@ -139,42 +130,7 @@ const KeyPadModal: React.FC<KeyPadModalProps> = (props) => {
             </div>
           );
         })}
-        {/* <div className="text-center justify-center items-center w-full flex h-full border-b-[1px] border-gray-300 active:bg-gray-100 transition duration-75 active:scale-90 ease-in-out p-2 rounded-t-xl ">
-          <p>1</p>
-        </div>
-        <div className="text-center justify-center items-center w-full flex h-full border-b-[1px] border-gray-300">
-          <p>2</p>
-        </div>
-        <div className="text-center justify-center items-center w-full flex h-full border-b-[1px] border-gray-300">
-          <p>3</p>
-        </div>
-        <div className="text-center justify-center items-center w-full flex h-full border-b-[1px] border-gray-300">
-          <p>4</p>
-        </div>
-        <div className="text-center justify-center items-center w-full flex h-full border-b-[1px] border-gray-300">
-          <p>5</p>
-        </div>
-        <div className="text-center justify-center items-center w-full flex h-full border-b-[1px] border-gray-300">
-          <p>6</p>
-        </div>
-        <div className="text-center justify-center items-center w-full flex h-full border-b-[1px] border-gray-300">
-          <p>7</p>
-        </div>
-        <div className="text-center justify-center items-center w-full flex h-full border-b-[1px] border-gray-300">
-          <p>8</p>
-        </div>
-        <div className="text-center justify-center items-center w-full flex h-full border-b-[1px] border-gray-300">
-          <p>9</p>
-        </div>
-        <div className="text-center justify-center items-center w-full flex h-full">
-          <p>.</p>
-        </div>
-        <div className="text-center justify-center items-center w-full flex h-full">
-          <p>0</p>
-        </div>
-        <div className="text-center justify-center items-center w-full flex h-full">
-          <BackspaceIcon className="h-6 w-6 text-gray-500" />
-        </div> */}
+
       </div>
     </Modal>
   );

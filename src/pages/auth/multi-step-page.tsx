@@ -1,5 +1,5 @@
 //Libraries
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   FieldErrors,
   FormProvider,
@@ -7,23 +7,31 @@ import {
   useForm,
   UseFormRegister,
 } from "react-hook-form";
-import HomeDetailsForm from "../../forms/auth/multi-step-form/home-details-form";
-import HomeForm from "../../forms/auth/multi-step-form/home-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+
 
 //Form
-import MultiStepForm from "../../forms/auth/multi-step-form/multi-step-form";
-import NavigationButtonForm from "../../forms/auth/multi-step-form/navigation-buttons-form";
-import PseudoForm from "../../forms/auth/multi-step-form/pseudo-form";
-import { MultiStepFormInputs } from "../../forms/auth/multi-step-form/types/step-form-props";
-import UserDetailsForm from "../../forms/auth/multi-step-form/user-details-form";
-import useMultiStepForm from "../../hooks/multi-step-form/use-multi-step-form";
+import MultiStepForm from "../../components/auth/forms/auth/multi-step-form-register/multi-step-form";
+
+import {  MultiStepFormRegisterInputsSchema, multiStepFormRegisterInputsSchema } from "../../components/auth/forms/auth/multi-step-form-register/types/step-form-props";
+import UserDetailsForm from "../../components/auth/forms/auth/multi-step-form-register/step-3-user-details/user-details-form";
+import UserVerificationCode from "../../components/auth/forms/auth/multi-step-form-register/step-2-otp/user-verification-code";
+import useMultiStepForm, {
+  UseMultiStepFormSteps,
+} from "../../hooks/multi-step-form/use-multi-step-form";
+import RegisterPage from "./register-page";
+import { ProvideMutliStepForm, useMultiStepFormContext } from "../../contexts/mutli-step-fom-context";
 
 interface MultiStepPageProps {}
 
 const MultiStepPage: React.FC<MultiStepPageProps> = () => {
   const [x, setX] = useState(0);
 
-  const methods = useForm<MultiStepFormInputs>();
+  const methods = useForm<MultiStepFormRegisterInputsSchema>({
+    resolver: zodResolver(multiStepFormRegisterInputsSchema),
+  });
+
+
 
   const {
     step,
@@ -32,46 +40,78 @@ const MultiStepPage: React.FC<MultiStepPageProps> = () => {
     previous,
     next,
     stepsNumber,
+    setSteps,
     currentStepIndex,
-  } = useMultiStepForm([
-    <UserDetailsForm x={x} />,
-    <PseudoForm x={x} />,
-    // <HomeForm register={register} errors={errors} />,
-    // <HomeDetailsForm register={register} errors={errors} />,
-  ]);
+  } = useMultiStepFormContext()
 
-  const onSubmit: SubmitHandler<MultiStepFormInputs> = (data) => {
+  
+  useEffect(() => {
+    const multiStepFormSteps: UseMultiStepFormSteps[] = [
+      {
+        step: <RegisterPage />,
+        isRegister: true,
+      },
+      {
+        step: <UserVerificationCode x={x} />,
+        stepFromHeader: {
+          title: "Vérification",
+          subtitle: "Vérifiez votre adresse email avec le code reçu",
+          icon: "icons8-lock",
+        },
+        isRegister: false,
+      },
+      {
+        step: <UserDetailsForm x={x} />,
+        stepFromHeader: {
+          title: "Informations personnelles",
+          subtitle: "Veuillez renseigner vos informations personnelles, vous pourrez les changer par la suite dans les paramètres de l'application.",
+          icon: "icons8-modifier",
+        },
+        isRegister: false,
+      },
+
+    ];
+
+    setSteps(multiStepFormSteps)
+  }, [])
+
+
+
+
+  const onSubmit: SubmitHandler<MultiStepFormRegisterInputsSchema> = (data) => {
     if (isLastStep) {
       console.log(data);
     } else {
-      // setX(1000);
+      setX(-1000);
       next();
     }
   };
 
+  const onPrevious = () => {
+    setX(1000);
+    previous();
+  };
+
   return (
-    <div className="h-screen px-8 pt-10 flex flex-col items-center justify-between relative bg-white">
-      <div className="h-2/6 flex items-center">
-        <h2 className=" text-3xl text-blue-600">LYKIN</h2>
-      </div>
 
-      <FormProvider {...methods}>
-        <form
-          className="w-full h-full flex flex-col justify-between"
-          onSubmit={methods.handleSubmit(onSubmit)}
-        >
-          <div className="flex flex-col">
-            <MultiStepForm step={step} />
-          </div>
+    <div className="h-screen ">
 
-          <NavigationButtonForm
-            isFirstStep={isFirstStep}
-            isLastStep={isLastStep}
-            next={next}
-            previous={previous}
-          ></NavigationButtonForm>
-        </form>
-      </FormProvider>
+          {step.isRegister ? (
+            step.step
+          ) : (
+            <div className="h-screen bg-white w-full">
+              <MultiStepForm
+                step={step.step}
+                isFirstStep={isFirstStep}
+                isLastStep={isLastStep}
+                next={next}
+                previous={onPrevious}
+                currentStepIndex={currentStepIndex}
+                formHeader={step.stepFromHeader!}
+              />
+            </div>
+          )}
+
     </div>
   );
 };
