@@ -1,8 +1,11 @@
 import React, { lazy, Suspense } from "react";
-import OperationCreationModal from "../../components/operations/operation-creation-modal/operation-creation-modal";
+import OperationCreationModalStep2 from "../../components/operations/operation-creation-modal-step-2/operation-creation-modal-step-2";
 
-const KeyPadModal = lazy(
-  () => import("../../components/common/keypad/keypad-modal")
+const OperationCreationModalStep1 = lazy(
+  () =>
+    import(
+      "../../components/operations/operation-creation-modal-step-1/operation-creation-modal-step-1"
+    )
 );
 const OperationByCategorie = lazy(
   () => import("../../components/operations/operation-by-category")
@@ -18,7 +21,7 @@ const OperationListItems = lazy(
 );
 
 import Lottie from "lottie-react";
-import loadingAnimation from "../../assets/98288-loading.json"
+import loadingAnimation from "../../assets/98288-loading.json";
 
 const customStyles = {
   content: {
@@ -81,26 +84,18 @@ const OperationPage = () => {
   }
 
   return (
-    <Suspense fallback={<div className="h-full w-full bg-gray-100"><Lottie animationData={loadingAnimation} loop={true} /></div>}>
+    <Suspense
+      fallback={
+        <div className="h-full w-full bg-gray-100">
+          <Lottie animationData={loadingAnimation} loop={true} />
+        </div>
+      }
+    >
       <div
         id="operation-page"
         className=" w-full h-full  rounded-t-3xl shadow-lg bg-gray-100 p-5"
       >
-        <OperationCreationModal
-          afterOpenModal={afterOpenModalCreateOperation}
-          modalIsOpen={modalIsOpenCreateOperation}
-          closeModal={closeModalCreateOperation}
-          operationValue={operation}
-        ></OperationCreationModal>
-
-        <OperationDetailsModal
-          afterOpenModal={afterOpenOperationDetailModal}
-          closeModal={closeOperationDetailModal}
-          customStyles={{}}
-          modalIsOpen={modalIsOpenOperationDetail}
-        ></OperationDetailsModal>
-
-        <KeyPadModal
+        <OperationCreationModalStep1
           validateFirstStep={validateFirstStep}
           operationValue={operation}
           setOperationValue={setOperation}
@@ -109,6 +104,20 @@ const OperationPage = () => {
           modalIsOpen={modalIsOpenKeyPad}
           customStyles={customStyles}
         />
+        <OperationCreationModalStep2
+          afterOpenModal={afterOpenModalCreateOperation}
+          modalIsOpen={modalIsOpenCreateOperation}
+          closeModal={closeModalCreateOperation}
+          operationValue={operation}
+        />
+
+        <OperationDetailsModal
+          afterOpenModal={afterOpenOperationDetailModal}
+          closeModal={closeOperationDetailModal}
+          customStyles={{}}
+          modalIsOpen={modalIsOpenOperationDetail}
+        ></OperationDetailsModal>
+
         <div className="bg-gray-300 rounded-full w-12 h-2 mr-auto ml-auto"></div>
         <p className="text-black text-xl font-bold">Catégories</p>
         <button className="w-16 h-6 bg-gray-200 " onClick={openModalKeyPad}>

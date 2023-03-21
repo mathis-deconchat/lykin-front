@@ -1,0 +1,8 @@
+mutation MyMutation($input: CreateOperationCategoryInput!) {
+  createOperationCategory(input: $input){
+    operationCategory{
+      name
+      id
+    }
+  }
+}

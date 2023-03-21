@@ -1,6 +1,8 @@
 import { Auth } from "aws-amplify";
 import React, { useContext, useEffect, useState } from "react";
 import { authContext, UseAuth } from "../../contexts/auth-context";
+import { CognitoHostedUIIdentityProvider } from '@aws-amplify/auth';
+
 
 import { AwsConfigAuth } from "../../config/auth/auth-config";
 // Amplify.configure({ Auth: AwsConfigAuth });
@@ -43,6 +45,9 @@ const useProvideAuth = (): UseAuth => {
     }
   };
 
+
+
+
   const updateUserAttributes = async (attributes: any) => {
     try {
       const result = await Auth.updateUserAttributes(
@@ -72,6 +77,23 @@ const useProvideAuth = (): UseAuth => {
       return { success: false, message: e as string };
     }
   };
+
+  const signInWithGoogle = async () => {
+    setIsLoading(true);
+    const result = await Auth.federatedSignIn({ provider: CognitoHostedUIIdentityProvider.Google });
+    console.log("signInWithGoogle result", result)
+    try {
+      setIsAuthenticated(true);
+      
+      setIsLoading(false);
+      return { success: true, message: "Signed in successfully" };
+    } catch (e: unknown) {
+      console.log(e);
+      setIsLoading(false);
+      return { success: false, message: e as string };
+    }
+  };
+
 
   const signUp = async (
     username: string,
@@ -112,6 +134,7 @@ const useProvideAuth = (): UseAuth => {
 
 
   const signOut = async () => {
+    console.log('signingout')
     try {
       await Auth.signOut();
       setUsername("");
@@ -145,6 +168,7 @@ const useProvideAuth = (): UseAuth => {
     confirmSignUp,
     setIsAuthenticated,
     resendConfirmationCode,
-    updateUserAttributes
+    updateUserAttributes,
+    signInWithGoogle
   };
 };

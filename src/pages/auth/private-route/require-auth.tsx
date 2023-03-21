@@ -39,9 +39,15 @@ const AuthWrapper = () => {
   if (!isAuthenticated) {
     return <Navigate to="/login" replace />;
   }
-  return <>
-    <Outlet />
-  </>;
+
+  if (isAuthenticated && location.pathname === "/login") {
+    return <Navigate to="/" replace />;
+  }
+  return (
+    <>
+      <Outlet />
+    </>
+  );
 };
 
 export default AuthWrapper;

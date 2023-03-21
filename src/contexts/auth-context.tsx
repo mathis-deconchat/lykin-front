@@ -16,6 +16,7 @@ export interface UseAuth {
   setIsAuthenticated: (value: boolean) => void;
   resendConfirmationCode: (username: string) => Promise<Result>;
   updateUserAttributes: (attributes: any) => Promise<Result>;
+  signInWithGoogle: () => Promise<Result>;
 }
 
 interface Result {

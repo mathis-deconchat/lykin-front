@@ -8,7 +8,7 @@ export const multiStepRegisterPageSchema = z
       .email("Ce n'est pas un email valide"),
     password: z
       .string()
-      .min(8, { message: "Password must be atleast 8 characters" })
+      .min(8, { message: "Le mot de passe n'est pas assez complexe" })
       .refine(
         (value) => {
           const strongPassword = new RegExp(

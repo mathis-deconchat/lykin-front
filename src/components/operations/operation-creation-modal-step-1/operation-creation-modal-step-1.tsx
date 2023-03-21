@@ -1,17 +1,11 @@
 import React from "react";
 import Modal from "react-modal";
 import { BackspaceIcon, DeviceTabletIcon } from "@heroicons/react/24/outline";
-import {
-  NumberFormatBase,
-  NumericFormat,
-  useNumericFormat,
-} from "react-number-format";
-import { AnimatePresence, motion, transform } from "framer-motion";
-import "animate.css";
-import { Animated } from "react-animated-css";
-import "./keypad.css";
 
-type KeyPadModalProps = {
+import "animate.css";
+import "./operation-creation-modal-step-1.css"
+
+type OperationCreationModalStep1Props = {
   modalIsOpen: boolean;
   afterOpenModal: () => void;
   closeModal: () => void;
@@ -20,7 +14,7 @@ type KeyPadModalProps = {
   setOperationValue: React.Dispatch<React.SetStateAction<string>>;
   validateFirstStep: () => void;
 };
-const KeyPadModal: React.FC<KeyPadModalProps> = (props) => {
+const OperationCreationModalStep1: React.FC<OperationCreationModalStep1Props> = (props) => {
   let euroFormatter = new Intl.NumberFormat("fr-FR", {
     currency: "EUR",
     minimumFractionDigits: 0,
@@ -136,4 +130,4 @@ const KeyPadModal: React.FC<KeyPadModalProps> = (props) => {
   );
 };
 
-export default KeyPadModal;
+export default OperationCreationModalStep1;
