@@ -9,15 +9,14 @@ export interface UseAuth {
   signOut: () => void;
   signUp: (
     username: string,
-    lastname:string,
     email: string,
     password: string
   ) => Promise<Result>;
   confirmSignUp: (username: string, code: string) => Promise<Result>;
-//   resendCode: (username: string) => Promise<Result>;
-//   getCurrentSession: () => Promise<Result>;
-//   isLoggedIn: () => boolean;
   setIsAuthenticated: (value: boolean) => void;
+  resendConfirmationCode: (username: string) => Promise<Result>;
+  updateUserAttributes: (attributes: any) => Promise<Result>;
+  signInWithGoogle: () => Promise<Result>;
 }
 
 interface Result {

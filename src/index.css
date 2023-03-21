@@ -10,7 +10,7 @@
 
 @layer components {
   .register-input {
-    @apply py-3 pl-4 rounded-full border border-gray-400 bg-transparent mt-5;
+    @apply py-3 pl-4 rounded-full w-full border border-gray-400 bg-transparent mt-5;
   }
 button,
 input,
@@ -56,6 +56,11 @@ button,
   -webkit-appearance: button;
 }
 
+
+.h-screen {
+  height: 100vh; /* Fallback for browsers that do not support Custom Properties */
+  height: calc(var(--vh, 1vh) * 100);
+}
   .label {
     @apply mt-3 mb-1 pl-2;
   }

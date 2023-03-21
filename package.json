@@ -12,12 +12,15 @@
   "dependencies": {
     "@apollo/client": "^3.7.10",
     "@heroicons/react": "^2.0.16",
+    "@hookform/resolvers": "^3.0.0",
+    "@tailwindcss/forms": "^0.5.3",
     "animate.css": "^4.1.1",
     "autoprefixer": "^10.4.13",
     "aws-amplify": "^5.0.20",
     "clsx": "^1.2.1",
     "framer-motion": "^10.4.0",
     "graphql": "^16.6.0",
+    "jwt-decode": "^3.1.2",
     "lottie-react": "^2.4.0",
     "react": "^18.2.0",
     "react-animated-css": "^1.2.1",
@@ -25,11 +28,13 @@
     "react-hook-form": "^7.43.5",
     "react-modal": "^3.16.1",
     "react-number-format": "^5.1.4",
+    "react-password-strength-bar": "^0.4.1",
     "react-router-dom": "^6.8.2",
     "react-transition-group": "^4.4.5",
     "recharts": "^2.5.0",
     "tailwindcss": "^3.2.7",
-    "vite-plugin-svgr": "^2.4.0"
+    "vite-plugin-svgr": "^2.4.0",
+    "zod": "^3.21.4"
   },
   "devDependencies": {
     "@graphql-codegen/cli": "^2.15.0",

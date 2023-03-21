@@ -1,10 +1,12 @@
 //Libraries
 import React from "react";
+import { useFormContext } from "react-hook-form";
 
 //Types
-import { StepFormProps } from "./multi-step-form";
+// import { StepFormProps } from "./types/step-form-props";
 
-const HomeForm: React.FC<StepFormProps> = ({register, errors}) => {
+const HomeForm = () => {
+  const { register, formState: { errors } } = useFormContext();
   return (
     <>
       <h5 className="form-step-title">Saisissez un lieu :</h5>

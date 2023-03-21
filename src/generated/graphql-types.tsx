@@ -13,9 +13,16 @@ export type Scalars = {
   Boolean: boolean;
   Int: number;
   Float: number;
+  /** A floating point number that requires more precision than IEEE 754 binary 64 */
   BigFloat: any;
+  /** A location in a connection that can be used for resuming pagination. */
   Cursor: any;
+  /** The day, does not include a time. */
   Date: any;
+  /**
+   * A point in time as described by the [ISO
+   * 8601](https://en.wikipedia.org/wiki/ISO_8601) standard. May or may not include a timezone.
+   */
   Datetime: any;
 };
 
@@ -104,72 +111,72 @@ export type CreateFlywaySchemaHistoryPayloadFlywaySchemaHistoryEdgeArgs = {
   orderBy?: InputMaybe<Array<FlywaySchemaHistoriesOrderBy>>;
 };
 
-/** All input for the create `SpendingCategory` mutation. */
-export type CreateSpendingCategoryInput = {
+/** All input for the create `OperationCategory` mutation. */
+export type CreateOperationCategoryInput = {
   /**
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
    */
   clientMutationId?: InputMaybe<Scalars['String']>;
-  /** The `SpendingCategory` to be created by this mutation. */
-  spendingCategory: SpendingCategoryInput;
+  /** The `OperationCategory` to be created by this mutation. */
+  operationCategory: OperationCategoryInput;
 };
 
-/** The output of our create `SpendingCategory` mutation. */
-export type CreateSpendingCategoryPayload = {
-  __typename?: 'CreateSpendingCategoryPayload';
+/** The output of our create `OperationCategory` mutation. */
+export type CreateOperationCategoryPayload = {
+  __typename?: 'CreateOperationCategoryPayload';
   /**
    * The exact same `clientMutationId` that was provided in the mutation input,
    * unchanged and unused. May be used by a client to track mutations.
    */
   clientMutationId?: Maybe<Scalars['String']>;
+  /** The `OperationCategory` that was created by this mutation. */
+  operationCategory?: Maybe<OperationCategory>;
+  /** An edge for our `OperationCategory`. May be used by Relay 1. */
+  operationCategoryEdge?: Maybe<OperationCategoriesEdge>;
   /** Our root query field type. Allows us to run any query from our mutation payload. */
   query?: Maybe<Query>;
-  /** The `SpendingCategory` that was created by this mutation. */
-  spendingCategory?: Maybe<SpendingCategory>;
-  /** An edge for our `SpendingCategory`. May be used by Relay 1. */
-  spendingCategoryEdge?: Maybe<SpendingCategoriesEdge>;
 };
 
 
-/** The output of our create `SpendingCategory` mutation. */
-export type CreateSpendingCategoryPayloadSpendingCategoryEdgeArgs = {
-  orderBy?: InputMaybe<Array<SpendingCategoriesOrderBy>>;
+/** The output of our create `OperationCategory` mutation. */
+export type CreateOperationCategoryPayloadOperationCategoryEdgeArgs = {
+  orderBy?: InputMaybe<Array<OperationCategoriesOrderBy>>;
 };
 
-/** All input for the create `Spending` mutation. */
-export type CreateSpendingInput = {
+/** All input for the create `Operation` mutation. */
+export type CreateOperationInput = {
   /**
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
    */
   clientMutationId?: InputMaybe<Scalars['String']>;
-  /** The `Spending` to be created by this mutation. */
-  spending: SpendingInput;
+  /** The `Operation` to be created by this mutation. */
+  operation: OperationInput;
 };
 
-/** The output of our create `Spending` mutation. */
-export type CreateSpendingPayload = {
-  __typename?: 'CreateSpendingPayload';
-  /** Reads a single `SpendingCategory` that is related to this `Spending`. */
-  category?: Maybe<SpendingCategory>;
+/** The output of our create `Operation` mutation. */
+export type CreateOperationPayload = {
+  __typename?: 'CreateOperationPayload';
+  /** Reads a single `OperationCategory` that is related to this `Operation`. */
+  category?: Maybe<OperationCategory>;
   /**
    * The exact same `clientMutationId` that was provided in the mutation input,
    * unchanged and unused. May be used by a client to track mutations.
    */
   clientMutationId?: Maybe<Scalars['String']>;
+  /** The `Operation` that was created by this mutation. */
+  operation?: Maybe<Operation>;
+  /** An edge for our `Operation`. May be used by Relay 1. */
+  operationEdge?: Maybe<OperationsEdge>;
   /** Our root query field type. Allows us to run any query from our mutation payload. */
   query?: Maybe<Query>;
-  /** The `Spending` that was created by this mutation. */
-  spending?: Maybe<Spending>;
-  /** An edge for our `Spending`. May be used by Relay 1. */
-  spendingEdge?: Maybe<SpendingsEdge>;
 };
 
 
-/** The output of our create `Spending` mutation. */
-export type CreateSpendingPayloadSpendingEdgeArgs = {
-  orderBy?: InputMaybe<Array<SpendingsOrderBy>>;
+/** The output of our create `Operation` mutation. */
+export type CreateOperationPayloadOperationEdgeArgs = {
+  orderBy?: InputMaybe<Array<OperationsOrderBy>>;
 };
 
 /** All input for the create `User` mutation. */
@@ -205,41 +212,41 @@ export type CreateUserPayloadUserEdgeArgs = {
   orderBy?: InputMaybe<Array<UsersOrderBy>>;
 };
 
-/** All input for the create `Users2Spending` mutation. */
-export type CreateUsers2SpendingInput = {
+/** All input for the create `Users2Operation` mutation. */
+export type CreateUsers2OperationInput = {
   /**
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
    */
   clientMutationId?: InputMaybe<Scalars['String']>;
-  /** The `Users2Spending` to be created by this mutation. */
-  users2Spending: Users2SpendingInput;
+  /** The `Users2Operation` to be created by this mutation. */
+  users2Operation: Users2OperationInput;
 };
 
-/** The output of our create `Users2Spending` mutation. */
-export type CreateUsers2SpendingPayload = {
-  __typename?: 'CreateUsers2SpendingPayload';
+/** The output of our create `Users2Operation` mutation. */
+export type CreateUsers2OperationPayload = {
+  __typename?: 'CreateUsers2OperationPayload';
   /**
    * The exact same `clientMutationId` that was provided in the mutation input,
    * unchanged and unused. May be used by a client to track mutations.
    */
   clientMutationId?: Maybe<Scalars['String']>;
+  /** Reads a single `Operation` that is related to this `Users2Operation`. */
+  operation?: Maybe<Operation>;
   /** Our root query field type. Allows us to run any query from our mutation payload. */
   query?: Maybe<Query>;
-  /** Reads a single `Spending` that is related to this `Users2Spending`. */
-  spending?: Maybe<Spending>;
-  /** Reads a single `User` that is related to this `Users2Spending`. */
+  /** Reads a single `User` that is related to this `Users2Operation`. */
   user?: Maybe<User>;
-  /** The `Users2Spending` that was created by this mutation. */
-  users2Spending?: Maybe<Users2Spending>;
-  /** An edge for our `Users2Spending`. May be used by Relay 1. */
-  users2SpendingEdge?: Maybe<Users2SpendingsEdge>;
+  /** The `Users2Operation` that was created by this mutation. */
+  users2Operation?: Maybe<Users2Operation>;
+  /** An edge for our `Users2Operation`. May be used by Relay 1. */
+  users2OperationEdge?: Maybe<Users2OperationsEdge>;
 };
 
 
-/** The output of our create `Users2Spending` mutation. */
-export type CreateUsers2SpendingPayloadUsers2SpendingEdgeArgs = {
-  orderBy?: InputMaybe<Array<Users2SpendingsOrderBy>>;
+/** The output of our create `Users2Operation` mutation. */
+export type CreateUsers2OperationPayloadUsers2OperationEdgeArgs = {
+  orderBy?: InputMaybe<Array<Users2OperationsOrderBy>>;
 };
 
 /** A filter to be used against Date fields. All fields are combined with a logical ‘and.’ */
@@ -338,30 +345,30 @@ export type DeleteFlywaySchemaHistoryPayloadFlywaySchemaHistoryEdgeArgs = {
   orderBy?: InputMaybe<Array<FlywaySchemaHistoriesOrderBy>>;
 };
 
-/** All input for the `deleteSpendingByNodeId` mutation. */
-export type DeleteSpendingByNodeIdInput = {
+/** All input for the `deleteOperationByNodeId` mutation. */
+export type DeleteOperationByNodeIdInput = {
   /**
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
    */
   clientMutationId?: InputMaybe<Scalars['String']>;
-  /** The globally unique `ID` which will identify a single `Spending` to be deleted. */
+  /** The globally unique `ID` which will identify a single `Operation` to be deleted. */
   nodeId: Scalars['ID'];
 };
 
-/** All input for the `deleteSpendingCategoryByNodeId` mutation. */
-export type DeleteSpendingCategoryByNodeIdInput = {
+/** All input for the `deleteOperationCategoryByNodeId` mutation. */
+export type DeleteOperationCategoryByNodeIdInput = {
   /**
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
    */
   clientMutationId?: InputMaybe<Scalars['String']>;
-  /** The globally unique `ID` which will identify a single `SpendingCategory` to be deleted. */
+  /** The globally unique `ID` which will identify a single `OperationCategory` to be deleted. */
   nodeId: Scalars['ID'];
 };
 
-/** All input for the `deleteSpendingCategory` mutation. */
-export type DeleteSpendingCategoryInput = {
+/** All input for the `deleteOperationCategory` mutation. */
+export type DeleteOperationCategoryInput = {
   /**
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
@@ -370,31 +377,31 @@ export type DeleteSpendingCategoryInput = {
   id: Scalars['Int'];
 };
 
-/** The output of our delete `SpendingCategory` mutation. */
-export type DeleteSpendingCategoryPayload = {
-  __typename?: 'DeleteSpendingCategoryPayload';
+/** The output of our delete `OperationCategory` mutation. */
+export type DeleteOperationCategoryPayload = {
+  __typename?: 'DeleteOperationCategoryPayload';
   /**
    * The exact same `clientMutationId` that was provided in the mutation input,
    * unchanged and unused. May be used by a client to track mutations.
    */
   clientMutationId?: Maybe<Scalars['String']>;
-  deletedSpendingCategoryNodeId?: Maybe<Scalars['ID']>;
+  deletedOperationCategoryNodeId?: Maybe<Scalars['ID']>;
+  /** The `OperationCategory` that was deleted by this mutation. */
+  operationCategory?: Maybe<OperationCategory>;
+  /** An edge for our `OperationCategory`. May be used by Relay 1. */
+  operationCategoryEdge?: Maybe<OperationCategoriesEdge>;
   /** Our root query field type. Allows us to run any query from our mutation payload. */
   query?: Maybe<Query>;
-  /** The `SpendingCategory` that was deleted by this mutation. */
-  spendingCategory?: Maybe<SpendingCategory>;
-  /** An edge for our `SpendingCategory`. May be used by Relay 1. */
-  spendingCategoryEdge?: Maybe<SpendingCategoriesEdge>;
 };
 
 
-/** The output of our delete `SpendingCategory` mutation. */
-export type DeleteSpendingCategoryPayloadSpendingCategoryEdgeArgs = {
-  orderBy?: InputMaybe<Array<SpendingCategoriesOrderBy>>;
+/** The output of our delete `OperationCategory` mutation. */
+export type DeleteOperationCategoryPayloadOperationCategoryEdgeArgs = {
+  orderBy?: InputMaybe<Array<OperationCategoriesOrderBy>>;
 };
 
-/** All input for the `deleteSpending` mutation. */
-export type DeleteSpendingInput = {
+/** All input for the `deleteOperation` mutation. */
+export type DeleteOperationInput = {
   /**
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
@@ -403,29 +410,29 @@ export type DeleteSpendingInput = {
   id: Scalars['Int'];
 };
 
-/** The output of our delete `Spending` mutation. */
-export type DeleteSpendingPayload = {
-  __typename?: 'DeleteSpendingPayload';
-  /** Reads a single `SpendingCategory` that is related to this `Spending`. */
-  category?: Maybe<SpendingCategory>;
+/** The output of our delete `Operation` mutation. */
+export type DeleteOperationPayload = {
+  __typename?: 'DeleteOperationPayload';
+  /** Reads a single `OperationCategory` that is related to this `Operation`. */
+  category?: Maybe<OperationCategory>;
   /**
    * The exact same `clientMutationId` that was provided in the mutation input,
    * unchanged and unused. May be used by a client to track mutations.
    */
   clientMutationId?: Maybe<Scalars['String']>;
-  deletedSpendingNodeId?: Maybe<Scalars['ID']>;
+  deletedOperationNodeId?: Maybe<Scalars['ID']>;
+  /** The `Operation` that was deleted by this mutation. */
+  operation?: Maybe<Operation>;
+  /** An edge for our `Operation`. May be used by Relay 1. */
+  operationEdge?: Maybe<OperationsEdge>;
   /** Our root query field type. Allows us to run any query from our mutation payload. */
   query?: Maybe<Query>;
-  /** The `Spending` that was deleted by this mutation. */
-  spending?: Maybe<Spending>;
-  /** An edge for our `Spending`. May be used by Relay 1. */
-  spendingEdge?: Maybe<SpendingsEdge>;
 };
 
 
-/** The output of our delete `Spending` mutation. */
-export type DeleteSpendingPayloadSpendingEdgeArgs = {
-  orderBy?: InputMaybe<Array<SpendingsOrderBy>>;
+/** The output of our delete `Operation` mutation. */
+export type DeleteOperationPayloadOperationEdgeArgs = {
+  orderBy?: InputMaybe<Array<OperationsOrderBy>>;
 };
 
 /** All input for the `deleteUserByNodeId` mutation. */
@@ -472,19 +479,19 @@ export type DeleteUserPayloadUserEdgeArgs = {
   orderBy?: InputMaybe<Array<UsersOrderBy>>;
 };
 
-/** All input for the `deleteUsers2SpendingByNodeId` mutation. */
-export type DeleteUsers2SpendingByNodeIdInput = {
+/** All input for the `deleteUsers2OperationByNodeId` mutation. */
+export type DeleteUsers2OperationByNodeIdInput = {
   /**
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
    */
   clientMutationId?: InputMaybe<Scalars['String']>;
-  /** The globally unique `ID` which will identify a single `Users2Spending` to be deleted. */
+  /** The globally unique `ID` which will identify a single `Users2Operation` to be deleted. */
   nodeId: Scalars['ID'];
 };
 
-/** All input for the `deleteUsers2Spending` mutation. */
-export type DeleteUsers2SpendingInput = {
+/** All input for the `deleteUsers2Operation` mutation. */
+export type DeleteUsers2OperationInput = {
   /**
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
@@ -493,31 +500,31 @@ export type DeleteUsers2SpendingInput = {
   id: Scalars['Int'];
 };
 
-/** The output of our delete `Users2Spending` mutation. */
-export type DeleteUsers2SpendingPayload = {
-  __typename?: 'DeleteUsers2SpendingPayload';
+/** The output of our delete `Users2Operation` mutation. */
+export type DeleteUsers2OperationPayload = {
+  __typename?: 'DeleteUsers2OperationPayload';
   /**
    * The exact same `clientMutationId` that was provided in the mutation input,
    * unchanged and unused. May be used by a client to track mutations.
    */
   clientMutationId?: Maybe<Scalars['String']>;
-  deletedUsers2SpendingNodeId?: Maybe<Scalars['ID']>;
+  deletedUsers2OperationNodeId?: Maybe<Scalars['ID']>;
+  /** Reads a single `Operation` that is related to this `Users2Operation`. */
+  operation?: Maybe<Operation>;
   /** Our root query field type. Allows us to run any query from our mutation payload. */
   query?: Maybe<Query>;
-  /** Reads a single `Spending` that is related to this `Users2Spending`. */
-  spending?: Maybe<Spending>;
-  /** Reads a single `User` that is related to this `Users2Spending`. */
+  /** Reads a single `User` that is related to this `Users2Operation`. */
   user?: Maybe<User>;
-  /** The `Users2Spending` that was deleted by this mutation. */
-  users2Spending?: Maybe<Users2Spending>;
-  /** An edge for our `Users2Spending`. May be used by Relay 1. */
-  users2SpendingEdge?: Maybe<Users2SpendingsEdge>;
+  /** The `Users2Operation` that was deleted by this mutation. */
+  users2Operation?: Maybe<Users2Operation>;
+  /** An edge for our `Users2Operation`. May be used by Relay 1. */
+  users2OperationEdge?: Maybe<Users2OperationsEdge>;
 };
 
 
-/** The output of our delete `Users2Spending` mutation. */
-export type DeleteUsers2SpendingPayloadUsers2SpendingEdgeArgs = {
-  orderBy?: InputMaybe<Array<Users2SpendingsOrderBy>>;
+/** The output of our delete `Users2Operation` mutation. */
+export type DeleteUsers2OperationPayloadUsers2OperationEdgeArgs = {
+  orderBy?: InputMaybe<Array<Users2OperationsOrderBy>>;
 };
 
 /** A connection to a list of `FlywaySchemaHistory` values. */
@@ -701,54 +708,54 @@ export type Mutation = {
   __typename?: 'Mutation';
   /** Creates a single `FlywaySchemaHistory`. */
   createFlywaySchemaHistory?: Maybe<CreateFlywaySchemaHistoryPayload>;
-  /** Creates a single `Spending`. */
-  createSpending?: Maybe<CreateSpendingPayload>;
-  /** Creates a single `SpendingCategory`. */
-  createSpendingCategory?: Maybe<CreateSpendingCategoryPayload>;
+  /** Creates a single `Operation`. */
+  createOperation?: Maybe<CreateOperationPayload>;
+  /** Creates a single `OperationCategory`. */
+  createOperationCategory?: Maybe<CreateOperationCategoryPayload>;
   /** Creates a single `User`. */
   createUser?: Maybe<CreateUserPayload>;
-  /** Creates a single `Users2Spending`. */
-  createUsers2Spending?: Maybe<CreateUsers2SpendingPayload>;
+  /** Creates a single `Users2Operation`. */
+  createUsers2Operation?: Maybe<CreateUsers2OperationPayload>;
   /** Deletes a single `FlywaySchemaHistory` using a unique key. */
   deleteFlywaySchemaHistory?: Maybe<DeleteFlywaySchemaHistoryPayload>;
   /** Deletes a single `FlywaySchemaHistory` using its globally unique id. */
   deleteFlywaySchemaHistoryByNodeId?: Maybe<DeleteFlywaySchemaHistoryPayload>;
-  /** Deletes a single `Spending` using a unique key. */
-  deleteSpending?: Maybe<DeleteSpendingPayload>;
-  /** Deletes a single `Spending` using its globally unique id. */
-  deleteSpendingByNodeId?: Maybe<DeleteSpendingPayload>;
-  /** Deletes a single `SpendingCategory` using a unique key. */
-  deleteSpendingCategory?: Maybe<DeleteSpendingCategoryPayload>;
-  /** Deletes a single `SpendingCategory` using its globally unique id. */
-  deleteSpendingCategoryByNodeId?: Maybe<DeleteSpendingCategoryPayload>;
+  /** Deletes a single `Operation` using a unique key. */
+  deleteOperation?: Maybe<DeleteOperationPayload>;
+  /** Deletes a single `Operation` using its globally unique id. */
+  deleteOperationByNodeId?: Maybe<DeleteOperationPayload>;
+  /** Deletes a single `OperationCategory` using a unique key. */
+  deleteOperationCategory?: Maybe<DeleteOperationCategoryPayload>;
+  /** Deletes a single `OperationCategory` using its globally unique id. */
+  deleteOperationCategoryByNodeId?: Maybe<DeleteOperationCategoryPayload>;
   /** Deletes a single `User` using a unique key. */
   deleteUser?: Maybe<DeleteUserPayload>;
   /** Deletes a single `User` using its globally unique id. */
   deleteUserByNodeId?: Maybe<DeleteUserPayload>;
-  /** Deletes a single `Users2Spending` using a unique key. */
-  deleteUsers2Spending?: Maybe<DeleteUsers2SpendingPayload>;
-  /** Deletes a single `Users2Spending` using its globally unique id. */
-  deleteUsers2SpendingByNodeId?: Maybe<DeleteUsers2SpendingPayload>;
+  /** Deletes a single `Users2Operation` using a unique key. */
+  deleteUsers2Operation?: Maybe<DeleteUsers2OperationPayload>;
+  /** Deletes a single `Users2Operation` using its globally unique id. */
+  deleteUsers2OperationByNodeId?: Maybe<DeleteUsers2OperationPayload>;
   /** Updates a single `FlywaySchemaHistory` using a unique key and a patch. */
   updateFlywaySchemaHistory?: Maybe<UpdateFlywaySchemaHistoryPayload>;
   /** Updates a single `FlywaySchemaHistory` using its globally unique id and a patch. */
   updateFlywaySchemaHistoryByNodeId?: Maybe<UpdateFlywaySchemaHistoryPayload>;
-  /** Updates a single `Spending` using a unique key and a patch. */
-  updateSpending?: Maybe<UpdateSpendingPayload>;
-  /** Updates a single `Spending` using its globally unique id and a patch. */
-  updateSpendingByNodeId?: Maybe<UpdateSpendingPayload>;
-  /** Updates a single `SpendingCategory` using a unique key and a patch. */
-  updateSpendingCategory?: Maybe<UpdateSpendingCategoryPayload>;
-  /** Updates a single `SpendingCategory` using its globally unique id and a patch. */
-  updateSpendingCategoryByNodeId?: Maybe<UpdateSpendingCategoryPayload>;
+  /** Updates a single `Operation` using a unique key and a patch. */
+  updateOperation?: Maybe<UpdateOperationPayload>;
+  /** Updates a single `Operation` using its globally unique id and a patch. */
+  updateOperationByNodeId?: Maybe<UpdateOperationPayload>;
+  /** Updates a single `OperationCategory` using a unique key and a patch. */
+  updateOperationCategory?: Maybe<UpdateOperationCategoryPayload>;
+  /** Updates a single `OperationCategory` using its globally unique id and a patch. */
+  updateOperationCategoryByNodeId?: Maybe<UpdateOperationCategoryPayload>;
   /** Updates a single `User` using a unique key and a patch. */
   updateUser?: Maybe<UpdateUserPayload>;
   /** Updates a single `User` using its globally unique id and a patch. */
   updateUserByNodeId?: Maybe<UpdateUserPayload>;
-  /** Updates a single `Users2Spending` using a unique key and a patch. */
-  updateUsers2Spending?: Maybe<UpdateUsers2SpendingPayload>;
-  /** Updates a single `Users2Spending` using its globally unique id and a patch. */
-  updateUsers2SpendingByNodeId?: Maybe<UpdateUsers2SpendingPayload>;
+  /** Updates a single `Users2Operation` using a unique key and a patch. */
+  updateUsers2Operation?: Maybe<UpdateUsers2OperationPayload>;
+  /** Updates a single `Users2Operation` using its globally unique id and a patch. */
+  updateUsers2OperationByNodeId?: Maybe<UpdateUsers2OperationPayload>;
 };
 
 
@@ -759,14 +766,14 @@ export type MutationCreateFlywaySchemaHistoryArgs = {
 
 
 /** The root mutation type which contains root level fields which mutate data. */
-export type MutationCreateSpendingArgs = {
-  input: CreateSpendingInput;
+export type MutationCreateOperationArgs = {
+  input: CreateOperationInput;
 };
 
 
 /** The root mutation type which contains root level fields which mutate data. */
-export type MutationCreateSpendingCategoryArgs = {
-  input: CreateSpendingCategoryInput;
+export type MutationCreateOperationCategoryArgs = {
+  input: CreateOperationCategoryInput;
 };
 
 
@@ -777,8 +784,8 @@ export type MutationCreateUserArgs = {
 
 
 /** The root mutation type which contains root level fields which mutate data. */
-export type MutationCreateUsers2SpendingArgs = {
-  input: CreateUsers2SpendingInput;
+export type MutationCreateUsers2OperationArgs = {
+  input: CreateUsers2OperationInput;
 };
 
 
@@ -795,26 +802,26 @@ export type MutationDeleteFlywaySchemaHistoryByNodeIdArgs = {
 
 
 /** The root mutation type which contains root level fields which mutate data. */
-export type MutationDeleteSpendingArgs = {
-  input: DeleteSpendingInput;
+export type MutationDeleteOperationArgs = {
+  input: DeleteOperationInput;
 };
 
 
 /** The root mutation type which contains root level fields which mutate data. */
-export type MutationDeleteSpendingByNodeIdArgs = {
-  input: DeleteSpendingByNodeIdInput;
+export type MutationDeleteOperationByNodeIdArgs = {
+  input: DeleteOperationByNodeIdInput;
 };
 
 
 /** The root mutation type which contains root level fields which mutate data. */
-export type MutationDeleteSpendingCategoryArgs = {
-  input: DeleteSpendingCategoryInput;
+export type MutationDeleteOperationCategoryArgs = {
+  input: DeleteOperationCategoryInput;
 };
 
 
 /** The root mutation type which contains root level fields which mutate data. */
-export type MutationDeleteSpendingCategoryByNodeIdArgs = {
-  input: DeleteSpendingCategoryByNodeIdInput;
+export type MutationDeleteOperationCategoryByNodeIdArgs = {
+  input: DeleteOperationCategoryByNodeIdInput;
 };
 
 
@@ -831,14 +838,14 @@ export type MutationDeleteUserByNodeIdArgs = {
 
 
 /** The root mutation type which contains root level fields which mutate data. */
-export type MutationDeleteUsers2SpendingArgs = {
-  input: DeleteUsers2SpendingInput;
+export type MutationDeleteUsers2OperationArgs = {
+  input: DeleteUsers2OperationInput;
 };
 
 
 /** The root mutation type which contains root level fields which mutate data. */
-export type MutationDeleteUsers2SpendingByNodeIdArgs = {
-  input: DeleteUsers2SpendingByNodeIdInput;
+export type MutationDeleteUsers2OperationByNodeIdArgs = {
+  input: DeleteUsers2OperationByNodeIdInput;
 };
 
 
@@ -855,26 +862,26 @@ export type MutationUpdateFlywaySchemaHistoryByNodeIdArgs = {
 
 
 /** The root mutation type which contains root level fields which mutate data. */
-export type MutationUpdateSpendingArgs = {
-  input: UpdateSpendingInput;
+export type MutationUpdateOperationArgs = {
+  input: UpdateOperationInput;
 };
 
 
 /** The root mutation type which contains root level fields which mutate data. */
-export type MutationUpdateSpendingByNodeIdArgs = {
-  input: UpdateSpendingByNodeIdInput;
+export type MutationUpdateOperationByNodeIdArgs = {
+  input: UpdateOperationByNodeIdInput;
 };
 
 
 /** The root mutation type which contains root level fields which mutate data. */
-export type MutationUpdateSpendingCategoryArgs = {
-  input: UpdateSpendingCategoryInput;
+export type MutationUpdateOperationCategoryArgs = {
+  input: UpdateOperationCategoryInput;
 };
 
 
 /** The root mutation type which contains root level fields which mutate data. */
-export type MutationUpdateSpendingCategoryByNodeIdArgs = {
-  input: UpdateSpendingCategoryByNodeIdInput;
+export type MutationUpdateOperationCategoryByNodeIdArgs = {
+  input: UpdateOperationCategoryByNodeIdInput;
 };
 
 
@@ -891,14 +898,14 @@ export type MutationUpdateUserByNodeIdArgs = {
 
 
 /** The root mutation type which contains root level fields which mutate data. */
-export type MutationUpdateUsers2SpendingArgs = {
-  input: UpdateUsers2SpendingInput;
+export type MutationUpdateUsers2OperationArgs = {
+  input: UpdateUsers2OperationInput;
 };
 
 
 /** The root mutation type which contains root level fields which mutate data. */
-export type MutationUpdateUsers2SpendingByNodeIdArgs = {
-  input: UpdateUsers2SpendingByNodeIdInput;
+export type MutationUpdateUsers2OperationByNodeIdArgs = {
+  input: UpdateUsers2OperationByNodeIdInput;
 };
 
 /** An object with a globally unique `ID`. */
@@ -906,6 +913,333 @@ export type Node = {
   /** A globally unique identifier. Can be used in various places throughout the system to identify this single value. */
   nodeId: Scalars['ID'];
 };
+
+export type Operation = Node & {
+  __typename?: 'Operation';
+  amount: Scalars['BigFloat'];
+  /** Reads a single `OperationCategory` that is related to this `Operation`. */
+  category?: Maybe<OperationCategory>;
+  categoryId?: Maybe<Scalars['Int']>;
+  createdAt: Scalars['Datetime'];
+  date: Scalars['Date'];
+  deletedAt?: Maybe<Scalars['Datetime']>;
+  description: Scalars['String'];
+  id: Scalars['Int'];
+  /** A globally unique identifier. Can be used in various places throughout the system to identify this single value. */
+  nodeId: Scalars['ID'];
+  s3Key?: Maybe<Scalars['String']>;
+  updatedAt: Scalars['Datetime'];
+  /** Reads and enables pagination through a set of `Users2Operation`. */
+  users2Operations: Users2OperationsConnection;
+  /** Reads and enables pagination through a set of `User`. */
+  usersByUsers2OperationOperationIdAndUserId: OperationUsersByUsers2OperationOperationIdAndUserIdManyToManyConnection;
+};
+
+
+export type OperationUsers2OperationsArgs = {
+  after?: InputMaybe<Scalars['Cursor']>;
+  before?: InputMaybe<Scalars['Cursor']>;
+  condition?: InputMaybe<Users2OperationCondition>;
+  filter?: InputMaybe<Users2OperationFilter>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<Array<Users2OperationsOrderBy>>;
+};
+
+
+export type OperationUsersByUsers2OperationOperationIdAndUserIdArgs = {
+  after?: InputMaybe<Scalars['Cursor']>;
+  before?: InputMaybe<Scalars['Cursor']>;
+  condition?: InputMaybe<UserCondition>;
+  filter?: InputMaybe<UserFilter>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<Array<UsersOrderBy>>;
+};
+
+/** A connection to a list of `OperationCategory` values. */
+export type OperationCategoriesConnection = {
+  __typename?: 'OperationCategoriesConnection';
+  /** A list of edges which contains the `OperationCategory` and cursor to aid in pagination. */
+  edges: Array<OperationCategoriesEdge>;
+  /** A list of `OperationCategory` objects. */
+  nodes: Array<Maybe<OperationCategory>>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+  /** The count of *all* `OperationCategory` you could get from the connection. */
+  totalCount: Scalars['Int'];
+};
+
+/** A `OperationCategory` edge in the connection. */
+export type OperationCategoriesEdge = {
+  __typename?: 'OperationCategoriesEdge';
+  /** A cursor for use in pagination. */
+  cursor?: Maybe<Scalars['Cursor']>;
+  /** The `OperationCategory` at the end of the edge. */
+  node?: Maybe<OperationCategory>;
+};
+
+/** Methods to use when ordering `OperationCategory`. */
+export enum OperationCategoriesOrderBy {
+  CreatedAtAsc = 'CREATED_AT_ASC',
+  CreatedAtDesc = 'CREATED_AT_DESC',
+  DeletedAtAsc = 'DELETED_AT_ASC',
+  DeletedAtDesc = 'DELETED_AT_DESC',
+  IdAsc = 'ID_ASC',
+  IdDesc = 'ID_DESC',
+  NameAsc = 'NAME_ASC',
+  NameDesc = 'NAME_DESC',
+  Natural = 'NATURAL',
+  PrimaryKeyAsc = 'PRIMARY_KEY_ASC',
+  PrimaryKeyDesc = 'PRIMARY_KEY_DESC',
+  UpdatedAtAsc = 'UPDATED_AT_ASC',
+  UpdatedAtDesc = 'UPDATED_AT_DESC'
+}
+
+export type OperationCategory = Node & {
+  __typename?: 'OperationCategory';
+  createdAt: Scalars['Datetime'];
+  deletedAt?: Maybe<Scalars['Datetime']>;
+  id: Scalars['Int'];
+  name: Scalars['String'];
+  /** A globally unique identifier. Can be used in various places throughout the system to identify this single value. */
+  nodeId: Scalars['ID'];
+  /** Reads and enables pagination through a set of `Operation`. */
+  operationsByCategoryId: OperationsConnection;
+  updatedAt: Scalars['Datetime'];
+};
+
+
+export type OperationCategoryOperationsByCategoryIdArgs = {
+  after?: InputMaybe<Scalars['Cursor']>;
+  before?: InputMaybe<Scalars['Cursor']>;
+  condition?: InputMaybe<OperationCondition>;
+  filter?: InputMaybe<OperationFilter>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<Array<OperationsOrderBy>>;
+};
+
+/**
+ * A condition to be used against `OperationCategory` object types. All fields are
+ * tested for equality and combined with a logical ‘and.’
+ */
+export type OperationCategoryCondition = {
+  /** Checks for equality with the object’s `createdAt` field. */
+  createdAt?: InputMaybe<Scalars['Datetime']>;
+  /** Checks for equality with the object’s `deletedAt` field. */
+  deletedAt?: InputMaybe<Scalars['Datetime']>;
+  /** Checks for equality with the object’s `id` field. */
+  id?: InputMaybe<Scalars['Int']>;
+  /** Checks for equality with the object’s `name` field. */
+  name?: InputMaybe<Scalars['String']>;
+  /** Checks for equality with the object’s `updatedAt` field. */
+  updatedAt?: InputMaybe<Scalars['Datetime']>;
+};
+
+/** A filter to be used against `OperationCategory` object types. All fields are combined with a logical ‘and.’ */
+export type OperationCategoryFilter = {
+  /** Checks for all expressions in this list. */
+  and?: InputMaybe<Array<OperationCategoryFilter>>;
+  /** Filter by the object’s `createdAt` field. */
+  createdAt?: InputMaybe<DatetimeFilter>;
+  /** Filter by the object’s `deletedAt` field. */
+  deletedAt?: InputMaybe<DatetimeFilter>;
+  /** Filter by the object’s `id` field. */
+  id?: InputMaybe<IntFilter>;
+  /** Filter by the object’s `name` field. */
+  name?: InputMaybe<StringFilter>;
+  /** Negates the expression. */
+  not?: InputMaybe<OperationCategoryFilter>;
+  /** Checks for any expressions in this list. */
+  or?: InputMaybe<Array<OperationCategoryFilter>>;
+  /** Filter by the object’s `updatedAt` field. */
+  updatedAt?: InputMaybe<DatetimeFilter>;
+};
+
+/** An input for mutations affecting `OperationCategory` */
+export type OperationCategoryInput = {
+  createdAt?: InputMaybe<Scalars['Datetime']>;
+  deletedAt?: InputMaybe<Scalars['Datetime']>;
+  id?: InputMaybe<Scalars['Int']>;
+  name: Scalars['String'];
+  updatedAt?: InputMaybe<Scalars['Datetime']>;
+};
+
+/** Represents an update to a `OperationCategory`. Fields that are set will be updated. */
+export type OperationCategoryPatch = {
+  createdAt?: InputMaybe<Scalars['Datetime']>;
+  deletedAt?: InputMaybe<Scalars['Datetime']>;
+  id?: InputMaybe<Scalars['Int']>;
+  name?: InputMaybe<Scalars['String']>;
+  updatedAt?: InputMaybe<Scalars['Datetime']>;
+};
+
+/**
+ * A condition to be used against `Operation` object types. All fields are tested
+ * for equality and combined with a logical ‘and.’
+ */
+export type OperationCondition = {
+  /** Checks for equality with the object’s `amount` field. */
+  amount?: InputMaybe<Scalars['BigFloat']>;
+  /** Checks for equality with the object’s `categoryId` field. */
+  categoryId?: InputMaybe<Scalars['Int']>;
+  /** Checks for equality with the object’s `createdAt` field. */
+  createdAt?: InputMaybe<Scalars['Datetime']>;
+  /** Checks for equality with the object’s `date` field. */
+  date?: InputMaybe<Scalars['Date']>;
+  /** Checks for equality with the object’s `deletedAt` field. */
+  deletedAt?: InputMaybe<Scalars['Datetime']>;
+  /** Checks for equality with the object’s `description` field. */
+  description?: InputMaybe<Scalars['String']>;
+  /** Checks for equality with the object’s `id` field. */
+  id?: InputMaybe<Scalars['Int']>;
+  /** Checks for equality with the object’s `s3Key` field. */
+  s3Key?: InputMaybe<Scalars['String']>;
+  /** Checks for equality with the object’s `updatedAt` field. */
+  updatedAt?: InputMaybe<Scalars['Datetime']>;
+};
+
+/** A filter to be used against `Operation` object types. All fields are combined with a logical ‘and.’ */
+export type OperationFilter = {
+  /** Filter by the object’s `amount` field. */
+  amount?: InputMaybe<BigFloatFilter>;
+  /** Checks for all expressions in this list. */
+  and?: InputMaybe<Array<OperationFilter>>;
+  /** Filter by the object’s `categoryId` field. */
+  categoryId?: InputMaybe<IntFilter>;
+  /** Filter by the object’s `createdAt` field. */
+  createdAt?: InputMaybe<DatetimeFilter>;
+  /** Filter by the object’s `date` field. */
+  date?: InputMaybe<DateFilter>;
+  /** Filter by the object’s `deletedAt` field. */
+  deletedAt?: InputMaybe<DatetimeFilter>;
+  /** Filter by the object’s `description` field. */
+  description?: InputMaybe<StringFilter>;
+  /** Filter by the object’s `id` field. */
+  id?: InputMaybe<IntFilter>;
+  /** Negates the expression. */
+  not?: InputMaybe<OperationFilter>;
+  /** Checks for any expressions in this list. */
+  or?: InputMaybe<Array<OperationFilter>>;
+  /** Filter by the object’s `s3Key` field. */
+  s3Key?: InputMaybe<StringFilter>;
+  /** Filter by the object’s `updatedAt` field. */
+  updatedAt?: InputMaybe<DatetimeFilter>;
+};
+
+/** An input for mutations affecting `Operation` */
+export type OperationInput = {
+  amount: Scalars['BigFloat'];
+  categoryId?: InputMaybe<Scalars['Int']>;
+  createdAt?: InputMaybe<Scalars['Datetime']>;
+  date: Scalars['Date'];
+  deletedAt?: InputMaybe<Scalars['Datetime']>;
+  description: Scalars['String'];
+  id?: InputMaybe<Scalars['Int']>;
+  s3Key?: InputMaybe<Scalars['String']>;
+  updatedAt?: InputMaybe<Scalars['Datetime']>;
+};
+
+/** Represents an update to a `Operation`. Fields that are set will be updated. */
+export type OperationPatch = {
+  amount?: InputMaybe<Scalars['BigFloat']>;
+  categoryId?: InputMaybe<Scalars['Int']>;
+  createdAt?: InputMaybe<Scalars['Datetime']>;
+  date?: InputMaybe<Scalars['Date']>;
+  deletedAt?: InputMaybe<Scalars['Datetime']>;
+  description?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['Int']>;
+  s3Key?: InputMaybe<Scalars['String']>;
+  updatedAt?: InputMaybe<Scalars['Datetime']>;
+};
+
+/** A connection to a list of `User` values, with data from `Users2Operation`. */
+export type OperationUsersByUsers2OperationOperationIdAndUserIdManyToManyConnection = {
+  __typename?: 'OperationUsersByUsers2OperationOperationIdAndUserIdManyToManyConnection';
+  /** A list of edges which contains the `User`, info from the `Users2Operation`, and the cursor to aid in pagination. */
+  edges: Array<OperationUsersByUsers2OperationOperationIdAndUserIdManyToManyEdge>;
+  /** A list of `User` objects. */
+  nodes: Array<Maybe<User>>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+  /** The count of *all* `User` you could get from the connection. */
+  totalCount: Scalars['Int'];
+};
+
+/** A `User` edge in the connection, with data from `Users2Operation`. */
+export type OperationUsersByUsers2OperationOperationIdAndUserIdManyToManyEdge = {
+  __typename?: 'OperationUsersByUsers2OperationOperationIdAndUserIdManyToManyEdge';
+  /** A cursor for use in pagination. */
+  cursor?: Maybe<Scalars['Cursor']>;
+  /** The `User` at the end of the edge. */
+  node?: Maybe<User>;
+  /** Reads and enables pagination through a set of `Users2Operation`. */
+  users2Operations: Users2OperationsConnection;
+};
+
+
+/** A `User` edge in the connection, with data from `Users2Operation`. */
+export type OperationUsersByUsers2OperationOperationIdAndUserIdManyToManyEdgeUsers2OperationsArgs = {
+  after?: InputMaybe<Scalars['Cursor']>;
+  before?: InputMaybe<Scalars['Cursor']>;
+  condition?: InputMaybe<Users2OperationCondition>;
+  filter?: InputMaybe<Users2OperationFilter>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<Array<Users2OperationsOrderBy>>;
+};
+
+/** A connection to a list of `Operation` values. */
+export type OperationsConnection = {
+  __typename?: 'OperationsConnection';
+  /** A list of edges which contains the `Operation` and cursor to aid in pagination. */
+  edges: Array<OperationsEdge>;
+  /** A list of `Operation` objects. */
+  nodes: Array<Maybe<Operation>>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+  /** The count of *all* `Operation` you could get from the connection. */
+  totalCount: Scalars['Int'];
+};
+
+/** A `Operation` edge in the connection. */
+export type OperationsEdge = {
+  __typename?: 'OperationsEdge';
+  /** A cursor for use in pagination. */
+  cursor?: Maybe<Scalars['Cursor']>;
+  /** The `Operation` at the end of the edge. */
+  node?: Maybe<Operation>;
+};
+
+/** Methods to use when ordering `Operation`. */
+export enum OperationsOrderBy {
+  AmountAsc = 'AMOUNT_ASC',
+  AmountDesc = 'AMOUNT_DESC',
+  CategoryIdAsc = 'CATEGORY_ID_ASC',
+  CategoryIdDesc = 'CATEGORY_ID_DESC',
+  CreatedAtAsc = 'CREATED_AT_ASC',
+  CreatedAtDesc = 'CREATED_AT_DESC',
+  DateAsc = 'DATE_ASC',
+  DateDesc = 'DATE_DESC',
+  DeletedAtAsc = 'DELETED_AT_ASC',
+  DeletedAtDesc = 'DELETED_AT_DESC',
+  DescriptionAsc = 'DESCRIPTION_ASC',
+  DescriptionDesc = 'DESCRIPTION_DESC',
+  IdAsc = 'ID_ASC',
+  IdDesc = 'ID_DESC',
+  Natural = 'NATURAL',
+  PrimaryKeyAsc = 'PRIMARY_KEY_ASC',
+  PrimaryKeyDesc = 'PRIMARY_KEY_DESC',
+  S3KeyAsc = 'S3_KEY_ASC',
+  S3KeyDesc = 'S3_KEY_DESC',
+  UpdatedAtAsc = 'UPDATED_AT_ASC',
+  UpdatedAtDesc = 'UPDATED_AT_DESC'
+}
 
 /** Information about pagination in a connection. */
 export type PageInfo = {
@@ -932,31 +1266,31 @@ export type Query = Node & {
   node?: Maybe<Node>;
   /** The root query type must be a `Node` to work well with Relay 1 mutations. This just resolves to `query`. */
   nodeId: Scalars['ID'];
+  operation?: Maybe<Operation>;
+  /** Reads a single `Operation` using its globally unique `ID`. */
+  operationByNodeId?: Maybe<Operation>;
+  /** Reads and enables pagination through a set of `OperationCategory`. */
+  operationCategories?: Maybe<OperationCategoriesConnection>;
+  operationCategory?: Maybe<OperationCategory>;
+  /** Reads a single `OperationCategory` using its globally unique `ID`. */
+  operationCategoryByNodeId?: Maybe<OperationCategory>;
+  /** Reads and enables pagination through a set of `Operation`. */
+  operations?: Maybe<OperationsConnection>;
   /**
    * Exposes the root query type nested one level down. This is helpful for Relay 1
    * which can only query top level fields if they are in a particular form.
    */
   query: Query;
-  spending?: Maybe<Spending>;
-  /** Reads a single `Spending` using its globally unique `ID`. */
-  spendingByNodeId?: Maybe<Spending>;
-  /** Reads and enables pagination through a set of `SpendingCategory`. */
-  spendingCategories?: Maybe<SpendingCategoriesConnection>;
-  spendingCategory?: Maybe<SpendingCategory>;
-  /** Reads a single `SpendingCategory` using its globally unique `ID`. */
-  spendingCategoryByNodeId?: Maybe<SpendingCategory>;
-  /** Reads and enables pagination through a set of `Spending`. */
-  spendings?: Maybe<SpendingsConnection>;
   user?: Maybe<User>;
   /** Reads a single `User` using its globally unique `ID`. */
   userByNodeId?: Maybe<User>;
   /** Reads and enables pagination through a set of `User`. */
   users?: Maybe<UsersConnection>;
-  users2Spending?: Maybe<Users2Spending>;
-  /** Reads a single `Users2Spending` using its globally unique `ID`. */
-  users2SpendingByNodeId?: Maybe<Users2Spending>;
-  /** Reads and enables pagination through a set of `Users2Spending`. */
-  users2Spendings?: Maybe<Users2SpendingsConnection>;
+  users2Operation?: Maybe<Users2Operation>;
+  /** Reads a single `Users2Operation` using its globally unique `ID`. */
+  users2OperationByNodeId?: Maybe<Users2Operation>;
+  /** Reads and enables pagination through a set of `Users2Operation`. */
+  users2Operations?: Maybe<Users2OperationsConnection>;
 };
 
 
@@ -992,52 +1326,52 @@ export type QueryNodeArgs = {
 
 
 /** The root query type which gives access points into the data universe. */
-export type QuerySpendingArgs = {
+export type QueryOperationArgs = {
   id: Scalars['Int'];
 };
 
 
 /** The root query type which gives access points into the data universe. */
-export type QuerySpendingByNodeIdArgs = {
+export type QueryOperationByNodeIdArgs = {
   nodeId: Scalars['ID'];
 };
 
 
 /** The root query type which gives access points into the data universe. */
-export type QuerySpendingCategoriesArgs = {
+export type QueryOperationCategoriesArgs = {
   after?: InputMaybe<Scalars['Cursor']>;
   before?: InputMaybe<Scalars['Cursor']>;
-  condition?: InputMaybe<SpendingCategoryCondition>;
-  filter?: InputMaybe<SpendingCategoryFilter>;
+  condition?: InputMaybe<OperationCategoryCondition>;
+  filter?: InputMaybe<OperationCategoryFilter>;
   first?: InputMaybe<Scalars['Int']>;
   last?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
-  orderBy?: InputMaybe<Array<SpendingCategoriesOrderBy>>;
+  orderBy?: InputMaybe<Array<OperationCategoriesOrderBy>>;
 };
 
 
 /** The root query type which gives access points into the data universe. */
-export type QuerySpendingCategoryArgs = {
+export type QueryOperationCategoryArgs = {
   id: Scalars['Int'];
 };
 
 
 /** The root query type which gives access points into the data universe. */
-export type QuerySpendingCategoryByNodeIdArgs = {
+export type QueryOperationCategoryByNodeIdArgs = {
   nodeId: Scalars['ID'];
 };
 
 
 /** The root query type which gives access points into the data universe. */
-export type QuerySpendingsArgs = {
+export type QueryOperationsArgs = {
   after?: InputMaybe<Scalars['Cursor']>;
   before?: InputMaybe<Scalars['Cursor']>;
-  condition?: InputMaybe<SpendingCondition>;
-  filter?: InputMaybe<SpendingFilter>;
+  condition?: InputMaybe<OperationCondition>;
+  filter?: InputMaybe<OperationFilter>;
   first?: InputMaybe<Scalars['Int']>;
   last?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
-  orderBy?: InputMaybe<Array<SpendingsOrderBy>>;
+  orderBy?: InputMaybe<Array<OperationsOrderBy>>;
 };
 
 
@@ -1067,355 +1401,28 @@ export type QueryUsersArgs = {
 
 
 /** The root query type which gives access points into the data universe. */
-export type QueryUsers2SpendingArgs = {
+export type QueryUsers2OperationArgs = {
   id: Scalars['Int'];
 };
 
 
 /** The root query type which gives access points into the data universe. */
-export type QueryUsers2SpendingByNodeIdArgs = {
+export type QueryUsers2OperationByNodeIdArgs = {
   nodeId: Scalars['ID'];
 };
 
 
 /** The root query type which gives access points into the data universe. */
-export type QueryUsers2SpendingsArgs = {
+export type QueryUsers2OperationsArgs = {
   after?: InputMaybe<Scalars['Cursor']>;
   before?: InputMaybe<Scalars['Cursor']>;
-  condition?: InputMaybe<Users2SpendingCondition>;
-  filter?: InputMaybe<Users2SpendingFilter>;
+  condition?: InputMaybe<Users2OperationCondition>;
+  filter?: InputMaybe<Users2OperationFilter>;
   first?: InputMaybe<Scalars['Int']>;
   last?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
-  orderBy?: InputMaybe<Array<Users2SpendingsOrderBy>>;
+  orderBy?: InputMaybe<Array<Users2OperationsOrderBy>>;
 };
-
-export type Spending = Node & {
-  __typename?: 'Spending';
-  amount: Scalars['BigFloat'];
-  /** Reads a single `SpendingCategory` that is related to this `Spending`. */
-  category?: Maybe<SpendingCategory>;
-  categoryId?: Maybe<Scalars['Int']>;
-  createdAt: Scalars['Datetime'];
-  date: Scalars['Date'];
-  deletedAt?: Maybe<Scalars['Datetime']>;
-  description: Scalars['String'];
-  id: Scalars['Int'];
-  /** A globally unique identifier. Can be used in various places throughout the system to identify this single value. */
-  nodeId: Scalars['ID'];
-  s3Key?: Maybe<Scalars['String']>;
-  updatedAt: Scalars['Datetime'];
-  /** Reads and enables pagination through a set of `Users2Spending`. */
-  users2Spendings: Users2SpendingsConnection;
-  /** Reads and enables pagination through a set of `User`. */
-  usersByUsers2SpendingSpendingIdAndUserId: SpendingUsersByUsers2SpendingSpendingIdAndUserIdManyToManyConnection;
-};
-
-
-export type SpendingUsers2SpendingsArgs = {
-  after?: InputMaybe<Scalars['Cursor']>;
-  before?: InputMaybe<Scalars['Cursor']>;
-  condition?: InputMaybe<Users2SpendingCondition>;
-  filter?: InputMaybe<Users2SpendingFilter>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  orderBy?: InputMaybe<Array<Users2SpendingsOrderBy>>;
-};
-
-
-export type SpendingUsersByUsers2SpendingSpendingIdAndUserIdArgs = {
-  after?: InputMaybe<Scalars['Cursor']>;
-  before?: InputMaybe<Scalars['Cursor']>;
-  condition?: InputMaybe<UserCondition>;
-  filter?: InputMaybe<UserFilter>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  orderBy?: InputMaybe<Array<UsersOrderBy>>;
-};
-
-/** A connection to a list of `SpendingCategory` values. */
-export type SpendingCategoriesConnection = {
-  __typename?: 'SpendingCategoriesConnection';
-  /** A list of edges which contains the `SpendingCategory` and cursor to aid in pagination. */
-  edges: Array<SpendingCategoriesEdge>;
-  /** A list of `SpendingCategory` objects. */
-  nodes: Array<Maybe<SpendingCategory>>;
-  /** Information to aid in pagination. */
-  pageInfo: PageInfo;
-  /** The count of *all* `SpendingCategory` you could get from the connection. */
-  totalCount: Scalars['Int'];
-};
-
-/** A `SpendingCategory` edge in the connection. */
-export type SpendingCategoriesEdge = {
-  __typename?: 'SpendingCategoriesEdge';
-  /** A cursor for use in pagination. */
-  cursor?: Maybe<Scalars['Cursor']>;
-  /** The `SpendingCategory` at the end of the edge. */
-  node?: Maybe<SpendingCategory>;
-};
-
-/** Methods to use when ordering `SpendingCategory`. */
-export enum SpendingCategoriesOrderBy {
-  CreatedAtAsc = 'CREATED_AT_ASC',
-  CreatedAtDesc = 'CREATED_AT_DESC',
-  DeletedAtAsc = 'DELETED_AT_ASC',
-  DeletedAtDesc = 'DELETED_AT_DESC',
-  IdAsc = 'ID_ASC',
-  IdDesc = 'ID_DESC',
-  NameAsc = 'NAME_ASC',
-  NameDesc = 'NAME_DESC',
-  Natural = 'NATURAL',
-  PrimaryKeyAsc = 'PRIMARY_KEY_ASC',
-  PrimaryKeyDesc = 'PRIMARY_KEY_DESC',
-  UpdatedAtAsc = 'UPDATED_AT_ASC',
-  UpdatedAtDesc = 'UPDATED_AT_DESC'
-}
-
-export type SpendingCategory = Node & {
-  __typename?: 'SpendingCategory';
-  createdAt: Scalars['Datetime'];
-  deletedAt?: Maybe<Scalars['Datetime']>;
-  id: Scalars['Int'];
-  name: Scalars['String'];
-  /** A globally unique identifier. Can be used in various places throughout the system to identify this single value. */
-  nodeId: Scalars['ID'];
-  /** Reads and enables pagination through a set of `Spending`. */
-  spendingsByCategoryId: SpendingsConnection;
-  updatedAt: Scalars['Datetime'];
-};
-
-
-export type SpendingCategorySpendingsByCategoryIdArgs = {
-  after?: InputMaybe<Scalars['Cursor']>;
-  before?: InputMaybe<Scalars['Cursor']>;
-  condition?: InputMaybe<SpendingCondition>;
-  filter?: InputMaybe<SpendingFilter>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  orderBy?: InputMaybe<Array<SpendingsOrderBy>>;
-};
-
-/**
- * A condition to be used against `SpendingCategory` object types. All fields are
- * tested for equality and combined with a logical ‘and.’
- */
-export type SpendingCategoryCondition = {
-  /** Checks for equality with the object’s `createdAt` field. */
-  createdAt?: InputMaybe<Scalars['Datetime']>;
-  /** Checks for equality with the object’s `deletedAt` field. */
-  deletedAt?: InputMaybe<Scalars['Datetime']>;
-  /** Checks for equality with the object’s `id` field. */
-  id?: InputMaybe<Scalars['Int']>;
-  /** Checks for equality with the object’s `name` field. */
-  name?: InputMaybe<Scalars['String']>;
-  /** Checks for equality with the object’s `updatedAt` field. */
-  updatedAt?: InputMaybe<Scalars['Datetime']>;
-};
-
-/** A filter to be used against `SpendingCategory` object types. All fields are combined with a logical ‘and.’ */
-export type SpendingCategoryFilter = {
-  /** Checks for all expressions in this list. */
-  and?: InputMaybe<Array<SpendingCategoryFilter>>;
-  /** Filter by the object’s `createdAt` field. */
-  createdAt?: InputMaybe<DatetimeFilter>;
-  /** Filter by the object’s `deletedAt` field. */
-  deletedAt?: InputMaybe<DatetimeFilter>;
-  /** Filter by the object’s `id` field. */
-  id?: InputMaybe<IntFilter>;
-  /** Filter by the object’s `name` field. */
-  name?: InputMaybe<StringFilter>;
-  /** Negates the expression. */
-  not?: InputMaybe<SpendingCategoryFilter>;
-  /** Checks for any expressions in this list. */
-  or?: InputMaybe<Array<SpendingCategoryFilter>>;
-  /** Filter by the object’s `updatedAt` field. */
-  updatedAt?: InputMaybe<DatetimeFilter>;
-};
-
-/** An input for mutations affecting `SpendingCategory` */
-export type SpendingCategoryInput = {
-  createdAt?: InputMaybe<Scalars['Datetime']>;
-  deletedAt?: InputMaybe<Scalars['Datetime']>;
-  id?: InputMaybe<Scalars['Int']>;
-  name: Scalars['String'];
-  updatedAt?: InputMaybe<Scalars['Datetime']>;
-};
-
-/** Represents an update to a `SpendingCategory`. Fields that are set will be updated. */
-export type SpendingCategoryPatch = {
-  createdAt?: InputMaybe<Scalars['Datetime']>;
-  deletedAt?: InputMaybe<Scalars['Datetime']>;
-  id?: InputMaybe<Scalars['Int']>;
-  name?: InputMaybe<Scalars['String']>;
-  updatedAt?: InputMaybe<Scalars['Datetime']>;
-};
-
-/**
- * A condition to be used against `Spending` object types. All fields are tested
- * for equality and combined with a logical ‘and.’
- */
-export type SpendingCondition = {
-  /** Checks for equality with the object’s `amount` field. */
-  amount?: InputMaybe<Scalars['BigFloat']>;
-  /** Checks for equality with the object’s `categoryId` field. */
-  categoryId?: InputMaybe<Scalars['Int']>;
-  /** Checks for equality with the object’s `createdAt` field. */
-  createdAt?: InputMaybe<Scalars['Datetime']>;
-  /** Checks for equality with the object’s `date` field. */
-  date?: InputMaybe<Scalars['Date']>;
-  /** Checks for equality with the object’s `deletedAt` field. */
-  deletedAt?: InputMaybe<Scalars['Datetime']>;
-  /** Checks for equality with the object’s `description` field. */
-  description?: InputMaybe<Scalars['String']>;
-  /** Checks for equality with the object’s `id` field. */
-  id?: InputMaybe<Scalars['Int']>;
-  /** Checks for equality with the object’s `s3Key` field. */
-  s3Key?: InputMaybe<Scalars['String']>;
-  /** Checks for equality with the object’s `updatedAt` field. */
-  updatedAt?: InputMaybe<Scalars['Datetime']>;
-};
-
-/** A filter to be used against `Spending` object types. All fields are combined with a logical ‘and.’ */
-export type SpendingFilter = {
-  /** Filter by the object’s `amount` field. */
-  amount?: InputMaybe<BigFloatFilter>;
-  /** Checks for all expressions in this list. */
-  and?: InputMaybe<Array<SpendingFilter>>;
-  /** Filter by the object’s `categoryId` field. */
-  categoryId?: InputMaybe<IntFilter>;
-  /** Filter by the object’s `createdAt` field. */
-  createdAt?: InputMaybe<DatetimeFilter>;
-  /** Filter by the object’s `date` field. */
-  date?: InputMaybe<DateFilter>;
-  /** Filter by the object’s `deletedAt` field. */
-  deletedAt?: InputMaybe<DatetimeFilter>;
-  /** Filter by the object’s `description` field. */
-  description?: InputMaybe<StringFilter>;
-  /** Filter by the object’s `id` field. */
-  id?: InputMaybe<IntFilter>;
-  /** Negates the expression. */
-  not?: InputMaybe<SpendingFilter>;
-  /** Checks for any expressions in this list. */
-  or?: InputMaybe<Array<SpendingFilter>>;
-  /** Filter by the object’s `s3Key` field. */
-  s3Key?: InputMaybe<StringFilter>;
-  /** Filter by the object’s `updatedAt` field. */
-  updatedAt?: InputMaybe<DatetimeFilter>;
-};
-
-/** An input for mutations affecting `Spending` */
-export type SpendingInput = {
-  amount: Scalars['BigFloat'];
-  categoryId?: InputMaybe<Scalars['Int']>;
-  createdAt?: InputMaybe<Scalars['Datetime']>;
-  date: Scalars['Date'];
-  deletedAt?: InputMaybe<Scalars['Datetime']>;
-  description: Scalars['String'];
-  id?: InputMaybe<Scalars['Int']>;
-  s3Key?: InputMaybe<Scalars['String']>;
-  updatedAt?: InputMaybe<Scalars['Datetime']>;
-};
-
-/** Represents an update to a `Spending`. Fields that are set will be updated. */
-export type SpendingPatch = {
-  amount?: InputMaybe<Scalars['BigFloat']>;
-  categoryId?: InputMaybe<Scalars['Int']>;
-  createdAt?: InputMaybe<Scalars['Datetime']>;
-  date?: InputMaybe<Scalars['Date']>;
-  deletedAt?: InputMaybe<Scalars['Datetime']>;
-  description?: InputMaybe<Scalars['String']>;
-  id?: InputMaybe<Scalars['Int']>;
-  s3Key?: InputMaybe<Scalars['String']>;
-  updatedAt?: InputMaybe<Scalars['Datetime']>;
-};
-
-/** A connection to a list of `User` values, with data from `Users2Spending`. */
-export type SpendingUsersByUsers2SpendingSpendingIdAndUserIdManyToManyConnection = {
-  __typename?: 'SpendingUsersByUsers2SpendingSpendingIdAndUserIdManyToManyConnection';
-  /** A list of edges which contains the `User`, info from the `Users2Spending`, and the cursor to aid in pagination. */
-  edges: Array<SpendingUsersByUsers2SpendingSpendingIdAndUserIdManyToManyEdge>;
-  /** A list of `User` objects. */
-  nodes: Array<Maybe<User>>;
-  /** Information to aid in pagination. */
-  pageInfo: PageInfo;
-  /** The count of *all* `User` you could get from the connection. */
-  totalCount: Scalars['Int'];
-};
-
-/** A `User` edge in the connection, with data from `Users2Spending`. */
-export type SpendingUsersByUsers2SpendingSpendingIdAndUserIdManyToManyEdge = {
-  __typename?: 'SpendingUsersByUsers2SpendingSpendingIdAndUserIdManyToManyEdge';
-  /** A cursor for use in pagination. */
-  cursor?: Maybe<Scalars['Cursor']>;
-  /** The `User` at the end of the edge. */
-  node?: Maybe<User>;
-  /** Reads and enables pagination through a set of `Users2Spending`. */
-  users2Spendings: Users2SpendingsConnection;
-};
-
-
-/** A `User` edge in the connection, with data from `Users2Spending`. */
-export type SpendingUsersByUsers2SpendingSpendingIdAndUserIdManyToManyEdgeUsers2SpendingsArgs = {
-  after?: InputMaybe<Scalars['Cursor']>;
-  before?: InputMaybe<Scalars['Cursor']>;
-  condition?: InputMaybe<Users2SpendingCondition>;
-  filter?: InputMaybe<Users2SpendingFilter>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  orderBy?: InputMaybe<Array<Users2SpendingsOrderBy>>;
-};
-
-/** A connection to a list of `Spending` values. */
-export type SpendingsConnection = {
-  __typename?: 'SpendingsConnection';
-  /** A list of edges which contains the `Spending` and cursor to aid in pagination. */
-  edges: Array<SpendingsEdge>;
-  /** A list of `Spending` objects. */
-  nodes: Array<Maybe<Spending>>;
-  /** Information to aid in pagination. */
-  pageInfo: PageInfo;
-  /** The count of *all* `Spending` you could get from the connection. */
-  totalCount: Scalars['Int'];
-};
-
-/** A `Spending` edge in the connection. */
-export type SpendingsEdge = {
-  __typename?: 'SpendingsEdge';
-  /** A cursor for use in pagination. */
-  cursor?: Maybe<Scalars['Cursor']>;
-  /** The `Spending` at the end of the edge. */
-  node?: Maybe<Spending>;
-};
-
-/** Methods to use when ordering `Spending`. */
-export enum SpendingsOrderBy {
-  AmountAsc = 'AMOUNT_ASC',
-  AmountDesc = 'AMOUNT_DESC',
-  CategoryIdAsc = 'CATEGORY_ID_ASC',
-  CategoryIdDesc = 'CATEGORY_ID_DESC',
-  CreatedAtAsc = 'CREATED_AT_ASC',
-  CreatedAtDesc = 'CREATED_AT_DESC',
-  DateAsc = 'DATE_ASC',
-  DateDesc = 'DATE_DESC',
-  DeletedAtAsc = 'DELETED_AT_ASC',
-  DeletedAtDesc = 'DELETED_AT_DESC',
-  DescriptionAsc = 'DESCRIPTION_ASC',
-  DescriptionDesc = 'DESCRIPTION_DESC',
-  IdAsc = 'ID_ASC',
-  IdDesc = 'ID_DESC',
-  Natural = 'NATURAL',
-  PrimaryKeyAsc = 'PRIMARY_KEY_ASC',
-  PrimaryKeyDesc = 'PRIMARY_KEY_DESC',
-  S3KeyAsc = 'S3_KEY_ASC',
-  S3KeyDesc = 'S3_KEY_DESC',
-  UpdatedAtAsc = 'UPDATED_AT_ASC',
-  UpdatedAtDesc = 'UPDATED_AT_DESC'
-}
 
 /** A filter to be used against String fields. All fields are combined with a logical ‘and.’ */
 export type StringFilter = {
@@ -1542,100 +1549,100 @@ export type UpdateFlywaySchemaHistoryPayloadFlywaySchemaHistoryEdgeArgs = {
   orderBy?: InputMaybe<Array<FlywaySchemaHistoriesOrderBy>>;
 };
 
-/** All input for the `updateSpendingByNodeId` mutation. */
-export type UpdateSpendingByNodeIdInput = {
+/** All input for the `updateOperationByNodeId` mutation. */
+export type UpdateOperationByNodeIdInput = {
   /**
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
    */
   clientMutationId?: InputMaybe<Scalars['String']>;
-  /** The globally unique `ID` which will identify a single `Spending` to be updated. */
+  /** The globally unique `ID` which will identify a single `Operation` to be updated. */
   nodeId: Scalars['ID'];
-  /** An object where the defined keys will be set on the `Spending` being updated. */
-  patch: SpendingPatch;
+  /** An object where the defined keys will be set on the `Operation` being updated. */
+  patch: OperationPatch;
 };
 
-/** All input for the `updateSpendingCategoryByNodeId` mutation. */
-export type UpdateSpendingCategoryByNodeIdInput = {
+/** All input for the `updateOperationCategoryByNodeId` mutation. */
+export type UpdateOperationCategoryByNodeIdInput = {
   /**
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
    */
   clientMutationId?: InputMaybe<Scalars['String']>;
-  /** The globally unique `ID` which will identify a single `SpendingCategory` to be updated. */
+  /** The globally unique `ID` which will identify a single `OperationCategory` to be updated. */
   nodeId: Scalars['ID'];
-  /** An object where the defined keys will be set on the `SpendingCategory` being updated. */
-  patch: SpendingCategoryPatch;
+  /** An object where the defined keys will be set on the `OperationCategory` being updated. */
+  patch: OperationCategoryPatch;
 };
 
-/** All input for the `updateSpendingCategory` mutation. */
-export type UpdateSpendingCategoryInput = {
+/** All input for the `updateOperationCategory` mutation. */
+export type UpdateOperationCategoryInput = {
   /**
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
    */
   clientMutationId?: InputMaybe<Scalars['String']>;
   id: Scalars['Int'];
-  /** An object where the defined keys will be set on the `SpendingCategory` being updated. */
-  patch: SpendingCategoryPatch;
+  /** An object where the defined keys will be set on the `OperationCategory` being updated. */
+  patch: OperationCategoryPatch;
 };
 
-/** The output of our update `SpendingCategory` mutation. */
-export type UpdateSpendingCategoryPayload = {
-  __typename?: 'UpdateSpendingCategoryPayload';
+/** The output of our update `OperationCategory` mutation. */
+export type UpdateOperationCategoryPayload = {
+  __typename?: 'UpdateOperationCategoryPayload';
   /**
    * The exact same `clientMutationId` that was provided in the mutation input,
    * unchanged and unused. May be used by a client to track mutations.
    */
   clientMutationId?: Maybe<Scalars['String']>;
+  /** The `OperationCategory` that was updated by this mutation. */
+  operationCategory?: Maybe<OperationCategory>;
+  /** An edge for our `OperationCategory`. May be used by Relay 1. */
+  operationCategoryEdge?: Maybe<OperationCategoriesEdge>;
   /** Our root query field type. Allows us to run any query from our mutation payload. */
   query?: Maybe<Query>;
-  /** The `SpendingCategory` that was updated by this mutation. */
-  spendingCategory?: Maybe<SpendingCategory>;
-  /** An edge for our `SpendingCategory`. May be used by Relay 1. */
-  spendingCategoryEdge?: Maybe<SpendingCategoriesEdge>;
 };
 
 
-/** The output of our update `SpendingCategory` mutation. */
-export type UpdateSpendingCategoryPayloadSpendingCategoryEdgeArgs = {
-  orderBy?: InputMaybe<Array<SpendingCategoriesOrderBy>>;
+/** The output of our update `OperationCategory` mutation. */
+export type UpdateOperationCategoryPayloadOperationCategoryEdgeArgs = {
+  orderBy?: InputMaybe<Array<OperationCategoriesOrderBy>>;
 };
 
-/** All input for the `updateSpending` mutation. */
-export type UpdateSpendingInput = {
+/** All input for the `updateOperation` mutation. */
+export type UpdateOperationInput = {
   /**
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
    */
   clientMutationId?: InputMaybe<Scalars['String']>;
   id: Scalars['Int'];
-  /** An object where the defined keys will be set on the `Spending` being updated. */
-  patch: SpendingPatch;
+  /** An object where the defined keys will be set on the `Operation` being updated. */
+  patch: OperationPatch;
 };
 
-/** The output of our update `Spending` mutation. */
-export type UpdateSpendingPayload = {
-  __typename?: 'UpdateSpendingPayload';
-  /** Reads a single `SpendingCategory` that is related to this `Spending`. */
-  category?: Maybe<SpendingCategory>;
+/** The output of our update `Operation` mutation. */
+export type UpdateOperationPayload = {
+  __typename?: 'UpdateOperationPayload';
+  /** Reads a single `OperationCategory` that is related to this `Operation`. */
+  category?: Maybe<OperationCategory>;
   /**
    * The exact same `clientMutationId` that was provided in the mutation input,
    * unchanged and unused. May be used by a client to track mutations.
    */
   clientMutationId?: Maybe<Scalars['String']>;
+  /** The `Operation` that was updated by this mutation. */
+  operation?: Maybe<Operation>;
+  /** An edge for our `Operation`. May be used by Relay 1. */
+  operationEdge?: Maybe<OperationsEdge>;
   /** Our root query field type. Allows us to run any query from our mutation payload. */
   query?: Maybe<Query>;
-  /** The `Spending` that was updated by this mutation. */
-  spending?: Maybe<Spending>;
-  /** An edge for our `Spending`. May be used by Relay 1. */
-  spendingEdge?: Maybe<SpendingsEdge>;
 };
 
 
-/** The output of our update `Spending` mutation. */
-export type UpdateSpendingPayloadSpendingEdgeArgs = {
-  orderBy?: InputMaybe<Array<SpendingsOrderBy>>;
+/** The output of our update `Operation` mutation. */
+export type UpdateOperationPayloadOperationEdgeArgs = {
+  orderBy?: InputMaybe<Array<OperationsOrderBy>>;
 };
 
 /** All input for the `updateUserByNodeId` mutation. */
@@ -1685,55 +1692,55 @@ export type UpdateUserPayloadUserEdgeArgs = {
   orderBy?: InputMaybe<Array<UsersOrderBy>>;
 };
 
-/** All input for the `updateUsers2SpendingByNodeId` mutation. */
-export type UpdateUsers2SpendingByNodeIdInput = {
+/** All input for the `updateUsers2OperationByNodeId` mutation. */
+export type UpdateUsers2OperationByNodeIdInput = {
   /**
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
    */
   clientMutationId?: InputMaybe<Scalars['String']>;
-  /** The globally unique `ID` which will identify a single `Users2Spending` to be updated. */
+  /** The globally unique `ID` which will identify a single `Users2Operation` to be updated. */
   nodeId: Scalars['ID'];
-  /** An object where the defined keys will be set on the `Users2Spending` being updated. */
-  patch: Users2SpendingPatch;
+  /** An object where the defined keys will be set on the `Users2Operation` being updated. */
+  patch: Users2OperationPatch;
 };
 
-/** All input for the `updateUsers2Spending` mutation. */
-export type UpdateUsers2SpendingInput = {
+/** All input for the `updateUsers2Operation` mutation. */
+export type UpdateUsers2OperationInput = {
   /**
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
    */
   clientMutationId?: InputMaybe<Scalars['String']>;
   id: Scalars['Int'];
-  /** An object where the defined keys will be set on the `Users2Spending` being updated. */
-  patch: Users2SpendingPatch;
+  /** An object where the defined keys will be set on the `Users2Operation` being updated. */
+  patch: Users2OperationPatch;
 };
 
-/** The output of our update `Users2Spending` mutation. */
-export type UpdateUsers2SpendingPayload = {
-  __typename?: 'UpdateUsers2SpendingPayload';
+/** The output of our update `Users2Operation` mutation. */
+export type UpdateUsers2OperationPayload = {
+  __typename?: 'UpdateUsers2OperationPayload';
   /**
    * The exact same `clientMutationId` that was provided in the mutation input,
    * unchanged and unused. May be used by a client to track mutations.
    */
   clientMutationId?: Maybe<Scalars['String']>;
+  /** Reads a single `Operation` that is related to this `Users2Operation`. */
+  operation?: Maybe<Operation>;
   /** Our root query field type. Allows us to run any query from our mutation payload. */
   query?: Maybe<Query>;
-  /** Reads a single `Spending` that is related to this `Users2Spending`. */
-  spending?: Maybe<Spending>;
-  /** Reads a single `User` that is related to this `Users2Spending`. */
+  /** Reads a single `User` that is related to this `Users2Operation`. */
   user?: Maybe<User>;
-  /** The `Users2Spending` that was updated by this mutation. */
-  users2Spending?: Maybe<Users2Spending>;
-  /** An edge for our `Users2Spending`. May be used by Relay 1. */
-  users2SpendingEdge?: Maybe<Users2SpendingsEdge>;
+  /** The `Users2Operation` that was updated by this mutation. */
+  users2Operation?: Maybe<Users2Operation>;
+  /** An edge for our `Users2Operation`. May be used by Relay 1. */
+  users2OperationEdge?: Maybe<Users2OperationsEdge>;
 };
 
 
-/** The output of our update `Users2Spending` mutation. */
-export type UpdateUsers2SpendingPayloadUsers2SpendingEdgeArgs = {
-  orderBy?: InputMaybe<Array<Users2SpendingsOrderBy>>;
+/** The output of our update `Users2Operation` mutation. */
+export type UpdateUsers2OperationPayloadUsers2OperationEdgeArgs = {
+  orderBy?: InputMaybe<Array<Users2OperationsOrderBy>>;
 };
 
 export type User = Node & {
@@ -1745,35 +1752,35 @@ export type User = Node & {
   name: Scalars['String'];
   /** A globally unique identifier. Can be used in various places throughout the system to identify this single value. */
   nodeId: Scalars['ID'];
-  /** Reads and enables pagination through a set of `Spending`. */
-  spendingsByUsers2SpendingUserIdAndSpendingId: UserSpendingsByUsers2SpendingUserIdAndSpendingIdManyToManyConnection;
+  /** Reads and enables pagination through a set of `Operation`. */
+  operationsByUsers2OperationUserIdAndOperationId: UserOperationsByUsers2OperationUserIdAndOperationIdManyToManyConnection;
   updatedAt: Scalars['Datetime'];
-  /** Reads and enables pagination through a set of `Users2Spending`. */
-  users2Spendings: Users2SpendingsConnection;
+  /** Reads and enables pagination through a set of `Users2Operation`. */
+  users2Operations: Users2OperationsConnection;
 };
 
 
-export type UserSpendingsByUsers2SpendingUserIdAndSpendingIdArgs = {
+export type UserOperationsByUsers2OperationUserIdAndOperationIdArgs = {
   after?: InputMaybe<Scalars['Cursor']>;
   before?: InputMaybe<Scalars['Cursor']>;
-  condition?: InputMaybe<SpendingCondition>;
-  filter?: InputMaybe<SpendingFilter>;
+  condition?: InputMaybe<OperationCondition>;
+  filter?: InputMaybe<OperationFilter>;
   first?: InputMaybe<Scalars['Int']>;
   last?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
-  orderBy?: InputMaybe<Array<SpendingsOrderBy>>;
+  orderBy?: InputMaybe<Array<OperationsOrderBy>>;
 };
 
 
-export type UserUsers2SpendingsArgs = {
+export type UserUsers2OperationsArgs = {
   after?: InputMaybe<Scalars['Cursor']>;
   before?: InputMaybe<Scalars['Cursor']>;
-  condition?: InputMaybe<Users2SpendingCondition>;
-  filter?: InputMaybe<Users2SpendingFilter>;
+  condition?: InputMaybe<Users2OperationCondition>;
+  filter?: InputMaybe<Users2OperationFilter>;
   first?: InputMaybe<Scalars['Int']>;
   last?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
-  orderBy?: InputMaybe<Array<Users2SpendingsOrderBy>>;
+  orderBy?: InputMaybe<Array<Users2OperationsOrderBy>>;
 };
 
 /** A condition to be used against `User` object types. All fields are tested for equality and combined with a logical ‘and.’ */
@@ -1824,6 +1831,43 @@ export type UserInput = {
   updatedAt?: InputMaybe<Scalars['Datetime']>;
 };
 
+/** A connection to a list of `Operation` values, with data from `Users2Operation`. */
+export type UserOperationsByUsers2OperationUserIdAndOperationIdManyToManyConnection = {
+  __typename?: 'UserOperationsByUsers2OperationUserIdAndOperationIdManyToManyConnection';
+  /** A list of edges which contains the `Operation`, info from the `Users2Operation`, and the cursor to aid in pagination. */
+  edges: Array<UserOperationsByUsers2OperationUserIdAndOperationIdManyToManyEdge>;
+  /** A list of `Operation` objects. */
+  nodes: Array<Maybe<Operation>>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+  /** The count of *all* `Operation` you could get from the connection. */
+  totalCount: Scalars['Int'];
+};
+
+/** A `Operation` edge in the connection, with data from `Users2Operation`. */
+export type UserOperationsByUsers2OperationUserIdAndOperationIdManyToManyEdge = {
+  __typename?: 'UserOperationsByUsers2OperationUserIdAndOperationIdManyToManyEdge';
+  /** A cursor for use in pagination. */
+  cursor?: Maybe<Scalars['Cursor']>;
+  /** The `Operation` at the end of the edge. */
+  node?: Maybe<Operation>;
+  /** Reads and enables pagination through a set of `Users2Operation`. */
+  users2Operations: Users2OperationsConnection;
+};
+
+
+/** A `Operation` edge in the connection, with data from `Users2Operation`. */
+export type UserOperationsByUsers2OperationUserIdAndOperationIdManyToManyEdgeUsers2OperationsArgs = {
+  after?: InputMaybe<Scalars['Cursor']>;
+  before?: InputMaybe<Scalars['Cursor']>;
+  condition?: InputMaybe<Users2OperationCondition>;
+  filter?: InputMaybe<Users2OperationFilter>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<Array<Users2OperationsOrderBy>>;
+};
+
 /** Represents an update to a `User`. Fields that are set will be updated. */
 export type UserPatch = {
   createdAt?: InputMaybe<Scalars['Datetime']>;
@@ -1834,82 +1878,45 @@ export type UserPatch = {
   updatedAt?: InputMaybe<Scalars['Datetime']>;
 };
 
-/** A connection to a list of `Spending` values, with data from `Users2Spending`. */
-export type UserSpendingsByUsers2SpendingUserIdAndSpendingIdManyToManyConnection = {
-  __typename?: 'UserSpendingsByUsers2SpendingUserIdAndSpendingIdManyToManyConnection';
-  /** A list of edges which contains the `Spending`, info from the `Users2Spending`, and the cursor to aid in pagination. */
-  edges: Array<UserSpendingsByUsers2SpendingUserIdAndSpendingIdManyToManyEdge>;
-  /** A list of `Spending` objects. */
-  nodes: Array<Maybe<Spending>>;
-  /** Information to aid in pagination. */
-  pageInfo: PageInfo;
-  /** The count of *all* `Spending` you could get from the connection. */
-  totalCount: Scalars['Int'];
-};
-
-/** A `Spending` edge in the connection, with data from `Users2Spending`. */
-export type UserSpendingsByUsers2SpendingUserIdAndSpendingIdManyToManyEdge = {
-  __typename?: 'UserSpendingsByUsers2SpendingUserIdAndSpendingIdManyToManyEdge';
-  /** A cursor for use in pagination. */
-  cursor?: Maybe<Scalars['Cursor']>;
-  /** The `Spending` at the end of the edge. */
-  node?: Maybe<Spending>;
-  /** Reads and enables pagination through a set of `Users2Spending`. */
-  users2Spendings: Users2SpendingsConnection;
-};
-
-
-/** A `Spending` edge in the connection, with data from `Users2Spending`. */
-export type UserSpendingsByUsers2SpendingUserIdAndSpendingIdManyToManyEdgeUsers2SpendingsArgs = {
-  after?: InputMaybe<Scalars['Cursor']>;
-  before?: InputMaybe<Scalars['Cursor']>;
-  condition?: InputMaybe<Users2SpendingCondition>;
-  filter?: InputMaybe<Users2SpendingFilter>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  orderBy?: InputMaybe<Array<Users2SpendingsOrderBy>>;
-};
-
-export type Users2Spending = Node & {
-  __typename?: 'Users2Spending';
+export type Users2Operation = Node & {
+  __typename?: 'Users2Operation';
   createdAt: Scalars['Datetime'];
   deletedAt?: Maybe<Scalars['Datetime']>;
   id: Scalars['Int'];
   /** A globally unique identifier. Can be used in various places throughout the system to identify this single value. */
   nodeId: Scalars['ID'];
-  /** Reads a single `Spending` that is related to this `Users2Spending`. */
-  spending?: Maybe<Spending>;
-  spendingId: Scalars['Int'];
+  /** Reads a single `Operation` that is related to this `Users2Operation`. */
+  operation?: Maybe<Operation>;
+  operationId: Scalars['Int'];
   updatedAt: Scalars['Datetime'];
-  /** Reads a single `User` that is related to this `Users2Spending`. */
+  /** Reads a single `User` that is related to this `Users2Operation`. */
   user?: Maybe<User>;
   userId: Scalars['Int'];
 };
 
 /**
- * A condition to be used against `Users2Spending` object types. All fields are
+ * A condition to be used against `Users2Operation` object types. All fields are
  * tested for equality and combined with a logical ‘and.’
  */
-export type Users2SpendingCondition = {
+export type Users2OperationCondition = {
   /** Checks for equality with the object’s `createdAt` field. */
   createdAt?: InputMaybe<Scalars['Datetime']>;
   /** Checks for equality with the object’s `deletedAt` field. */
   deletedAt?: InputMaybe<Scalars['Datetime']>;
   /** Checks for equality with the object’s `id` field. */
   id?: InputMaybe<Scalars['Int']>;
-  /** Checks for equality with the object’s `spendingId` field. */
-  spendingId?: InputMaybe<Scalars['Int']>;
+  /** Checks for equality with the object’s `operationId` field. */
+  operationId?: InputMaybe<Scalars['Int']>;
   /** Checks for equality with the object’s `updatedAt` field. */
   updatedAt?: InputMaybe<Scalars['Datetime']>;
   /** Checks for equality with the object’s `userId` field. */
   userId?: InputMaybe<Scalars['Int']>;
 };
 
-/** A filter to be used against `Users2Spending` object types. All fields are combined with a logical ‘and.’ */
-export type Users2SpendingFilter = {
+/** A filter to be used against `Users2Operation` object types. All fields are combined with a logical ‘and.’ */
+export type Users2OperationFilter = {
   /** Checks for all expressions in this list. */
-  and?: InputMaybe<Array<Users2SpendingFilter>>;
+  and?: InputMaybe<Array<Users2OperationFilter>>;
   /** Filter by the object’s `createdAt` field. */
   createdAt?: InputMaybe<DatetimeFilter>;
   /** Filter by the object’s `deletedAt` field. */
@@ -1917,61 +1924,61 @@ export type Users2SpendingFilter = {
   /** Filter by the object’s `id` field. */
   id?: InputMaybe<IntFilter>;
   /** Negates the expression. */
-  not?: InputMaybe<Users2SpendingFilter>;
+  not?: InputMaybe<Users2OperationFilter>;
+  /** Filter by the object’s `operationId` field. */
+  operationId?: InputMaybe<IntFilter>;
   /** Checks for any expressions in this list. */
-  or?: InputMaybe<Array<Users2SpendingFilter>>;
-  /** Filter by the object’s `spendingId` field. */
-  spendingId?: InputMaybe<IntFilter>;
+  or?: InputMaybe<Array<Users2OperationFilter>>;
   /** Filter by the object’s `updatedAt` field. */
   updatedAt?: InputMaybe<DatetimeFilter>;
   /** Filter by the object’s `userId` field. */
   userId?: InputMaybe<IntFilter>;
 };
 
-/** An input for mutations affecting `Users2Spending` */
-export type Users2SpendingInput = {
+/** An input for mutations affecting `Users2Operation` */
+export type Users2OperationInput = {
   createdAt?: InputMaybe<Scalars['Datetime']>;
   deletedAt?: InputMaybe<Scalars['Datetime']>;
   id?: InputMaybe<Scalars['Int']>;
-  spendingId: Scalars['Int'];
+  operationId: Scalars['Int'];
   updatedAt?: InputMaybe<Scalars['Datetime']>;
   userId: Scalars['Int'];
 };
 
-/** Represents an update to a `Users2Spending`. Fields that are set will be updated. */
-export type Users2SpendingPatch = {
+/** Represents an update to a `Users2Operation`. Fields that are set will be updated. */
+export type Users2OperationPatch = {
   createdAt?: InputMaybe<Scalars['Datetime']>;
   deletedAt?: InputMaybe<Scalars['Datetime']>;
   id?: InputMaybe<Scalars['Int']>;
-  spendingId?: InputMaybe<Scalars['Int']>;
+  operationId?: InputMaybe<Scalars['Int']>;
   updatedAt?: InputMaybe<Scalars['Datetime']>;
   userId?: InputMaybe<Scalars['Int']>;
 };
 
-/** A connection to a list of `Users2Spending` values. */
-export type Users2SpendingsConnection = {
-  __typename?: 'Users2SpendingsConnection';
-  /** A list of edges which contains the `Users2Spending` and cursor to aid in pagination. */
-  edges: Array<Users2SpendingsEdge>;
-  /** A list of `Users2Spending` objects. */
-  nodes: Array<Maybe<Users2Spending>>;
+/** A connection to a list of `Users2Operation` values. */
+export type Users2OperationsConnection = {
+  __typename?: 'Users2OperationsConnection';
+  /** A list of edges which contains the `Users2Operation` and cursor to aid in pagination. */
+  edges: Array<Users2OperationsEdge>;
+  /** A list of `Users2Operation` objects. */
+  nodes: Array<Maybe<Users2Operation>>;
   /** Information to aid in pagination. */
   pageInfo: PageInfo;
-  /** The count of *all* `Users2Spending` you could get from the connection. */
+  /** The count of *all* `Users2Operation` you could get from the connection. */
   totalCount: Scalars['Int'];
 };
 
-/** A `Users2Spending` edge in the connection. */
-export type Users2SpendingsEdge = {
-  __typename?: 'Users2SpendingsEdge';
+/** A `Users2Operation` edge in the connection. */
+export type Users2OperationsEdge = {
+  __typename?: 'Users2OperationsEdge';
   /** A cursor for use in pagination. */
   cursor?: Maybe<Scalars['Cursor']>;
-  /** The `Users2Spending` at the end of the edge. */
-  node?: Maybe<Users2Spending>;
+  /** The `Users2Operation` at the end of the edge. */
+  node?: Maybe<Users2Operation>;
 };
 
-/** Methods to use when ordering `Users2Spending`. */
-export enum Users2SpendingsOrderBy {
+/** Methods to use when ordering `Users2Operation`. */
+export enum Users2OperationsOrderBy {
   CreatedAtAsc = 'CREATED_AT_ASC',
   CreatedAtDesc = 'CREATED_AT_DESC',
   DeletedAtAsc = 'DELETED_AT_ASC',
@@ -1979,10 +1986,10 @@ export enum Users2SpendingsOrderBy {
   IdAsc = 'ID_ASC',
   IdDesc = 'ID_DESC',
   Natural = 'NATURAL',
+  OperationIdAsc = 'OPERATION_ID_ASC',
+  OperationIdDesc = 'OPERATION_ID_DESC',
   PrimaryKeyAsc = 'PRIMARY_KEY_ASC',
   PrimaryKeyDesc = 'PRIMARY_KEY_DESC',
-  SpendingIdAsc = 'SPENDING_ID_ASC',
-  SpendingIdDesc = 'SPENDING_ID_DESC',
   UpdatedAtAsc = 'UPDATED_AT_ASC',
   UpdatedAtDesc = 'UPDATED_AT_DESC',
   UserIdAsc = 'USER_ID_ASC',
@@ -2030,87 +2037,89 @@ export enum UsersOrderBy {
   UpdatedAtDesc = 'UPDATED_AT_DESC'
 }
 
-export type GetAllSpendingsQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type GetAllSpendingsQuery = { __typename?: 'Query', spendings?: { __typename?: 'SpendingsConnection', nodes: Array<{ __typename?: 'Spending', createdAt: any, id: number, categoryId?: number | null } | null> } | null };
-
-export type CreateSpendingMutationVariables = Exact<{
-  input: CreateSpendingInput;
+export type MyMutationMutationVariables = Exact<{
+  input: CreateOperationCategoryInput;
 }>;
 
 
-export type CreateSpendingMutation = { __typename?: 'Mutation', createSpending?: { __typename?: 'CreateSpendingPayload', clientMutationId?: string | null } | null };
+export type MyMutationMutation = { __typename?: 'Mutation', createOperationCategory?: { __typename?: 'CreateOperationCategoryPayload', operationCategory?: { __typename?: 'OperationCategory', name: string, id: number } | null } | null };
+
+export type CreateOperationMutationVariables = Exact<{
+  input: CreateOperationInput;
+}>;
 
 
-export const GetAllSpendingsDocument = gql`
-    query getAllSpendings {
-  spendings {
-    nodes {
-      createdAt
+export type CreateOperationMutation = { __typename?: 'Mutation', createOperation?: { __typename?: 'CreateOperationPayload', operation?: { __typename?: 'Operation', id: number } | null } | null };
+
+
+export const MyMutationDocument = gql`
+    mutation MyMutation($input: CreateOperationCategoryInput!) {
+  createOperationCategory(input: $input) {
+    operationCategory {
+      name
       id
-      categoryId
     }
   }
 }
     `;
+export type MyMutationMutationFn = Apollo.MutationFunction<MyMutationMutation, MyMutationMutationVariables>;
 
 /**
- * __useGetAllSpendingsQuery__
+ * __useMyMutationMutation__
  *
- * To run a query within a React component, call `useGetAllSpendingsQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetAllSpendingsQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useGetAllSpendingsQuery({
- *   variables: {
- *   },
- * });
- */
-export function useGetAllSpendingsQuery(baseOptions?: Apollo.QueryHookOptions<GetAllSpendingsQuery, GetAllSpendingsQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<GetAllSpendingsQuery, GetAllSpendingsQueryVariables>(GetAllSpendingsDocument, options);
-      }
-export function useGetAllSpendingsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetAllSpendingsQuery, GetAllSpendingsQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<GetAllSpendingsQuery, GetAllSpendingsQueryVariables>(GetAllSpendingsDocument, options);
-        }
-export type GetAllSpendingsQueryHookResult = ReturnType<typeof useGetAllSpendingsQuery>;
-export type GetAllSpendingsLazyQueryHookResult = ReturnType<typeof useGetAllSpendingsLazyQuery>;
-export type GetAllSpendingsQueryResult = Apollo.QueryResult<GetAllSpendingsQuery, GetAllSpendingsQueryVariables>;
-export const CreateSpendingDocument = gql`
-    mutation createSpending($input: CreateSpendingInput!) {
-  createSpending(input: $input) {
-    clientMutationId
-  }
-}
-    `;
-export type CreateSpendingMutationFn = Apollo.MutationFunction<CreateSpendingMutation, CreateSpendingMutationVariables>;
-
-/**
- * __useCreateSpendingMutation__
- *
- * To run a mutation, you first call `useCreateSpendingMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useCreateSpendingMutation` returns a tuple that includes:
+ * To run a mutation, you first call `useMyMutationMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useMyMutationMutation` returns a tuple that includes:
  * - A mutate function that you can call at any time to execute the mutation
  * - An object with fields that represent the current status of the mutation's execution
  *
  * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
  *
  * @example
- * const [createSpendingMutation, { data, loading, error }] = useCreateSpendingMutation({
+ * const [myMutationMutation, { data, loading, error }] = useMyMutationMutation({
  *   variables: {
  *      input: // value for 'input'
  *   },
  * });
  */
-export function useCreateSpendingMutation(baseOptions?: Apollo.MutationHookOptions<CreateSpendingMutation, CreateSpendingMutationVariables>) {
+export function useMyMutationMutation(baseOptions?: Apollo.MutationHookOptions<MyMutationMutation, MyMutationMutationVariables>) {
         const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<CreateSpendingMutation, CreateSpendingMutationVariables>(CreateSpendingDocument, options);
+        return Apollo.useMutation<MyMutationMutation, MyMutationMutationVariables>(MyMutationDocument, options);
       }
-export type CreateSpendingMutationHookResult = ReturnType<typeof useCreateSpendingMutation>;
-export type CreateSpendingMutationResult = Apollo.MutationResult<CreateSpendingMutation>;
-export type CreateSpendingMutationOptions = Apollo.BaseMutationOptions<CreateSpendingMutation, CreateSpendingMutationVariables>;
+export type MyMutationMutationHookResult = ReturnType<typeof useMyMutationMutation>;
+export type MyMutationMutationResult = Apollo.MutationResult<MyMutationMutation>;
+export type MyMutationMutationOptions = Apollo.BaseMutationOptions<MyMutationMutation, MyMutationMutationVariables>;
+export const CreateOperationDocument = gql`
+    mutation CreateOperation($input: CreateOperationInput!) {
+  createOperation(input: $input) {
+    operation {
+      id
+    }
+  }
+}
+    `;
+export type CreateOperationMutationFn = Apollo.MutationFunction<CreateOperationMutation, CreateOperationMutationVariables>;
+
+/**
+ * __useCreateOperationMutation__
+ *
+ * To run a mutation, you first call `useCreateOperationMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useCreateOperationMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [createOperationMutation, { data, loading, error }] = useCreateOperationMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useCreateOperationMutation(baseOptions?: Apollo.MutationHookOptions<CreateOperationMutation, CreateOperationMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<CreateOperationMutation, CreateOperationMutationVariables>(CreateOperationDocument, options);
+      }
+export type CreateOperationMutationHookResult = ReturnType<typeof useCreateOperationMutation>;
+export type CreateOperationMutationResult = Apollo.MutationResult<CreateOperationMutation>;
+export type CreateOperationMutationOptions = Apollo.BaseMutationOptions<CreateOperationMutation, CreateOperationMutationVariables>;

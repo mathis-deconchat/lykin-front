@@ -7,9 +7,9 @@ import CategoryOperationCard from "../../category/category-operation-card/catego
 import { PlusCircleIcon } from "@heroicons/react/24/outline";
 import { PencilSquareIcon } from "@heroicons/react/24/outline";
 
-import "./operation-creation-modal.css";
+import "./operation-creation-modal-step-2.css";
 
-type OperationCreationProps = {
+type OperationCreationModalStep2Props = {
   modalIsOpen: boolean;
   afterOpenModal: () => void;
   closeModal: () => void;
@@ -21,7 +21,7 @@ type MockCategory = {
   name: string;
 };
 
-const OperationCreationModal: React.FC<OperationCreationProps> = (props) => {
+const OperationCreationModalStep2: React.FC<OperationCreationModalStep2Props> = (props) => {
   const [isCreateCategory, setIsCreateCategory] = React.useState(false);
   const [categories, setCategories] = React.useState<MockCategory[]>([
     { id: 1, name: "Courses" },
@@ -160,4 +160,4 @@ const OperationCreationModal: React.FC<OperationCreationProps> = (props) => {
   );
 };
 
-export default OperationCreationModal;
+export default OperationCreationModalStep2;

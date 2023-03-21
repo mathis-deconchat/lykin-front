@@ -19,7 +19,7 @@ const AuthHeader: React.FC<AuthHeaderProps> = ({ login }) => {
             {login ? "Pas encore de compte ?" : "Déja inscrit ?"}
           </p>
           <button
-            onClick={login ? () => navigate("/register") : () => navigate("/login")}
+            onClick={login ? () => navigate("/setup-profile") : () => navigate("/login")}
             className="bg-blue-600 bg-opacity-70 p-1 px-4  rounded-lg text-white"
           >
             {login ? "S'inscrire" : "Se connecter"}

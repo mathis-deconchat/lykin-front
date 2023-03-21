@@ -21,7 +21,7 @@ import { Link } from "react-router-dom";
 const BottomNav = () => {
   const [selected, setSelected] = React.useState("home");
   return (
-    <div className=" w-full pb-3 bg-white rounded-t-2xl shadow-xl z-10">
+    <div className="fixed bottom-0 w-full pb-3 bg-white rounded-t-2xl shadow-xl z-10">
       <div className="flex flex-col">
         <div>
           <div className="bg-blue-600 rounded-full h-16 w-16 -mt-4 border-8 border-white flex justify-center items-center ml-auto mr-auto">
