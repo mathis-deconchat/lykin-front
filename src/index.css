@@ -56,6 +56,10 @@ button,
   -webkit-appearance: button;
 }
 
+textarea:focus, input:focus{
+  outline: none!important;
+}
+
 
 .h-screen {
   height: 100vh; /* Fallback for browsers that do not support Custom Properties */

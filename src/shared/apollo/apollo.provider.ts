@@ -11,6 +11,7 @@ import { Auth } from "aws-amplify";
 
 const httpLink = new HttpLink({
   uri: `http://localhost:4000/graphql`,
+  
 });
 
 const authLink = setContext((q, { headers }) => {
@@ -31,6 +32,7 @@ const authLink = setContext((q, { headers }) => {
 
 const splitLink = split(
   ({ query }) => {
+    console.log("query", query);
     const definition = getMainDefinition(query);
     return (
       definition.kind === 'OperationDefinition' &&
@@ -41,8 +43,10 @@ const splitLink = split(
 );
 
 const apolloClient = new ApolloClient({
-  link: from([ splitLink]),
-  cache: new InMemoryCache(),
+  link: authLink.concat(httpLink),
+  cache: new InMemoryCache({
+    
+  })
 });
 
 export default apolloClient;

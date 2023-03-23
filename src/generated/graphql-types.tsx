@@ -179,20 +179,19 @@ export type CreateOperationPayloadOperationEdgeArgs = {
   orderBy?: InputMaybe<Array<OperationsOrderBy>>;
 };
 
-/** All input for the create `User` mutation. */
-export type CreateUserInput = {
+/** All input for the `createRoleIfNotExist` mutation. */
+export type CreateRoleIfNotExistInput = {
   /**
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
    */
   clientMutationId?: InputMaybe<Scalars['String']>;
-  /** The `User` to be created by this mutation. */
-  user: UserInput;
+  roleName?: InputMaybe<Scalars['String']>;
 };
 
-/** The output of our create `User` mutation. */
-export type CreateUserPayload = {
-  __typename?: 'CreateUserPayload';
+/** The output of our `createRoleIfNotExist` mutation. */
+export type CreateRoleIfNotExistPayload = {
+  __typename?: 'CreateRoleIfNotExistPayload';
   /**
    * The exact same `clientMutationId` that was provided in the mutation input,
    * unchanged and unused. May be used by a client to track mutations.
@@ -200,16 +199,74 @@ export type CreateUserPayload = {
   clientMutationId?: Maybe<Scalars['String']>;
   /** Our root query field type. Allows us to run any query from our mutation payload. */
   query?: Maybe<Query>;
-  /** The `User` that was created by this mutation. */
-  user?: Maybe<User>;
-  /** An edge for our `User`. May be used by Relay 1. */
-  userEdge?: Maybe<UsersEdge>;
+};
+
+/** All input for the create `Task` mutation. */
+export type CreateTaskInput = {
+  /**
+   * An arbitrary string value with no semantic meaning. Will be included in the
+   * payload verbatim. May be used to track mutations by the client.
+   */
+  clientMutationId?: InputMaybe<Scalars['String']>;
+  /** The `Task` to be created by this mutation. */
+  task: TaskInput;
+};
+
+/** The output of our create `Task` mutation. */
+export type CreateTaskPayload = {
+  __typename?: 'CreateTaskPayload';
+  /**
+   * The exact same `clientMutationId` that was provided in the mutation input,
+   * unchanged and unused. May be used by a client to track mutations.
+   */
+  clientMutationId?: Maybe<Scalars['String']>;
+  /** Our root query field type. Allows us to run any query from our mutation payload. */
+  query?: Maybe<Query>;
+  /** Reads a single `TaskStatus` that is related to this `Task`. */
+  status?: Maybe<TaskStatus>;
+  /** The `Task` that was created by this mutation. */
+  task?: Maybe<Task>;
+  /** An edge for our `Task`. May be used by Relay 1. */
+  taskEdge?: Maybe<TasksEdge>;
 };
 
 
-/** The output of our create `User` mutation. */
-export type CreateUserPayloadUserEdgeArgs = {
-  orderBy?: InputMaybe<Array<UsersOrderBy>>;
+/** The output of our create `Task` mutation. */
+export type CreateTaskPayloadTaskEdgeArgs = {
+  orderBy?: InputMaybe<Array<TasksOrderBy>>;
+};
+
+/** All input for the create `TaskStatus` mutation. */
+export type CreateTaskStatusInput = {
+  /**
+   * An arbitrary string value with no semantic meaning. Will be included in the
+   * payload verbatim. May be used to track mutations by the client.
+   */
+  clientMutationId?: InputMaybe<Scalars['String']>;
+  /** The `TaskStatus` to be created by this mutation. */
+  taskStatus: TaskStatusInput;
+};
+
+/** The output of our create `TaskStatus` mutation. */
+export type CreateTaskStatusPayload = {
+  __typename?: 'CreateTaskStatusPayload';
+  /**
+   * The exact same `clientMutationId` that was provided in the mutation input,
+   * unchanged and unused. May be used by a client to track mutations.
+   */
+  clientMutationId?: Maybe<Scalars['String']>;
+  /** Our root query field type. Allows us to run any query from our mutation payload. */
+  query?: Maybe<Query>;
+  /** The `TaskStatus` that was created by this mutation. */
+  taskStatus?: Maybe<TaskStatus>;
+  /** An edge for our `TaskStatus`. May be used by Relay 1. */
+  taskStatusEdge?: Maybe<TaskStatusesEdge>;
+};
+
+
+/** The output of our create `TaskStatus` mutation. */
+export type CreateTaskStatusPayloadTaskStatusEdgeArgs = {
+  orderBy?: InputMaybe<Array<TaskStatusesOrderBy>>;
 };
 
 /** All input for the create `Users2Operation` mutation. */
@@ -235,8 +292,6 @@ export type CreateUsers2OperationPayload = {
   operation?: Maybe<Operation>;
   /** Our root query field type. Allows us to run any query from our mutation payload. */
   query?: Maybe<Query>;
-  /** Reads a single `User` that is related to this `Users2Operation`. */
-  user?: Maybe<User>;
   /** The `Users2Operation` that was created by this mutation. */
   users2Operation?: Maybe<Users2Operation>;
   /** An edge for our `Users2Operation`. May be used by Relay 1. */
@@ -435,19 +490,19 @@ export type DeleteOperationPayloadOperationEdgeArgs = {
   orderBy?: InputMaybe<Array<OperationsOrderBy>>;
 };
 
-/** All input for the `deleteUserByNodeId` mutation. */
-export type DeleteUserByNodeIdInput = {
+/** All input for the `deleteTaskByNodeId` mutation. */
+export type DeleteTaskByNodeIdInput = {
   /**
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
    */
   clientMutationId?: InputMaybe<Scalars['String']>;
-  /** The globally unique `ID` which will identify a single `User` to be deleted. */
+  /** The globally unique `ID` which will identify a single `Task` to be deleted. */
   nodeId: Scalars['ID'];
 };
 
-/** All input for the `deleteUser` mutation. */
-export type DeleteUserInput = {
+/** All input for the `deleteTask` mutation. */
+export type DeleteTaskInput = {
   /**
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
@@ -456,27 +511,73 @@ export type DeleteUserInput = {
   id: Scalars['Int'];
 };
 
-/** The output of our delete `User` mutation. */
-export type DeleteUserPayload = {
-  __typename?: 'DeleteUserPayload';
+/** The output of our delete `Task` mutation. */
+export type DeleteTaskPayload = {
+  __typename?: 'DeleteTaskPayload';
   /**
    * The exact same `clientMutationId` that was provided in the mutation input,
    * unchanged and unused. May be used by a client to track mutations.
    */
   clientMutationId?: Maybe<Scalars['String']>;
-  deletedUserNodeId?: Maybe<Scalars['ID']>;
+  deletedTaskNodeId?: Maybe<Scalars['ID']>;
   /** Our root query field type. Allows us to run any query from our mutation payload. */
   query?: Maybe<Query>;
-  /** The `User` that was deleted by this mutation. */
-  user?: Maybe<User>;
-  /** An edge for our `User`. May be used by Relay 1. */
-  userEdge?: Maybe<UsersEdge>;
+  /** Reads a single `TaskStatus` that is related to this `Task`. */
+  status?: Maybe<TaskStatus>;
+  /** The `Task` that was deleted by this mutation. */
+  task?: Maybe<Task>;
+  /** An edge for our `Task`. May be used by Relay 1. */
+  taskEdge?: Maybe<TasksEdge>;
 };
 
 
-/** The output of our delete `User` mutation. */
-export type DeleteUserPayloadUserEdgeArgs = {
-  orderBy?: InputMaybe<Array<UsersOrderBy>>;
+/** The output of our delete `Task` mutation. */
+export type DeleteTaskPayloadTaskEdgeArgs = {
+  orderBy?: InputMaybe<Array<TasksOrderBy>>;
+};
+
+/** All input for the `deleteTaskStatusByNodeId` mutation. */
+export type DeleteTaskStatusByNodeIdInput = {
+  /**
+   * An arbitrary string value with no semantic meaning. Will be included in the
+   * payload verbatim. May be used to track mutations by the client.
+   */
+  clientMutationId?: InputMaybe<Scalars['String']>;
+  /** The globally unique `ID` which will identify a single `TaskStatus` to be deleted. */
+  nodeId: Scalars['ID'];
+};
+
+/** All input for the `deleteTaskStatus` mutation. */
+export type DeleteTaskStatusInput = {
+  /**
+   * An arbitrary string value with no semantic meaning. Will be included in the
+   * payload verbatim. May be used to track mutations by the client.
+   */
+  clientMutationId?: InputMaybe<Scalars['String']>;
+  id: Scalars['Int'];
+};
+
+/** The output of our delete `TaskStatus` mutation. */
+export type DeleteTaskStatusPayload = {
+  __typename?: 'DeleteTaskStatusPayload';
+  /**
+   * The exact same `clientMutationId` that was provided in the mutation input,
+   * unchanged and unused. May be used by a client to track mutations.
+   */
+  clientMutationId?: Maybe<Scalars['String']>;
+  deletedTaskStatusNodeId?: Maybe<Scalars['ID']>;
+  /** Our root query field type. Allows us to run any query from our mutation payload. */
+  query?: Maybe<Query>;
+  /** The `TaskStatus` that was deleted by this mutation. */
+  taskStatus?: Maybe<TaskStatus>;
+  /** An edge for our `TaskStatus`. May be used by Relay 1. */
+  taskStatusEdge?: Maybe<TaskStatusesEdge>;
+};
+
+
+/** The output of our delete `TaskStatus` mutation. */
+export type DeleteTaskStatusPayloadTaskStatusEdgeArgs = {
+  orderBy?: InputMaybe<Array<TaskStatusesOrderBy>>;
 };
 
 /** All input for the `deleteUsers2OperationByNodeId` mutation. */
@@ -513,8 +614,6 @@ export type DeleteUsers2OperationPayload = {
   operation?: Maybe<Operation>;
   /** Our root query field type. Allows us to run any query from our mutation payload. */
   query?: Maybe<Query>;
-  /** Reads a single `User` that is related to this `Users2Operation`. */
-  user?: Maybe<User>;
   /** The `Users2Operation` that was deleted by this mutation. */
   users2Operation?: Maybe<Users2Operation>;
   /** An edge for our `Users2Operation`. May be used by Relay 1. */
@@ -712,8 +811,11 @@ export type Mutation = {
   createOperation?: Maybe<CreateOperationPayload>;
   /** Creates a single `OperationCategory`. */
   createOperationCategory?: Maybe<CreateOperationCategoryPayload>;
-  /** Creates a single `User`. */
-  createUser?: Maybe<CreateUserPayload>;
+  createRoleIfNotExist?: Maybe<CreateRoleIfNotExistPayload>;
+  /** Creates a single `Task`. */
+  createTask?: Maybe<CreateTaskPayload>;
+  /** Creates a single `TaskStatus`. */
+  createTaskStatus?: Maybe<CreateTaskStatusPayload>;
   /** Creates a single `Users2Operation`. */
   createUsers2Operation?: Maybe<CreateUsers2OperationPayload>;
   /** Deletes a single `FlywaySchemaHistory` using a unique key. */
@@ -728,14 +830,22 @@ export type Mutation = {
   deleteOperationCategory?: Maybe<DeleteOperationCategoryPayload>;
   /** Deletes a single `OperationCategory` using its globally unique id. */
   deleteOperationCategoryByNodeId?: Maybe<DeleteOperationCategoryPayload>;
-  /** Deletes a single `User` using a unique key. */
-  deleteUser?: Maybe<DeleteUserPayload>;
-  /** Deletes a single `User` using its globally unique id. */
-  deleteUserByNodeId?: Maybe<DeleteUserPayload>;
+  /** Deletes a single `Task` using a unique key. */
+  deleteTask?: Maybe<DeleteTaskPayload>;
+  /** Deletes a single `Task` using its globally unique id. */
+  deleteTaskByNodeId?: Maybe<DeleteTaskPayload>;
+  /** Deletes a single `TaskStatus` using a unique key. */
+  deleteTaskStatus?: Maybe<DeleteTaskStatusPayload>;
+  /** Deletes a single `TaskStatus` using its globally unique id. */
+  deleteTaskStatusByNodeId?: Maybe<DeleteTaskStatusPayload>;
   /** Deletes a single `Users2Operation` using a unique key. */
   deleteUsers2Operation?: Maybe<DeleteUsers2OperationPayload>;
   /** Deletes a single `Users2Operation` using its globally unique id. */
   deleteUsers2OperationByNodeId?: Maybe<DeleteUsers2OperationPayload>;
+  revokePrivilegesOfRoleOnSchema?: Maybe<RevokePrivilegesOfRoleOnSchemaPayload>;
+  revokeSecurityFunctionsForRoleOnSchema?: Maybe<RevokeSecurityFunctionsForRoleOnSchemaPayload>;
+  setAllPrivilegesForRoleOnSchema?: Maybe<SetAllPrivilegesForRoleOnSchemaPayload>;
+  setRolesAndPrivileges?: Maybe<SetRolesAndPrivilegesPayload>;
   /** Updates a single `FlywaySchemaHistory` using a unique key and a patch. */
   updateFlywaySchemaHistory?: Maybe<UpdateFlywaySchemaHistoryPayload>;
   /** Updates a single `FlywaySchemaHistory` using its globally unique id and a patch. */
@@ -748,10 +858,14 @@ export type Mutation = {
   updateOperationCategory?: Maybe<UpdateOperationCategoryPayload>;
   /** Updates a single `OperationCategory` using its globally unique id and a patch. */
   updateOperationCategoryByNodeId?: Maybe<UpdateOperationCategoryPayload>;
-  /** Updates a single `User` using a unique key and a patch. */
-  updateUser?: Maybe<UpdateUserPayload>;
-  /** Updates a single `User` using its globally unique id and a patch. */
-  updateUserByNodeId?: Maybe<UpdateUserPayload>;
+  /** Updates a single `Task` using a unique key and a patch. */
+  updateTask?: Maybe<UpdateTaskPayload>;
+  /** Updates a single `Task` using its globally unique id and a patch. */
+  updateTaskByNodeId?: Maybe<UpdateTaskPayload>;
+  /** Updates a single `TaskStatus` using a unique key and a patch. */
+  updateTaskStatus?: Maybe<UpdateTaskStatusPayload>;
+  /** Updates a single `TaskStatus` using its globally unique id and a patch. */
+  updateTaskStatusByNodeId?: Maybe<UpdateTaskStatusPayload>;
   /** Updates a single `Users2Operation` using a unique key and a patch. */
   updateUsers2Operation?: Maybe<UpdateUsers2OperationPayload>;
   /** Updates a single `Users2Operation` using its globally unique id and a patch. */
@@ -778,8 +892,20 @@ export type MutationCreateOperationCategoryArgs = {
 
 
 /** The root mutation type which contains root level fields which mutate data. */
-export type MutationCreateUserArgs = {
-  input: CreateUserInput;
+export type MutationCreateRoleIfNotExistArgs = {
+  input: CreateRoleIfNotExistInput;
+};
+
+
+/** The root mutation type which contains root level fields which mutate data. */
+export type MutationCreateTaskArgs = {
+  input: CreateTaskInput;
+};
+
+
+/** The root mutation type which contains root level fields which mutate data. */
+export type MutationCreateTaskStatusArgs = {
+  input: CreateTaskStatusInput;
 };
 
 
@@ -826,14 +952,26 @@ export type MutationDeleteOperationCategoryByNodeIdArgs = {
 
 
 /** The root mutation type which contains root level fields which mutate data. */
-export type MutationDeleteUserArgs = {
-  input: DeleteUserInput;
+export type MutationDeleteTaskArgs = {
+  input: DeleteTaskInput;
 };
 
 
 /** The root mutation type which contains root level fields which mutate data. */
-export type MutationDeleteUserByNodeIdArgs = {
-  input: DeleteUserByNodeIdInput;
+export type MutationDeleteTaskByNodeIdArgs = {
+  input: DeleteTaskByNodeIdInput;
+};
+
+
+/** The root mutation type which contains root level fields which mutate data. */
+export type MutationDeleteTaskStatusArgs = {
+  input: DeleteTaskStatusInput;
+};
+
+
+/** The root mutation type which contains root level fields which mutate data. */
+export type MutationDeleteTaskStatusByNodeIdArgs = {
+  input: DeleteTaskStatusByNodeIdInput;
 };
 
 
@@ -846,6 +984,30 @@ export type MutationDeleteUsers2OperationArgs = {
 /** The root mutation type which contains root level fields which mutate data. */
 export type MutationDeleteUsers2OperationByNodeIdArgs = {
   input: DeleteUsers2OperationByNodeIdInput;
+};
+
+
+/** The root mutation type which contains root level fields which mutate data. */
+export type MutationRevokePrivilegesOfRoleOnSchemaArgs = {
+  input: RevokePrivilegesOfRoleOnSchemaInput;
+};
+
+
+/** The root mutation type which contains root level fields which mutate data. */
+export type MutationRevokeSecurityFunctionsForRoleOnSchemaArgs = {
+  input: RevokeSecurityFunctionsForRoleOnSchemaInput;
+};
+
+
+/** The root mutation type which contains root level fields which mutate data. */
+export type MutationSetAllPrivilegesForRoleOnSchemaArgs = {
+  input: SetAllPrivilegesForRoleOnSchemaInput;
+};
+
+
+/** The root mutation type which contains root level fields which mutate data. */
+export type MutationSetRolesAndPrivilegesArgs = {
+  input: SetRolesAndPrivilegesInput;
 };
 
 
@@ -886,14 +1048,26 @@ export type MutationUpdateOperationCategoryByNodeIdArgs = {
 
 
 /** The root mutation type which contains root level fields which mutate data. */
-export type MutationUpdateUserArgs = {
-  input: UpdateUserInput;
+export type MutationUpdateTaskArgs = {
+  input: UpdateTaskInput;
 };
 
 
 /** The root mutation type which contains root level fields which mutate data. */
-export type MutationUpdateUserByNodeIdArgs = {
-  input: UpdateUserByNodeIdInput;
+export type MutationUpdateTaskByNodeIdArgs = {
+  input: UpdateTaskByNodeIdInput;
+};
+
+
+/** The root mutation type which contains root level fields which mutate data. */
+export type MutationUpdateTaskStatusArgs = {
+  input: UpdateTaskStatusInput;
+};
+
+
+/** The root mutation type which contains root level fields which mutate data. */
+export type MutationUpdateTaskStatusByNodeIdArgs = {
+  input: UpdateTaskStatusByNodeIdInput;
 };
 
 
@@ -921,6 +1095,7 @@ export type Operation = Node & {
   category?: Maybe<OperationCategory>;
   categoryId?: Maybe<Scalars['Int']>;
   createdAt: Scalars['Datetime'];
+  createdBy?: Maybe<Scalars['String']>;
   date: Scalars['Date'];
   deletedAt?: Maybe<Scalars['Datetime']>;
   description: Scalars['String'];
@@ -929,10 +1104,9 @@ export type Operation = Node & {
   nodeId: Scalars['ID'];
   s3Key?: Maybe<Scalars['String']>;
   updatedAt: Scalars['Datetime'];
+  updatedBy?: Maybe<Scalars['String']>;
   /** Reads and enables pagination through a set of `Users2Operation`. */
   users2Operations: Users2OperationsConnection;
-  /** Reads and enables pagination through a set of `User`. */
-  usersByUsers2OperationOperationIdAndUserId: OperationUsersByUsers2OperationOperationIdAndUserIdManyToManyConnection;
 };
 
 
@@ -945,18 +1119,6 @@ export type OperationUsers2OperationsArgs = {
   last?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
   orderBy?: InputMaybe<Array<Users2OperationsOrderBy>>;
-};
-
-
-export type OperationUsersByUsers2OperationOperationIdAndUserIdArgs = {
-  after?: InputMaybe<Scalars['Cursor']>;
-  before?: InputMaybe<Scalars['Cursor']>;
-  condition?: InputMaybe<UserCondition>;
-  filter?: InputMaybe<UserFilter>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  orderBy?: InputMaybe<Array<UsersOrderBy>>;
 };
 
 /** A connection to a list of `OperationCategory` values. */
@@ -985,6 +1147,8 @@ export type OperationCategoriesEdge = {
 export enum OperationCategoriesOrderBy {
   CreatedAtAsc = 'CREATED_AT_ASC',
   CreatedAtDesc = 'CREATED_AT_DESC',
+  CreatedByAsc = 'CREATED_BY_ASC',
+  CreatedByDesc = 'CREATED_BY_DESC',
   DeletedAtAsc = 'DELETED_AT_ASC',
   DeletedAtDesc = 'DELETED_AT_DESC',
   IdAsc = 'ID_ASC',
@@ -995,12 +1159,15 @@ export enum OperationCategoriesOrderBy {
   PrimaryKeyAsc = 'PRIMARY_KEY_ASC',
   PrimaryKeyDesc = 'PRIMARY_KEY_DESC',
   UpdatedAtAsc = 'UPDATED_AT_ASC',
-  UpdatedAtDesc = 'UPDATED_AT_DESC'
+  UpdatedAtDesc = 'UPDATED_AT_DESC',
+  UpdatedByAsc = 'UPDATED_BY_ASC',
+  UpdatedByDesc = 'UPDATED_BY_DESC'
 }
 
 export type OperationCategory = Node & {
   __typename?: 'OperationCategory';
   createdAt: Scalars['Datetime'];
+  createdBy?: Maybe<Scalars['String']>;
   deletedAt?: Maybe<Scalars['Datetime']>;
   id: Scalars['Int'];
   name: Scalars['String'];
@@ -1009,6 +1176,7 @@ export type OperationCategory = Node & {
   /** Reads and enables pagination through a set of `Operation`. */
   operationsByCategoryId: OperationsConnection;
   updatedAt: Scalars['Datetime'];
+  updatedBy?: Maybe<Scalars['String']>;
 };
 
 
@@ -1030,6 +1198,8 @@ export type OperationCategoryOperationsByCategoryIdArgs = {
 export type OperationCategoryCondition = {
   /** Checks for equality with the object’s `createdAt` field. */
   createdAt?: InputMaybe<Scalars['Datetime']>;
+  /** Checks for equality with the object’s `createdBy` field. */
+  createdBy?: InputMaybe<Scalars['String']>;
   /** Checks for equality with the object’s `deletedAt` field. */
   deletedAt?: InputMaybe<Scalars['Datetime']>;
   /** Checks for equality with the object’s `id` field. */
@@ -1038,6 +1208,8 @@ export type OperationCategoryCondition = {
   name?: InputMaybe<Scalars['String']>;
   /** Checks for equality with the object’s `updatedAt` field. */
   updatedAt?: InputMaybe<Scalars['Datetime']>;
+  /** Checks for equality with the object’s `updatedBy` field. */
+  updatedBy?: InputMaybe<Scalars['String']>;
 };
 
 /** A filter to be used against `OperationCategory` object types. All fields are combined with a logical ‘and.’ */
@@ -1046,6 +1218,8 @@ export type OperationCategoryFilter = {
   and?: InputMaybe<Array<OperationCategoryFilter>>;
   /** Filter by the object’s `createdAt` field. */
   createdAt?: InputMaybe<DatetimeFilter>;
+  /** Filter by the object’s `createdBy` field. */
+  createdBy?: InputMaybe<StringFilter>;
   /** Filter by the object’s `deletedAt` field. */
   deletedAt?: InputMaybe<DatetimeFilter>;
   /** Filter by the object’s `id` field. */
@@ -1058,24 +1232,30 @@ export type OperationCategoryFilter = {
   or?: InputMaybe<Array<OperationCategoryFilter>>;
   /** Filter by the object’s `updatedAt` field. */
   updatedAt?: InputMaybe<DatetimeFilter>;
+  /** Filter by the object’s `updatedBy` field. */
+  updatedBy?: InputMaybe<StringFilter>;
 };
 
 /** An input for mutations affecting `OperationCategory` */
 export type OperationCategoryInput = {
   createdAt?: InputMaybe<Scalars['Datetime']>;
+  createdBy?: InputMaybe<Scalars['String']>;
   deletedAt?: InputMaybe<Scalars['Datetime']>;
   id?: InputMaybe<Scalars['Int']>;
   name: Scalars['String'];
   updatedAt?: InputMaybe<Scalars['Datetime']>;
+  updatedBy?: InputMaybe<Scalars['String']>;
 };
 
 /** Represents an update to a `OperationCategory`. Fields that are set will be updated. */
 export type OperationCategoryPatch = {
   createdAt?: InputMaybe<Scalars['Datetime']>;
+  createdBy?: InputMaybe<Scalars['String']>;
   deletedAt?: InputMaybe<Scalars['Datetime']>;
   id?: InputMaybe<Scalars['Int']>;
   name?: InputMaybe<Scalars['String']>;
   updatedAt?: InputMaybe<Scalars['Datetime']>;
+  updatedBy?: InputMaybe<Scalars['String']>;
 };
 
 /**
@@ -1089,6 +1269,8 @@ export type OperationCondition = {
   categoryId?: InputMaybe<Scalars['Int']>;
   /** Checks for equality with the object’s `createdAt` field. */
   createdAt?: InputMaybe<Scalars['Datetime']>;
+  /** Checks for equality with the object’s `createdBy` field. */
+  createdBy?: InputMaybe<Scalars['String']>;
   /** Checks for equality with the object’s `date` field. */
   date?: InputMaybe<Scalars['Date']>;
   /** Checks for equality with the object’s `deletedAt` field. */
@@ -1101,6 +1283,8 @@ export type OperationCondition = {
   s3Key?: InputMaybe<Scalars['String']>;
   /** Checks for equality with the object’s `updatedAt` field. */
   updatedAt?: InputMaybe<Scalars['Datetime']>;
+  /** Checks for equality with the object’s `updatedBy` field. */
+  updatedBy?: InputMaybe<Scalars['String']>;
 };
 
 /** A filter to be used against `Operation` object types. All fields are combined with a logical ‘and.’ */
@@ -1113,6 +1297,8 @@ export type OperationFilter = {
   categoryId?: InputMaybe<IntFilter>;
   /** Filter by the object’s `createdAt` field. */
   createdAt?: InputMaybe<DatetimeFilter>;
+  /** Filter by the object’s `createdBy` field. */
+  createdBy?: InputMaybe<StringFilter>;
   /** Filter by the object’s `date` field. */
   date?: InputMaybe<DateFilter>;
   /** Filter by the object’s `deletedAt` field. */
@@ -1129,6 +1315,8 @@ export type OperationFilter = {
   s3Key?: InputMaybe<StringFilter>;
   /** Filter by the object’s `updatedAt` field. */
   updatedAt?: InputMaybe<DatetimeFilter>;
+  /** Filter by the object’s `updatedBy` field. */
+  updatedBy?: InputMaybe<StringFilter>;
 };
 
 /** An input for mutations affecting `Operation` */
@@ -1136,12 +1324,14 @@ export type OperationInput = {
   amount: Scalars['BigFloat'];
   categoryId?: InputMaybe<Scalars['Int']>;
   createdAt?: InputMaybe<Scalars['Datetime']>;
+  createdBy?: InputMaybe<Scalars['String']>;
   date: Scalars['Date'];
   deletedAt?: InputMaybe<Scalars['Datetime']>;
   description: Scalars['String'];
   id?: InputMaybe<Scalars['Int']>;
   s3Key?: InputMaybe<Scalars['String']>;
   updatedAt?: InputMaybe<Scalars['Datetime']>;
+  updatedBy?: InputMaybe<Scalars['String']>;
 };
 
 /** Represents an update to a `Operation`. Fields that are set will be updated. */
@@ -1149,49 +1339,14 @@ export type OperationPatch = {
   amount?: InputMaybe<Scalars['BigFloat']>;
   categoryId?: InputMaybe<Scalars['Int']>;
   createdAt?: InputMaybe<Scalars['Datetime']>;
+  createdBy?: InputMaybe<Scalars['String']>;
   date?: InputMaybe<Scalars['Date']>;
   deletedAt?: InputMaybe<Scalars['Datetime']>;
   description?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['Int']>;
   s3Key?: InputMaybe<Scalars['String']>;
   updatedAt?: InputMaybe<Scalars['Datetime']>;
-};
-
-/** A connection to a list of `User` values, with data from `Users2Operation`. */
-export type OperationUsersByUsers2OperationOperationIdAndUserIdManyToManyConnection = {
-  __typename?: 'OperationUsersByUsers2OperationOperationIdAndUserIdManyToManyConnection';
-  /** A list of edges which contains the `User`, info from the `Users2Operation`, and the cursor to aid in pagination. */
-  edges: Array<OperationUsersByUsers2OperationOperationIdAndUserIdManyToManyEdge>;
-  /** A list of `User` objects. */
-  nodes: Array<Maybe<User>>;
-  /** Information to aid in pagination. */
-  pageInfo: PageInfo;
-  /** The count of *all* `User` you could get from the connection. */
-  totalCount: Scalars['Int'];
-};
-
-/** A `User` edge in the connection, with data from `Users2Operation`. */
-export type OperationUsersByUsers2OperationOperationIdAndUserIdManyToManyEdge = {
-  __typename?: 'OperationUsersByUsers2OperationOperationIdAndUserIdManyToManyEdge';
-  /** A cursor for use in pagination. */
-  cursor?: Maybe<Scalars['Cursor']>;
-  /** The `User` at the end of the edge. */
-  node?: Maybe<User>;
-  /** Reads and enables pagination through a set of `Users2Operation`. */
-  users2Operations: Users2OperationsConnection;
-};
-
-
-/** A `User` edge in the connection, with data from `Users2Operation`. */
-export type OperationUsersByUsers2OperationOperationIdAndUserIdManyToManyEdgeUsers2OperationsArgs = {
-  after?: InputMaybe<Scalars['Cursor']>;
-  before?: InputMaybe<Scalars['Cursor']>;
-  condition?: InputMaybe<Users2OperationCondition>;
-  filter?: InputMaybe<Users2OperationFilter>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  orderBy?: InputMaybe<Array<Users2OperationsOrderBy>>;
+  updatedBy?: InputMaybe<Scalars['String']>;
 };
 
 /** A connection to a list of `Operation` values. */
@@ -1224,6 +1379,8 @@ export enum OperationsOrderBy {
   CategoryIdDesc = 'CATEGORY_ID_DESC',
   CreatedAtAsc = 'CREATED_AT_ASC',
   CreatedAtDesc = 'CREATED_AT_DESC',
+  CreatedByAsc = 'CREATED_BY_ASC',
+  CreatedByDesc = 'CREATED_BY_DESC',
   DateAsc = 'DATE_ASC',
   DateDesc = 'DATE_DESC',
   DeletedAtAsc = 'DELETED_AT_ASC',
@@ -1238,7 +1395,9 @@ export enum OperationsOrderBy {
   S3KeyAsc = 'S3_KEY_ASC',
   S3KeyDesc = 'S3_KEY_DESC',
   UpdatedAtAsc = 'UPDATED_AT_ASC',
-  UpdatedAtDesc = 'UPDATED_AT_DESC'
+  UpdatedAtDesc = 'UPDATED_AT_DESC',
+  UpdatedByAsc = 'UPDATED_BY_ASC',
+  UpdatedByDesc = 'UPDATED_BY_DESC'
 }
 
 /** Information about pagination in a connection. */
@@ -1281,11 +1440,16 @@ export type Query = Node & {
    * which can only query top level fields if they are in a particular form.
    */
   query: Query;
-  user?: Maybe<User>;
-  /** Reads a single `User` using its globally unique `ID`. */
-  userByNodeId?: Maybe<User>;
-  /** Reads and enables pagination through a set of `User`. */
-  users?: Maybe<UsersConnection>;
+  task?: Maybe<Task>;
+  /** Reads a single `Task` using its globally unique `ID`. */
+  taskByNodeId?: Maybe<Task>;
+  taskStatus?: Maybe<TaskStatus>;
+  /** Reads a single `TaskStatus` using its globally unique `ID`. */
+  taskStatusByNodeId?: Maybe<TaskStatus>;
+  /** Reads and enables pagination through a set of `TaskStatus`. */
+  taskStatuses?: Maybe<TaskStatusesConnection>;
+  /** Reads and enables pagination through a set of `Task`. */
+  tasks?: Maybe<TasksConnection>;
   users2Operation?: Maybe<Users2Operation>;
   /** Reads a single `Users2Operation` using its globally unique `ID`. */
   users2OperationByNodeId?: Maybe<Users2Operation>;
@@ -1376,27 +1540,52 @@ export type QueryOperationsArgs = {
 
 
 /** The root query type which gives access points into the data universe. */
-export type QueryUserArgs = {
+export type QueryTaskArgs = {
   id: Scalars['Int'];
 };
 
 
 /** The root query type which gives access points into the data universe. */
-export type QueryUserByNodeIdArgs = {
+export type QueryTaskByNodeIdArgs = {
   nodeId: Scalars['ID'];
 };
 
 
 /** The root query type which gives access points into the data universe. */
-export type QueryUsersArgs = {
+export type QueryTaskStatusArgs = {
+  id: Scalars['Int'];
+};
+
+
+/** The root query type which gives access points into the data universe. */
+export type QueryTaskStatusByNodeIdArgs = {
+  nodeId: Scalars['ID'];
+};
+
+
+/** The root query type which gives access points into the data universe. */
+export type QueryTaskStatusesArgs = {
   after?: InputMaybe<Scalars['Cursor']>;
   before?: InputMaybe<Scalars['Cursor']>;
-  condition?: InputMaybe<UserCondition>;
-  filter?: InputMaybe<UserFilter>;
+  condition?: InputMaybe<TaskStatusCondition>;
+  filter?: InputMaybe<TaskStatusFilter>;
   first?: InputMaybe<Scalars['Int']>;
   last?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
-  orderBy?: InputMaybe<Array<UsersOrderBy>>;
+  orderBy?: InputMaybe<Array<TaskStatusesOrderBy>>;
+};
+
+
+/** The root query type which gives access points into the data universe. */
+export type QueryTasksArgs = {
+  after?: InputMaybe<Scalars['Cursor']>;
+  before?: InputMaybe<Scalars['Cursor']>;
+  condition?: InputMaybe<TaskCondition>;
+  filter?: InputMaybe<TaskFilter>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<Array<TasksOrderBy>>;
 };
 
 
@@ -1422,6 +1611,96 @@ export type QueryUsers2OperationsArgs = {
   last?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
   orderBy?: InputMaybe<Array<Users2OperationsOrderBy>>;
+};
+
+/** All input for the `revokePrivilegesOfRoleOnSchema` mutation. */
+export type RevokePrivilegesOfRoleOnSchemaInput = {
+  /**
+   * An arbitrary string value with no semantic meaning. Will be included in the
+   * payload verbatim. May be used to track mutations by the client.
+   */
+  clientMutationId?: InputMaybe<Scalars['String']>;
+  roleName?: InputMaybe<Scalars['String']>;
+  schemaName?: InputMaybe<Scalars['String']>;
+};
+
+/** The output of our `revokePrivilegesOfRoleOnSchema` mutation. */
+export type RevokePrivilegesOfRoleOnSchemaPayload = {
+  __typename?: 'RevokePrivilegesOfRoleOnSchemaPayload';
+  /**
+   * The exact same `clientMutationId` that was provided in the mutation input,
+   * unchanged and unused. May be used by a client to track mutations.
+   */
+  clientMutationId?: Maybe<Scalars['String']>;
+  /** Our root query field type. Allows us to run any query from our mutation payload. */
+  query?: Maybe<Query>;
+};
+
+/** All input for the `revokeSecurityFunctionsForRoleOnSchema` mutation. */
+export type RevokeSecurityFunctionsForRoleOnSchemaInput = {
+  /**
+   * An arbitrary string value with no semantic meaning. Will be included in the
+   * payload verbatim. May be used to track mutations by the client.
+   */
+  clientMutationId?: InputMaybe<Scalars['String']>;
+  roleName?: InputMaybe<Scalars['String']>;
+  schemaName?: InputMaybe<Scalars['String']>;
+};
+
+/** The output of our `revokeSecurityFunctionsForRoleOnSchema` mutation. */
+export type RevokeSecurityFunctionsForRoleOnSchemaPayload = {
+  __typename?: 'RevokeSecurityFunctionsForRoleOnSchemaPayload';
+  /**
+   * The exact same `clientMutationId` that was provided in the mutation input,
+   * unchanged and unused. May be used by a client to track mutations.
+   */
+  clientMutationId?: Maybe<Scalars['String']>;
+  /** Our root query field type. Allows us to run any query from our mutation payload. */
+  query?: Maybe<Query>;
+};
+
+/** All input for the `setAllPrivilegesForRoleOnSchema` mutation. */
+export type SetAllPrivilegesForRoleOnSchemaInput = {
+  /**
+   * An arbitrary string value with no semantic meaning. Will be included in the
+   * payload verbatim. May be used to track mutations by the client.
+   */
+  clientMutationId?: InputMaybe<Scalars['String']>;
+  roleName?: InputMaybe<Scalars['String']>;
+  schemaName?: InputMaybe<Scalars['String']>;
+};
+
+/** The output of our `setAllPrivilegesForRoleOnSchema` mutation. */
+export type SetAllPrivilegesForRoleOnSchemaPayload = {
+  __typename?: 'SetAllPrivilegesForRoleOnSchemaPayload';
+  /**
+   * The exact same `clientMutationId` that was provided in the mutation input,
+   * unchanged and unused. May be used by a client to track mutations.
+   */
+  clientMutationId?: Maybe<Scalars['String']>;
+  /** Our root query field type. Allows us to run any query from our mutation payload. */
+  query?: Maybe<Query>;
+};
+
+/** All input for the `setRolesAndPrivileges` mutation. */
+export type SetRolesAndPrivilegesInput = {
+  /**
+   * An arbitrary string value with no semantic meaning. Will be included in the
+   * payload verbatim. May be used to track mutations by the client.
+   */
+  clientMutationId?: InputMaybe<Scalars['String']>;
+};
+
+/** The output of our `setRolesAndPrivileges` mutation. */
+export type SetRolesAndPrivilegesPayload = {
+  __typename?: 'SetRolesAndPrivilegesPayload';
+  /**
+   * The exact same `clientMutationId` that was provided in the mutation input,
+   * unchanged and unused. May be used by a client to track mutations.
+   */
+  clientMutationId?: Maybe<Scalars['String']>;
+  /** Our root query field type. Allows us to run any query from our mutation payload. */
+  query?: Maybe<Query>;
 };
 
 /** A filter to be used against String fields. All fields are combined with a logical ‘and.’ */
@@ -1501,6 +1780,292 @@ export type StringFilter = {
   /** Starts with the specified string (case-insensitive). */
   startsWithInsensitive?: InputMaybe<Scalars['String']>;
 };
+
+export type Task = Node & {
+  __typename?: 'Task';
+  createdAt: Scalars['Datetime'];
+  createdBy?: Maybe<Scalars['String']>;
+  deletedAt?: Maybe<Scalars['Datetime']>;
+  description: Scalars['String'];
+  dueDate?: Maybe<Scalars['Date']>;
+  id: Scalars['Int'];
+  name: Scalars['String'];
+  /** A globally unique identifier. Can be used in various places throughout the system to identify this single value. */
+  nodeId: Scalars['ID'];
+  /** Reads a single `TaskStatus` that is related to this `Task`. */
+  status?: Maybe<TaskStatus>;
+  statusId: Scalars['Int'];
+  updatedAt: Scalars['Datetime'];
+  updatedBy?: Maybe<Scalars['String']>;
+};
+
+/** A condition to be used against `Task` object types. All fields are tested for equality and combined with a logical ‘and.’ */
+export type TaskCondition = {
+  /** Checks for equality with the object’s `createdAt` field. */
+  createdAt?: InputMaybe<Scalars['Datetime']>;
+  /** Checks for equality with the object’s `createdBy` field. */
+  createdBy?: InputMaybe<Scalars['String']>;
+  /** Checks for equality with the object’s `deletedAt` field. */
+  deletedAt?: InputMaybe<Scalars['Datetime']>;
+  /** Checks for equality with the object’s `description` field. */
+  description?: InputMaybe<Scalars['String']>;
+  /** Checks for equality with the object’s `dueDate` field. */
+  dueDate?: InputMaybe<Scalars['Date']>;
+  /** Checks for equality with the object’s `id` field. */
+  id?: InputMaybe<Scalars['Int']>;
+  /** Checks for equality with the object’s `name` field. */
+  name?: InputMaybe<Scalars['String']>;
+  /** Checks for equality with the object’s `statusId` field. */
+  statusId?: InputMaybe<Scalars['Int']>;
+  /** Checks for equality with the object’s `updatedAt` field. */
+  updatedAt?: InputMaybe<Scalars['Datetime']>;
+  /** Checks for equality with the object’s `updatedBy` field. */
+  updatedBy?: InputMaybe<Scalars['String']>;
+};
+
+/** A filter to be used against `Task` object types. All fields are combined with a logical ‘and.’ */
+export type TaskFilter = {
+  /** Checks for all expressions in this list. */
+  and?: InputMaybe<Array<TaskFilter>>;
+  /** Filter by the object’s `createdAt` field. */
+  createdAt?: InputMaybe<DatetimeFilter>;
+  /** Filter by the object’s `createdBy` field. */
+  createdBy?: InputMaybe<StringFilter>;
+  /** Filter by the object’s `deletedAt` field. */
+  deletedAt?: InputMaybe<DatetimeFilter>;
+  /** Filter by the object’s `description` field. */
+  description?: InputMaybe<StringFilter>;
+  /** Filter by the object’s `dueDate` field. */
+  dueDate?: InputMaybe<DateFilter>;
+  /** Filter by the object’s `id` field. */
+  id?: InputMaybe<IntFilter>;
+  /** Filter by the object’s `name` field. */
+  name?: InputMaybe<StringFilter>;
+  /** Negates the expression. */
+  not?: InputMaybe<TaskFilter>;
+  /** Checks for any expressions in this list. */
+  or?: InputMaybe<Array<TaskFilter>>;
+  /** Filter by the object’s `statusId` field. */
+  statusId?: InputMaybe<IntFilter>;
+  /** Filter by the object’s `updatedAt` field. */
+  updatedAt?: InputMaybe<DatetimeFilter>;
+  /** Filter by the object’s `updatedBy` field. */
+  updatedBy?: InputMaybe<StringFilter>;
+};
+
+/** An input for mutations affecting `Task` */
+export type TaskInput = {
+  createdAt?: InputMaybe<Scalars['Datetime']>;
+  createdBy?: InputMaybe<Scalars['String']>;
+  deletedAt?: InputMaybe<Scalars['Datetime']>;
+  description: Scalars['String'];
+  dueDate?: InputMaybe<Scalars['Date']>;
+  id?: InputMaybe<Scalars['Int']>;
+  name: Scalars['String'];
+  statusId: Scalars['Int'];
+  updatedAt?: InputMaybe<Scalars['Datetime']>;
+  updatedBy?: InputMaybe<Scalars['String']>;
+};
+
+/** Represents an update to a `Task`. Fields that are set will be updated. */
+export type TaskPatch = {
+  createdAt?: InputMaybe<Scalars['Datetime']>;
+  createdBy?: InputMaybe<Scalars['String']>;
+  deletedAt?: InputMaybe<Scalars['Datetime']>;
+  description?: InputMaybe<Scalars['String']>;
+  dueDate?: InputMaybe<Scalars['Date']>;
+  id?: InputMaybe<Scalars['Int']>;
+  name?: InputMaybe<Scalars['String']>;
+  statusId?: InputMaybe<Scalars['Int']>;
+  updatedAt?: InputMaybe<Scalars['Datetime']>;
+  updatedBy?: InputMaybe<Scalars['String']>;
+};
+
+export type TaskStatus = Node & {
+  __typename?: 'TaskStatus';
+  createdAt: Scalars['Datetime'];
+  createdBy?: Maybe<Scalars['String']>;
+  deletedAt?: Maybe<Scalars['Datetime']>;
+  id: Scalars['Int'];
+  name: Scalars['String'];
+  /** A globally unique identifier. Can be used in various places throughout the system to identify this single value. */
+  nodeId: Scalars['ID'];
+  /** Reads and enables pagination through a set of `Task`. */
+  tasksByStatusId: TasksConnection;
+  updatedAt: Scalars['Datetime'];
+  updatedBy?: Maybe<Scalars['String']>;
+};
+
+
+export type TaskStatusTasksByStatusIdArgs = {
+  after?: InputMaybe<Scalars['Cursor']>;
+  before?: InputMaybe<Scalars['Cursor']>;
+  condition?: InputMaybe<TaskCondition>;
+  filter?: InputMaybe<TaskFilter>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<Array<TasksOrderBy>>;
+};
+
+/**
+ * A condition to be used against `TaskStatus` object types. All fields are tested
+ * for equality and combined with a logical ‘and.’
+ */
+export type TaskStatusCondition = {
+  /** Checks for equality with the object’s `createdAt` field. */
+  createdAt?: InputMaybe<Scalars['Datetime']>;
+  /** Checks for equality with the object’s `createdBy` field. */
+  createdBy?: InputMaybe<Scalars['String']>;
+  /** Checks for equality with the object’s `deletedAt` field. */
+  deletedAt?: InputMaybe<Scalars['Datetime']>;
+  /** Checks for equality with the object’s `id` field. */
+  id?: InputMaybe<Scalars['Int']>;
+  /** Checks for equality with the object’s `name` field. */
+  name?: InputMaybe<Scalars['String']>;
+  /** Checks for equality with the object’s `updatedAt` field. */
+  updatedAt?: InputMaybe<Scalars['Datetime']>;
+  /** Checks for equality with the object’s `updatedBy` field. */
+  updatedBy?: InputMaybe<Scalars['String']>;
+};
+
+/** A filter to be used against `TaskStatus` object types. All fields are combined with a logical ‘and.’ */
+export type TaskStatusFilter = {
+  /** Checks for all expressions in this list. */
+  and?: InputMaybe<Array<TaskStatusFilter>>;
+  /** Filter by the object’s `createdAt` field. */
+  createdAt?: InputMaybe<DatetimeFilter>;
+  /** Filter by the object’s `createdBy` field. */
+  createdBy?: InputMaybe<StringFilter>;
+  /** Filter by the object’s `deletedAt` field. */
+  deletedAt?: InputMaybe<DatetimeFilter>;
+  /** Filter by the object’s `id` field. */
+  id?: InputMaybe<IntFilter>;
+  /** Filter by the object’s `name` field. */
+  name?: InputMaybe<StringFilter>;
+  /** Negates the expression. */
+  not?: InputMaybe<TaskStatusFilter>;
+  /** Checks for any expressions in this list. */
+  or?: InputMaybe<Array<TaskStatusFilter>>;
+  /** Filter by the object’s `updatedAt` field. */
+  updatedAt?: InputMaybe<DatetimeFilter>;
+  /** Filter by the object’s `updatedBy` field. */
+  updatedBy?: InputMaybe<StringFilter>;
+};
+
+/** An input for mutations affecting `TaskStatus` */
+export type TaskStatusInput = {
+  createdAt?: InputMaybe<Scalars['Datetime']>;
+  createdBy?: InputMaybe<Scalars['String']>;
+  deletedAt?: InputMaybe<Scalars['Datetime']>;
+  id?: InputMaybe<Scalars['Int']>;
+  name: Scalars['String'];
+  updatedAt?: InputMaybe<Scalars['Datetime']>;
+  updatedBy?: InputMaybe<Scalars['String']>;
+};
+
+/** Represents an update to a `TaskStatus`. Fields that are set will be updated. */
+export type TaskStatusPatch = {
+  createdAt?: InputMaybe<Scalars['Datetime']>;
+  createdBy?: InputMaybe<Scalars['String']>;
+  deletedAt?: InputMaybe<Scalars['Datetime']>;
+  id?: InputMaybe<Scalars['Int']>;
+  name?: InputMaybe<Scalars['String']>;
+  updatedAt?: InputMaybe<Scalars['Datetime']>;
+  updatedBy?: InputMaybe<Scalars['String']>;
+};
+
+/** A connection to a list of `TaskStatus` values. */
+export type TaskStatusesConnection = {
+  __typename?: 'TaskStatusesConnection';
+  /** A list of edges which contains the `TaskStatus` and cursor to aid in pagination. */
+  edges: Array<TaskStatusesEdge>;
+  /** A list of `TaskStatus` objects. */
+  nodes: Array<Maybe<TaskStatus>>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+  /** The count of *all* `TaskStatus` you could get from the connection. */
+  totalCount: Scalars['Int'];
+};
+
+/** A `TaskStatus` edge in the connection. */
+export type TaskStatusesEdge = {
+  __typename?: 'TaskStatusesEdge';
+  /** A cursor for use in pagination. */
+  cursor?: Maybe<Scalars['Cursor']>;
+  /** The `TaskStatus` at the end of the edge. */
+  node?: Maybe<TaskStatus>;
+};
+
+/** Methods to use when ordering `TaskStatus`. */
+export enum TaskStatusesOrderBy {
+  CreatedAtAsc = 'CREATED_AT_ASC',
+  CreatedAtDesc = 'CREATED_AT_DESC',
+  CreatedByAsc = 'CREATED_BY_ASC',
+  CreatedByDesc = 'CREATED_BY_DESC',
+  DeletedAtAsc = 'DELETED_AT_ASC',
+  DeletedAtDesc = 'DELETED_AT_DESC',
+  IdAsc = 'ID_ASC',
+  IdDesc = 'ID_DESC',
+  NameAsc = 'NAME_ASC',
+  NameDesc = 'NAME_DESC',
+  Natural = 'NATURAL',
+  PrimaryKeyAsc = 'PRIMARY_KEY_ASC',
+  PrimaryKeyDesc = 'PRIMARY_KEY_DESC',
+  UpdatedAtAsc = 'UPDATED_AT_ASC',
+  UpdatedAtDesc = 'UPDATED_AT_DESC',
+  UpdatedByAsc = 'UPDATED_BY_ASC',
+  UpdatedByDesc = 'UPDATED_BY_DESC'
+}
+
+/** A connection to a list of `Task` values. */
+export type TasksConnection = {
+  __typename?: 'TasksConnection';
+  /** A list of edges which contains the `Task` and cursor to aid in pagination. */
+  edges: Array<TasksEdge>;
+  /** A list of `Task` objects. */
+  nodes: Array<Maybe<Task>>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+  /** The count of *all* `Task` you could get from the connection. */
+  totalCount: Scalars['Int'];
+};
+
+/** A `Task` edge in the connection. */
+export type TasksEdge = {
+  __typename?: 'TasksEdge';
+  /** A cursor for use in pagination. */
+  cursor?: Maybe<Scalars['Cursor']>;
+  /** The `Task` at the end of the edge. */
+  node?: Maybe<Task>;
+};
+
+/** Methods to use when ordering `Task`. */
+export enum TasksOrderBy {
+  CreatedAtAsc = 'CREATED_AT_ASC',
+  CreatedAtDesc = 'CREATED_AT_DESC',
+  CreatedByAsc = 'CREATED_BY_ASC',
+  CreatedByDesc = 'CREATED_BY_DESC',
+  DeletedAtAsc = 'DELETED_AT_ASC',
+  DeletedAtDesc = 'DELETED_AT_DESC',
+  DescriptionAsc = 'DESCRIPTION_ASC',
+  DescriptionDesc = 'DESCRIPTION_DESC',
+  DueDateAsc = 'DUE_DATE_ASC',
+  DueDateDesc = 'DUE_DATE_DESC',
+  IdAsc = 'ID_ASC',
+  IdDesc = 'ID_DESC',
+  NameAsc = 'NAME_ASC',
+  NameDesc = 'NAME_DESC',
+  Natural = 'NATURAL',
+  PrimaryKeyAsc = 'PRIMARY_KEY_ASC',
+  PrimaryKeyDesc = 'PRIMARY_KEY_DESC',
+  StatusIdAsc = 'STATUS_ID_ASC',
+  StatusIdDesc = 'STATUS_ID_DESC',
+  UpdatedAtAsc = 'UPDATED_AT_ASC',
+  UpdatedAtDesc = 'UPDATED_AT_DESC',
+  UpdatedByAsc = 'UPDATED_BY_ASC',
+  UpdatedByDesc = 'UPDATED_BY_DESC'
+}
 
 /** All input for the `updateFlywaySchemaHistoryByNodeId` mutation. */
 export type UpdateFlywaySchemaHistoryByNodeIdInput = {
@@ -1645,34 +2210,34 @@ export type UpdateOperationPayloadOperationEdgeArgs = {
   orderBy?: InputMaybe<Array<OperationsOrderBy>>;
 };
 
-/** All input for the `updateUserByNodeId` mutation. */
-export type UpdateUserByNodeIdInput = {
+/** All input for the `updateTaskByNodeId` mutation. */
+export type UpdateTaskByNodeIdInput = {
   /**
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
    */
   clientMutationId?: InputMaybe<Scalars['String']>;
-  /** The globally unique `ID` which will identify a single `User` to be updated. */
+  /** The globally unique `ID` which will identify a single `Task` to be updated. */
   nodeId: Scalars['ID'];
-  /** An object where the defined keys will be set on the `User` being updated. */
-  patch: UserPatch;
+  /** An object where the defined keys will be set on the `Task` being updated. */
+  patch: TaskPatch;
 };
 
-/** All input for the `updateUser` mutation. */
-export type UpdateUserInput = {
+/** All input for the `updateTask` mutation. */
+export type UpdateTaskInput = {
   /**
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
    */
   clientMutationId?: InputMaybe<Scalars['String']>;
   id: Scalars['Int'];
-  /** An object where the defined keys will be set on the `User` being updated. */
-  patch: UserPatch;
+  /** An object where the defined keys will be set on the `Task` being updated. */
+  patch: TaskPatch;
 };
 
-/** The output of our update `User` mutation. */
-export type UpdateUserPayload = {
-  __typename?: 'UpdateUserPayload';
+/** The output of our update `Task` mutation. */
+export type UpdateTaskPayload = {
+  __typename?: 'UpdateTaskPayload';
   /**
    * The exact same `clientMutationId` that was provided in the mutation input,
    * unchanged and unused. May be used by a client to track mutations.
@@ -1680,16 +2245,65 @@ export type UpdateUserPayload = {
   clientMutationId?: Maybe<Scalars['String']>;
   /** Our root query field type. Allows us to run any query from our mutation payload. */
   query?: Maybe<Query>;
-  /** The `User` that was updated by this mutation. */
-  user?: Maybe<User>;
-  /** An edge for our `User`. May be used by Relay 1. */
-  userEdge?: Maybe<UsersEdge>;
+  /** Reads a single `TaskStatus` that is related to this `Task`. */
+  status?: Maybe<TaskStatus>;
+  /** The `Task` that was updated by this mutation. */
+  task?: Maybe<Task>;
+  /** An edge for our `Task`. May be used by Relay 1. */
+  taskEdge?: Maybe<TasksEdge>;
 };
 
 
-/** The output of our update `User` mutation. */
-export type UpdateUserPayloadUserEdgeArgs = {
-  orderBy?: InputMaybe<Array<UsersOrderBy>>;
+/** The output of our update `Task` mutation. */
+export type UpdateTaskPayloadTaskEdgeArgs = {
+  orderBy?: InputMaybe<Array<TasksOrderBy>>;
+};
+
+/** All input for the `updateTaskStatusByNodeId` mutation. */
+export type UpdateTaskStatusByNodeIdInput = {
+  /**
+   * An arbitrary string value with no semantic meaning. Will be included in the
+   * payload verbatim. May be used to track mutations by the client.
+   */
+  clientMutationId?: InputMaybe<Scalars['String']>;
+  /** The globally unique `ID` which will identify a single `TaskStatus` to be updated. */
+  nodeId: Scalars['ID'];
+  /** An object where the defined keys will be set on the `TaskStatus` being updated. */
+  patch: TaskStatusPatch;
+};
+
+/** All input for the `updateTaskStatus` mutation. */
+export type UpdateTaskStatusInput = {
+  /**
+   * An arbitrary string value with no semantic meaning. Will be included in the
+   * payload verbatim. May be used to track mutations by the client.
+   */
+  clientMutationId?: InputMaybe<Scalars['String']>;
+  id: Scalars['Int'];
+  /** An object where the defined keys will be set on the `TaskStatus` being updated. */
+  patch: TaskStatusPatch;
+};
+
+/** The output of our update `TaskStatus` mutation. */
+export type UpdateTaskStatusPayload = {
+  __typename?: 'UpdateTaskStatusPayload';
+  /**
+   * The exact same `clientMutationId` that was provided in the mutation input,
+   * unchanged and unused. May be used by a client to track mutations.
+   */
+  clientMutationId?: Maybe<Scalars['String']>;
+  /** Our root query field type. Allows us to run any query from our mutation payload. */
+  query?: Maybe<Query>;
+  /** The `TaskStatus` that was updated by this mutation. */
+  taskStatus?: Maybe<TaskStatus>;
+  /** An edge for our `TaskStatus`. May be used by Relay 1. */
+  taskStatusEdge?: Maybe<TaskStatusesEdge>;
+};
+
+
+/** The output of our update `TaskStatus` mutation. */
+export type UpdateTaskStatusPayloadTaskStatusEdgeArgs = {
+  orderBy?: InputMaybe<Array<TaskStatusesOrderBy>>;
 };
 
 /** All input for the `updateUsers2OperationByNodeId` mutation. */
@@ -1729,8 +2343,6 @@ export type UpdateUsers2OperationPayload = {
   operation?: Maybe<Operation>;
   /** Our root query field type. Allows us to run any query from our mutation payload. */
   query?: Maybe<Query>;
-  /** Reads a single `User` that is related to this `Users2Operation`. */
-  user?: Maybe<User>;
   /** The `Users2Operation` that was updated by this mutation. */
   users2Operation?: Maybe<Users2Operation>;
   /** An edge for our `Users2Operation`. May be used by Relay 1. */
@@ -1741,141 +2353,6 @@ export type UpdateUsers2OperationPayload = {
 /** The output of our update `Users2Operation` mutation. */
 export type UpdateUsers2OperationPayloadUsers2OperationEdgeArgs = {
   orderBy?: InputMaybe<Array<Users2OperationsOrderBy>>;
-};
-
-export type User = Node & {
-  __typename?: 'User';
-  createdAt: Scalars['Datetime'];
-  deletedAt?: Maybe<Scalars['Datetime']>;
-  email: Scalars['String'];
-  id: Scalars['Int'];
-  name: Scalars['String'];
-  /** A globally unique identifier. Can be used in various places throughout the system to identify this single value. */
-  nodeId: Scalars['ID'];
-  /** Reads and enables pagination through a set of `Operation`. */
-  operationsByUsers2OperationUserIdAndOperationId: UserOperationsByUsers2OperationUserIdAndOperationIdManyToManyConnection;
-  updatedAt: Scalars['Datetime'];
-  /** Reads and enables pagination through a set of `Users2Operation`. */
-  users2Operations: Users2OperationsConnection;
-};
-
-
-export type UserOperationsByUsers2OperationUserIdAndOperationIdArgs = {
-  after?: InputMaybe<Scalars['Cursor']>;
-  before?: InputMaybe<Scalars['Cursor']>;
-  condition?: InputMaybe<OperationCondition>;
-  filter?: InputMaybe<OperationFilter>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  orderBy?: InputMaybe<Array<OperationsOrderBy>>;
-};
-
-
-export type UserUsers2OperationsArgs = {
-  after?: InputMaybe<Scalars['Cursor']>;
-  before?: InputMaybe<Scalars['Cursor']>;
-  condition?: InputMaybe<Users2OperationCondition>;
-  filter?: InputMaybe<Users2OperationFilter>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  orderBy?: InputMaybe<Array<Users2OperationsOrderBy>>;
-};
-
-/** A condition to be used against `User` object types. All fields are tested for equality and combined with a logical ‘and.’ */
-export type UserCondition = {
-  /** Checks for equality with the object’s `createdAt` field. */
-  createdAt?: InputMaybe<Scalars['Datetime']>;
-  /** Checks for equality with the object’s `deletedAt` field. */
-  deletedAt?: InputMaybe<Scalars['Datetime']>;
-  /** Checks for equality with the object’s `email` field. */
-  email?: InputMaybe<Scalars['String']>;
-  /** Checks for equality with the object’s `id` field. */
-  id?: InputMaybe<Scalars['Int']>;
-  /** Checks for equality with the object’s `name` field. */
-  name?: InputMaybe<Scalars['String']>;
-  /** Checks for equality with the object’s `updatedAt` field. */
-  updatedAt?: InputMaybe<Scalars['Datetime']>;
-};
-
-/** A filter to be used against `User` object types. All fields are combined with a logical ‘and.’ */
-export type UserFilter = {
-  /** Checks for all expressions in this list. */
-  and?: InputMaybe<Array<UserFilter>>;
-  /** Filter by the object’s `createdAt` field. */
-  createdAt?: InputMaybe<DatetimeFilter>;
-  /** Filter by the object’s `deletedAt` field. */
-  deletedAt?: InputMaybe<DatetimeFilter>;
-  /** Filter by the object’s `email` field. */
-  email?: InputMaybe<StringFilter>;
-  /** Filter by the object’s `id` field. */
-  id?: InputMaybe<IntFilter>;
-  /** Filter by the object’s `name` field. */
-  name?: InputMaybe<StringFilter>;
-  /** Negates the expression. */
-  not?: InputMaybe<UserFilter>;
-  /** Checks for any expressions in this list. */
-  or?: InputMaybe<Array<UserFilter>>;
-  /** Filter by the object’s `updatedAt` field. */
-  updatedAt?: InputMaybe<DatetimeFilter>;
-};
-
-/** An input for mutations affecting `User` */
-export type UserInput = {
-  createdAt?: InputMaybe<Scalars['Datetime']>;
-  deletedAt?: InputMaybe<Scalars['Datetime']>;
-  email: Scalars['String'];
-  id?: InputMaybe<Scalars['Int']>;
-  name: Scalars['String'];
-  updatedAt?: InputMaybe<Scalars['Datetime']>;
-};
-
-/** A connection to a list of `Operation` values, with data from `Users2Operation`. */
-export type UserOperationsByUsers2OperationUserIdAndOperationIdManyToManyConnection = {
-  __typename?: 'UserOperationsByUsers2OperationUserIdAndOperationIdManyToManyConnection';
-  /** A list of edges which contains the `Operation`, info from the `Users2Operation`, and the cursor to aid in pagination. */
-  edges: Array<UserOperationsByUsers2OperationUserIdAndOperationIdManyToManyEdge>;
-  /** A list of `Operation` objects. */
-  nodes: Array<Maybe<Operation>>;
-  /** Information to aid in pagination. */
-  pageInfo: PageInfo;
-  /** The count of *all* `Operation` you could get from the connection. */
-  totalCount: Scalars['Int'];
-};
-
-/** A `Operation` edge in the connection, with data from `Users2Operation`. */
-export type UserOperationsByUsers2OperationUserIdAndOperationIdManyToManyEdge = {
-  __typename?: 'UserOperationsByUsers2OperationUserIdAndOperationIdManyToManyEdge';
-  /** A cursor for use in pagination. */
-  cursor?: Maybe<Scalars['Cursor']>;
-  /** The `Operation` at the end of the edge. */
-  node?: Maybe<Operation>;
-  /** Reads and enables pagination through a set of `Users2Operation`. */
-  users2Operations: Users2OperationsConnection;
-};
-
-
-/** A `Operation` edge in the connection, with data from `Users2Operation`. */
-export type UserOperationsByUsers2OperationUserIdAndOperationIdManyToManyEdgeUsers2OperationsArgs = {
-  after?: InputMaybe<Scalars['Cursor']>;
-  before?: InputMaybe<Scalars['Cursor']>;
-  condition?: InputMaybe<Users2OperationCondition>;
-  filter?: InputMaybe<Users2OperationFilter>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  orderBy?: InputMaybe<Array<Users2OperationsOrderBy>>;
-};
-
-/** Represents an update to a `User`. Fields that are set will be updated. */
-export type UserPatch = {
-  createdAt?: InputMaybe<Scalars['Datetime']>;
-  deletedAt?: InputMaybe<Scalars['Datetime']>;
-  email?: InputMaybe<Scalars['String']>;
-  id?: InputMaybe<Scalars['Int']>;
-  name?: InputMaybe<Scalars['String']>;
-  updatedAt?: InputMaybe<Scalars['Datetime']>;
 };
 
 export type Users2Operation = Node & {
@@ -1889,8 +2366,6 @@ export type Users2Operation = Node & {
   operation?: Maybe<Operation>;
   operationId: Scalars['Int'];
   updatedAt: Scalars['Datetime'];
-  /** Reads a single `User` that is related to this `Users2Operation`. */
-  user?: Maybe<User>;
   userId: Scalars['Int'];
 };
 
@@ -1996,47 +2471,6 @@ export enum Users2OperationsOrderBy {
   UserIdDesc = 'USER_ID_DESC'
 }
 
-/** A connection to a list of `User` values. */
-export type UsersConnection = {
-  __typename?: 'UsersConnection';
-  /** A list of edges which contains the `User` and cursor to aid in pagination. */
-  edges: Array<UsersEdge>;
-  /** A list of `User` objects. */
-  nodes: Array<Maybe<User>>;
-  /** Information to aid in pagination. */
-  pageInfo: PageInfo;
-  /** The count of *all* `User` you could get from the connection. */
-  totalCount: Scalars['Int'];
-};
-
-/** A `User` edge in the connection. */
-export type UsersEdge = {
-  __typename?: 'UsersEdge';
-  /** A cursor for use in pagination. */
-  cursor?: Maybe<Scalars['Cursor']>;
-  /** The `User` at the end of the edge. */
-  node?: Maybe<User>;
-};
-
-/** Methods to use when ordering `User`. */
-export enum UsersOrderBy {
-  CreatedAtAsc = 'CREATED_AT_ASC',
-  CreatedAtDesc = 'CREATED_AT_DESC',
-  DeletedAtAsc = 'DELETED_AT_ASC',
-  DeletedAtDesc = 'DELETED_AT_DESC',
-  EmailAsc = 'EMAIL_ASC',
-  EmailDesc = 'EMAIL_DESC',
-  IdAsc = 'ID_ASC',
-  IdDesc = 'ID_DESC',
-  NameAsc = 'NAME_ASC',
-  NameDesc = 'NAME_DESC',
-  Natural = 'NATURAL',
-  PrimaryKeyAsc = 'PRIMARY_KEY_ASC',
-  PrimaryKeyDesc = 'PRIMARY_KEY_DESC',
-  UpdatedAtAsc = 'UPDATED_AT_ASC',
-  UpdatedAtDesc = 'UPDATED_AT_DESC'
-}
-
 export type MyMutationMutationVariables = Exact<{
   input: CreateOperationCategoryInput;
 }>;
@@ -2050,6 +2484,18 @@ export type CreateOperationMutationVariables = Exact<{
 
 
 export type CreateOperationMutation = { __typename?: 'Mutation', createOperation?: { __typename?: 'CreateOperationPayload', operation?: { __typename?: 'Operation', id: number } | null } | null };
+
+export type CreateTaskMutationVariables = Exact<{
+  input: CreateTaskInput;
+}>;
+
+
+export type CreateTaskMutation = { __typename?: 'Mutation', createTask?: { __typename?: 'CreateTaskPayload', task?: { __typename?: 'Task', id: number } | null } | null };
+
+export type GetAllTasksQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetAllTasksQuery = { __typename?: 'Query', tasks?: { __typename?: 'TasksConnection', nodes: Array<{ __typename?: 'Task', id: number, name: string, description: string, status?: { __typename?: 'TaskStatus', name: string } | null } | null> } | null };
 
 
 export const MyMutationDocument = gql`
@@ -2123,3 +2569,79 @@ export function useCreateOperationMutation(baseOptions?: Apollo.MutationHookOpti
 export type CreateOperationMutationHookResult = ReturnType<typeof useCreateOperationMutation>;
 export type CreateOperationMutationResult = Apollo.MutationResult<CreateOperationMutation>;
 export type CreateOperationMutationOptions = Apollo.BaseMutationOptions<CreateOperationMutation, CreateOperationMutationVariables>;
+export const CreateTaskDocument = gql`
+    mutation CreateTask($input: CreateTaskInput!) {
+  createTask(input: $input) {
+    task {
+      id
+    }
+  }
+}
+    `;
+export type CreateTaskMutationFn = Apollo.MutationFunction<CreateTaskMutation, CreateTaskMutationVariables>;
+
+/**
+ * __useCreateTaskMutation__
+ *
+ * To run a mutation, you first call `useCreateTaskMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useCreateTaskMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [createTaskMutation, { data, loading, error }] = useCreateTaskMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useCreateTaskMutation(baseOptions?: Apollo.MutationHookOptions<CreateTaskMutation, CreateTaskMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<CreateTaskMutation, CreateTaskMutationVariables>(CreateTaskDocument, options);
+      }
+export type CreateTaskMutationHookResult = ReturnType<typeof useCreateTaskMutation>;
+export type CreateTaskMutationResult = Apollo.MutationResult<CreateTaskMutation>;
+export type CreateTaskMutationOptions = Apollo.BaseMutationOptions<CreateTaskMutation, CreateTaskMutationVariables>;
+export const GetAllTasksDocument = gql`
+    query GetAllTasks {
+  tasks {
+    nodes {
+      id
+      name
+      description
+      status {
+        name
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetAllTasksQuery__
+ *
+ * To run a query within a React component, call `useGetAllTasksQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetAllTasksQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetAllTasksQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetAllTasksQuery(baseOptions?: Apollo.QueryHookOptions<GetAllTasksQuery, GetAllTasksQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetAllTasksQuery, GetAllTasksQueryVariables>(GetAllTasksDocument, options);
+      }
+export function useGetAllTasksLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetAllTasksQuery, GetAllTasksQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetAllTasksQuery, GetAllTasksQueryVariables>(GetAllTasksDocument, options);
+        }
+export type GetAllTasksQueryHookResult = ReturnType<typeof useGetAllTasksQuery>;
+export type GetAllTasksLazyQueryHookResult = ReturnType<typeof useGetAllTasksLazyQuery>;
+export type GetAllTasksQueryResult = Apollo.QueryResult<GetAllTasksQuery, GetAllTasksQueryVariables>;
