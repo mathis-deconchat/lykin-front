@@ -1,0 +1,21 @@
+mutation CreateTask($input: CreateTaskInput!) {
+  createTask(input: $input){
+    task{
+      id
+    }
+  }
+}
+
+query GetAllTasks {
+  tasks {
+    nodes {
+      id
+      name
+      description
+      status {
+        name
+      }
+    }
+  }
+}
+
