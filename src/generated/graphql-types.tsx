@@ -3597,6 +3597,11 @@ export type DeleteOperationCategoryByIdMutationVariables = Exact<{
 
 export type DeleteOperationCategoryByIdMutation = { __typename?: 'Mutation', deleteOperationCategory?: { __typename?: 'DeleteOperationCategoryPayload', operationCategory?: { __typename?: 'OperationCategory', id: number } | null } | null };
 
+export type GetAllOperationsForHomePageQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetAllOperationsForHomePageQuery = { __typename?: 'Query', operations?: { __typename?: 'OperationsConnection', nodes: Array<{ __typename?: 'Operation', id: number, amount: string, createdAt: any, category?: { __typename?: 'OperationCategory', name: string, nodeId: string } | null } | null> } | null };
+
 export type CreateTaskMutationVariables = Exact<{
   input: CreateTaskInput;
 }>;
@@ -3900,6 +3905,48 @@ export function useDeleteOperationCategoryByIdMutation(baseOptions?: Apollo.Muta
 export type DeleteOperationCategoryByIdMutationHookResult = ReturnType<typeof useDeleteOperationCategoryByIdMutation>;
 export type DeleteOperationCategoryByIdMutationResult = Apollo.MutationResult<DeleteOperationCategoryByIdMutation>;
 export type DeleteOperationCategoryByIdMutationOptions = Apollo.BaseMutationOptions<DeleteOperationCategoryByIdMutation, DeleteOperationCategoryByIdMutationVariables>;
+export const GetAllOperationsForHomePageDocument = gql`
+    query GetAllOperationsForHomePage {
+  operations {
+    nodes {
+      category {
+        name
+        nodeId
+      }
+      id
+      amount
+      createdAt
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetAllOperationsForHomePageQuery__
+ *
+ * To run a query within a React component, call `useGetAllOperationsForHomePageQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetAllOperationsForHomePageQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetAllOperationsForHomePageQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetAllOperationsForHomePageQuery(baseOptions?: Apollo.QueryHookOptions<GetAllOperationsForHomePageQuery, GetAllOperationsForHomePageQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetAllOperationsForHomePageQuery, GetAllOperationsForHomePageQueryVariables>(GetAllOperationsForHomePageDocument, options);
+      }
+export function useGetAllOperationsForHomePageLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetAllOperationsForHomePageQuery, GetAllOperationsForHomePageQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetAllOperationsForHomePageQuery, GetAllOperationsForHomePageQueryVariables>(GetAllOperationsForHomePageDocument, options);
+        }
+export type GetAllOperationsForHomePageQueryHookResult = ReturnType<typeof useGetAllOperationsForHomePageQuery>;
+export type GetAllOperationsForHomePageLazyQueryHookResult = ReturnType<typeof useGetAllOperationsForHomePageLazyQuery>;
+export type GetAllOperationsForHomePageQueryResult = Apollo.QueryResult<GetAllOperationsForHomePageQuery, GetAllOperationsForHomePageQueryVariables>;
 export const CreateTaskDocument = gql`
     mutation CreateTask($input: CreateTaskInput!) {
   createTask(input: $input) {

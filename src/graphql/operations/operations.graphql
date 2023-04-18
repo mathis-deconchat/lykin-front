@@ -33,4 +33,19 @@ mutation DeleteOperationCategoryById($input: DeleteOperationCategoryInput!) {
 }
 
 
+query GetAllOperationsForHomePage {
+  operations {
+    nodes {
+      category {
+        name
+        nodeId
+      }
+      id
+      amount
+      createdAt
+    }
+  }
+}
+
+
 
