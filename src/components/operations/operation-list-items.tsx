@@ -1,7 +1,19 @@
 import React from 'react'
+import { Operation } from '../../generated/graphql-types';
+import { OperationCategory } from '../../generated/graphql-types';
+
+type Subset<K> = {
+    [attr in keyof K]?: K[attr] extends object
+        ? Subset<K[attr]>
+        : K[attr] extends object | null
+        ? Subset<K[attr]> | null
+        : K[attr] extends object | null | undefined
+        ? Subset<K[attr]> | null | undefined
+        : K[attr];
+};
 
 type OperationListItemsProps = {
-  operation?: any;
+  operation: Subset<Operation>;
   openModal: () => void;
 };
 
@@ -14,10 +26,10 @@ const OperationListItems: React.FC<OperationListItemsProps> = (props) => {
         </div>
         <div className='ml-3'>
             <p className='text-lg font-bold'>Mathis Deconchat</p>
-            <p className='text-sm text-gray-600'>14h45 - Courses - Alimentaires</p>
+            <p className='text-sm text-gray-600'>{props.operation?.createdAt + ' ' + props.operation!.category!.name!}</p>
         </div>
         <div className='ml-3'>
-            <p className='mt-3  font-bold text-red-400 inline-block'>- €50.00</p>
+            <p className='mt-3  font-bold text-red-400 inline-block'>- {props.operation.amount}</p>
 
         </div>
 

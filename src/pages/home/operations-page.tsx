@@ -28,6 +28,7 @@ import {
   Operation,
   OperationCategory,
   useCreateOperationMutation,
+  useGetAllOperationsForHomePageQuery,
 } from "../../generated/graphql-types";
 import apolloClient from "../../shared/apollo/apollo.provider";
 
@@ -41,13 +42,16 @@ const customStyles = {
     transform: "translate(-50%, -50%)",
   },
 };
+
+
 const OperationPage = () => {
   const [operation, setOperation] =
     React.useState<Partial<Operation | null>>(null);
   const [modalIsOpenOperationDetail, setIsOpenModalOperationDetails] =
     React.useState(false);
 
-  const [createOperationGl, { data }] = useCreateOperationMutation();
+  const [createOperationGl] = useCreateOperationMutation();
+  const { data, loading, error } = useGetAllOperationsForHomePageQuery();
 
   function updateOperation(newData: Partial<Operation | OperationCategory>) {
     console.log(newData);
@@ -84,12 +88,13 @@ const OperationPage = () => {
     createOperationGl({
       variables: {
         input: operationInput,
-      }, onCompleted: (data) => {
+      },
+      onCompleted: (data) => {
         console.log(data);
         modal.closeModalIsCreationOperationStep2();
-        setOperation(null); 
-        apolloClient.refetchQueries({ include: ["GetOperations"] });
-      }
+        setOperation(null);
+        apolloClient.refetchQueries({ include: ["GetAllOperationsForHomePage"] });
+      },
     });
 
     console.log(operation);
@@ -147,9 +152,19 @@ const OperationPage = () => {
         </div>
         <p className="text-black text-xl font-bold mt-3">Activités</p>
         <div className="flex flex-col space-y-4 mb-6">
-          <OperationListItems
-            openModal={() => openOperationDetailModal()}
-          ></OperationListItems>
+          {(!loading && data && data.operations && data.operations.nodes.length > 0)
+            ? data.operations.nodes.map((operation) => (
+              operation ? (
+
+                <OperationListItems
+                  key={operation!.id}
+                  operation={operation}
+                  openModal={() => openOperationDetailModal()}
+                ></OperationListItems>
+              ) : null
+              ))
+            : "loading"}
+
 
           <div className="bg-blue-200 p-1 px-3  text-sm  rounded-full text-gray-900 flex justify-center">
             <p>Voir plus</p>
