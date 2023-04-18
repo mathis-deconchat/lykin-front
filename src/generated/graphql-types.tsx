@@ -13,43 +13,42 @@ export type Scalars = {
   Boolean: boolean;
   Int: number;
   Float: number;
-  /** A floating point number that requires more precision than IEEE 754 binary 64 */
-  BigFloat: any;
-  /** A location in a connection that can be used for resuming pagination. */
   Cursor: any;
-  /** The day, does not include a time. */
   Date: any;
-  /**
-   * A point in time as described by the [ISO
-   * 8601](https://en.wikipedia.org/wiki/ISO_8601) standard. May or may not include a timezone.
-   */
   Datetime: any;
 };
 
-/** A filter to be used against BigFloat fields. All fields are combined with a logical ‘and.’ */
-export type BigFloatFilter = {
-  /** Not equal to the specified value, treating null like an ordinary value. */
-  distinctFrom?: InputMaybe<Scalars['BigFloat']>;
-  /** Equal to the specified value. */
-  equalTo?: InputMaybe<Scalars['BigFloat']>;
-  /** Greater than the specified value. */
-  greaterThan?: InputMaybe<Scalars['BigFloat']>;
-  /** Greater than or equal to the specified value. */
-  greaterThanOrEqualTo?: InputMaybe<Scalars['BigFloat']>;
-  /** Included in the specified list. */
-  in?: InputMaybe<Array<Scalars['BigFloat']>>;
-  /** Is null (if `true` is specified) or is not null (if `false` is specified). */
-  isNull?: InputMaybe<Scalars['Boolean']>;
-  /** Less than the specified value. */
-  lessThan?: InputMaybe<Scalars['BigFloat']>;
-  /** Less than or equal to the specified value. */
-  lessThanOrEqualTo?: InputMaybe<Scalars['BigFloat']>;
-  /** Equal to the specified value, treating null like an ordinary value. */
-  notDistinctFrom?: InputMaybe<Scalars['BigFloat']>;
-  /** Not equal to the specified value. */
-  notEqualTo?: InputMaybe<Scalars['BigFloat']>;
-  /** Not included in the specified list. */
-  notIn?: InputMaybe<Array<Scalars['BigFloat']>>;
+/** All input for the `addUserToGroup` mutation. */
+export type AddUserToGroupInput = {
+  _inputCode?: InputMaybe<Scalars['String']>;
+  /**
+   * An arbitrary string value with no semantic meaning. Will be included in the
+   * payload verbatim. May be used to track mutations by the client.
+   */
+  clientMutationId?: InputMaybe<Scalars['String']>;
+};
+
+/** The output of our `addUserToGroup` mutation. */
+export type AddUserToGroupPayload = {
+  __typename?: 'AddUserToGroupPayload';
+  /**
+   * The exact same `clientMutationId` that was provided in the mutation input,
+   * unchanged and unused. May be used by a client to track mutations.
+   */
+  clientMutationId?: Maybe<Scalars['String']>;
+  group?: Maybe<Group>;
+  /** An edge for our `Group`. May be used by Relay 1. */
+  groupEdge?: Maybe<GroupsEdge>;
+  /** Our root query field type. Allows us to run any query from our mutation payload. */
+  query?: Maybe<Query>;
+  /** Reads a single `GroupsType` that is related to this `Group`. */
+  type?: Maybe<GroupsType>;
+};
+
+
+/** The output of our `addUserToGroup` mutation. */
+export type AddUserToGroupPayloadGroupEdgeArgs = {
+  orderBy?: InputMaybe<Array<GroupsOrderBy>>;
 };
 
 /** A filter to be used against Boolean fields. All fields are combined with a logical ‘and.’ */
@@ -109,6 +108,74 @@ export type CreateFlywaySchemaHistoryPayload = {
 /** The output of our create `FlywaySchemaHistory` mutation. */
 export type CreateFlywaySchemaHistoryPayloadFlywaySchemaHistoryEdgeArgs = {
   orderBy?: InputMaybe<Array<FlywaySchemaHistoriesOrderBy>>;
+};
+
+/** All input for the create `Group` mutation. */
+export type CreateGroupInput = {
+  /**
+   * An arbitrary string value with no semantic meaning. Will be included in the
+   * payload verbatim. May be used to track mutations by the client.
+   */
+  clientMutationId?: InputMaybe<Scalars['String']>;
+  /** The `Group` to be created by this mutation. */
+  group: GroupInput;
+};
+
+/** The output of our create `Group` mutation. */
+export type CreateGroupPayload = {
+  __typename?: 'CreateGroupPayload';
+  /**
+   * The exact same `clientMutationId` that was provided in the mutation input,
+   * unchanged and unused. May be used by a client to track mutations.
+   */
+  clientMutationId?: Maybe<Scalars['String']>;
+  /** The `Group` that was created by this mutation. */
+  group?: Maybe<Group>;
+  /** An edge for our `Group`. May be used by Relay 1. */
+  groupEdge?: Maybe<GroupsEdge>;
+  /** Our root query field type. Allows us to run any query from our mutation payload. */
+  query?: Maybe<Query>;
+  /** Reads a single `GroupsType` that is related to this `Group`. */
+  type?: Maybe<GroupsType>;
+};
+
+
+/** The output of our create `Group` mutation. */
+export type CreateGroupPayloadGroupEdgeArgs = {
+  orderBy?: InputMaybe<Array<GroupsOrderBy>>;
+};
+
+/** All input for the create `GroupsType` mutation. */
+export type CreateGroupsTypeInput = {
+  /**
+   * An arbitrary string value with no semantic meaning. Will be included in the
+   * payload verbatim. May be used to track mutations by the client.
+   */
+  clientMutationId?: InputMaybe<Scalars['String']>;
+  /** The `GroupsType` to be created by this mutation. */
+  groupsType: GroupsTypeInput;
+};
+
+/** The output of our create `GroupsType` mutation. */
+export type CreateGroupsTypePayload = {
+  __typename?: 'CreateGroupsTypePayload';
+  /**
+   * The exact same `clientMutationId` that was provided in the mutation input,
+   * unchanged and unused. May be used by a client to track mutations.
+   */
+  clientMutationId?: Maybe<Scalars['String']>;
+  /** The `GroupsType` that was created by this mutation. */
+  groupsType?: Maybe<GroupsType>;
+  /** An edge for our `GroupsType`. May be used by Relay 1. */
+  groupsTypeEdge?: Maybe<GroupsTypesEdge>;
+  /** Our root query field type. Allows us to run any query from our mutation payload. */
+  query?: Maybe<Query>;
+};
+
+
+/** The output of our create `GroupsType` mutation. */
+export type CreateGroupsTypePayloadGroupsTypeEdgeArgs = {
+  orderBy?: InputMaybe<Array<GroupsTypesOrderBy>>;
 };
 
 /** All input for the create `OperationCategory` mutation. */
@@ -269,6 +336,41 @@ export type CreateTaskStatusPayloadTaskStatusEdgeArgs = {
   orderBy?: InputMaybe<Array<TaskStatusesOrderBy>>;
 };
 
+/** All input for the create `Users2Group` mutation. */
+export type CreateUsers2GroupInput = {
+  /**
+   * An arbitrary string value with no semantic meaning. Will be included in the
+   * payload verbatim. May be used to track mutations by the client.
+   */
+  clientMutationId?: InputMaybe<Scalars['String']>;
+  /** The `Users2Group` to be created by this mutation. */
+  users2Group: Users2GroupInput;
+};
+
+/** The output of our create `Users2Group` mutation. */
+export type CreateUsers2GroupPayload = {
+  __typename?: 'CreateUsers2GroupPayload';
+  /**
+   * The exact same `clientMutationId` that was provided in the mutation input,
+   * unchanged and unused. May be used by a client to track mutations.
+   */
+  clientMutationId?: Maybe<Scalars['String']>;
+  /** Reads a single `Group` that is related to this `Users2Group`. */
+  group?: Maybe<Group>;
+  /** Our root query field type. Allows us to run any query from our mutation payload. */
+  query?: Maybe<Query>;
+  /** The `Users2Group` that was created by this mutation. */
+  users2Group?: Maybe<Users2Group>;
+  /** An edge for our `Users2Group`. May be used by Relay 1. */
+  users2GroupEdge?: Maybe<Users2GroupsEdge>;
+};
+
+
+/** The output of our create `Users2Group` mutation. */
+export type CreateUsers2GroupPayloadUsers2GroupEdgeArgs = {
+  orderBy?: InputMaybe<Array<Users2GroupsOrderBy>>;
+};
+
 /** All input for the create `Users2Operation` mutation. */
 export type CreateUsers2OperationInput = {
   /**
@@ -398,6 +500,96 @@ export type DeleteFlywaySchemaHistoryPayload = {
 /** The output of our delete `FlywaySchemaHistory` mutation. */
 export type DeleteFlywaySchemaHistoryPayloadFlywaySchemaHistoryEdgeArgs = {
   orderBy?: InputMaybe<Array<FlywaySchemaHistoriesOrderBy>>;
+};
+
+/** All input for the `deleteGroupByNodeId` mutation. */
+export type DeleteGroupByNodeIdInput = {
+  /**
+   * An arbitrary string value with no semantic meaning. Will be included in the
+   * payload verbatim. May be used to track mutations by the client.
+   */
+  clientMutationId?: InputMaybe<Scalars['String']>;
+  /** The globally unique `ID` which will identify a single `Group` to be deleted. */
+  nodeId: Scalars['ID'];
+};
+
+/** All input for the `deleteGroup` mutation. */
+export type DeleteGroupInput = {
+  /**
+   * An arbitrary string value with no semantic meaning. Will be included in the
+   * payload verbatim. May be used to track mutations by the client.
+   */
+  clientMutationId?: InputMaybe<Scalars['String']>;
+  id: Scalars['Int'];
+};
+
+/** The output of our delete `Group` mutation. */
+export type DeleteGroupPayload = {
+  __typename?: 'DeleteGroupPayload';
+  /**
+   * The exact same `clientMutationId` that was provided in the mutation input,
+   * unchanged and unused. May be used by a client to track mutations.
+   */
+  clientMutationId?: Maybe<Scalars['String']>;
+  deletedGroupNodeId?: Maybe<Scalars['ID']>;
+  /** The `Group` that was deleted by this mutation. */
+  group?: Maybe<Group>;
+  /** An edge for our `Group`. May be used by Relay 1. */
+  groupEdge?: Maybe<GroupsEdge>;
+  /** Our root query field type. Allows us to run any query from our mutation payload. */
+  query?: Maybe<Query>;
+  /** Reads a single `GroupsType` that is related to this `Group`. */
+  type?: Maybe<GroupsType>;
+};
+
+
+/** The output of our delete `Group` mutation. */
+export type DeleteGroupPayloadGroupEdgeArgs = {
+  orderBy?: InputMaybe<Array<GroupsOrderBy>>;
+};
+
+/** All input for the `deleteGroupsTypeByNodeId` mutation. */
+export type DeleteGroupsTypeByNodeIdInput = {
+  /**
+   * An arbitrary string value with no semantic meaning. Will be included in the
+   * payload verbatim. May be used to track mutations by the client.
+   */
+  clientMutationId?: InputMaybe<Scalars['String']>;
+  /** The globally unique `ID` which will identify a single `GroupsType` to be deleted. */
+  nodeId: Scalars['ID'];
+};
+
+/** All input for the `deleteGroupsType` mutation. */
+export type DeleteGroupsTypeInput = {
+  /**
+   * An arbitrary string value with no semantic meaning. Will be included in the
+   * payload verbatim. May be used to track mutations by the client.
+   */
+  clientMutationId?: InputMaybe<Scalars['String']>;
+  id: Scalars['Int'];
+};
+
+/** The output of our delete `GroupsType` mutation. */
+export type DeleteGroupsTypePayload = {
+  __typename?: 'DeleteGroupsTypePayload';
+  /**
+   * The exact same `clientMutationId` that was provided in the mutation input,
+   * unchanged and unused. May be used by a client to track mutations.
+   */
+  clientMutationId?: Maybe<Scalars['String']>;
+  deletedGroupsTypeNodeId?: Maybe<Scalars['ID']>;
+  /** The `GroupsType` that was deleted by this mutation. */
+  groupsType?: Maybe<GroupsType>;
+  /** An edge for our `GroupsType`. May be used by Relay 1. */
+  groupsTypeEdge?: Maybe<GroupsTypesEdge>;
+  /** Our root query field type. Allows us to run any query from our mutation payload. */
+  query?: Maybe<Query>;
+};
+
+
+/** The output of our delete `GroupsType` mutation. */
+export type DeleteGroupsTypePayloadGroupsTypeEdgeArgs = {
+  orderBy?: InputMaybe<Array<GroupsTypesOrderBy>>;
 };
 
 /** All input for the `deleteOperationByNodeId` mutation. */
@@ -578,6 +770,52 @@ export type DeleteTaskStatusPayload = {
 /** The output of our delete `TaskStatus` mutation. */
 export type DeleteTaskStatusPayloadTaskStatusEdgeArgs = {
   orderBy?: InputMaybe<Array<TaskStatusesOrderBy>>;
+};
+
+/** All input for the `deleteUsers2GroupByNodeId` mutation. */
+export type DeleteUsers2GroupByNodeIdInput = {
+  /**
+   * An arbitrary string value with no semantic meaning. Will be included in the
+   * payload verbatim. May be used to track mutations by the client.
+   */
+  clientMutationId?: InputMaybe<Scalars['String']>;
+  /** The globally unique `ID` which will identify a single `Users2Group` to be deleted. */
+  nodeId: Scalars['ID'];
+};
+
+/** All input for the `deleteUsers2Group` mutation. */
+export type DeleteUsers2GroupInput = {
+  /**
+   * An arbitrary string value with no semantic meaning. Will be included in the
+   * payload verbatim. May be used to track mutations by the client.
+   */
+  clientMutationId?: InputMaybe<Scalars['String']>;
+  id: Scalars['Int'];
+};
+
+/** The output of our delete `Users2Group` mutation. */
+export type DeleteUsers2GroupPayload = {
+  __typename?: 'DeleteUsers2GroupPayload';
+  /**
+   * The exact same `clientMutationId` that was provided in the mutation input,
+   * unchanged and unused. May be used by a client to track mutations.
+   */
+  clientMutationId?: Maybe<Scalars['String']>;
+  deletedUsers2GroupNodeId?: Maybe<Scalars['ID']>;
+  /** Reads a single `Group` that is related to this `Users2Group`. */
+  group?: Maybe<Group>;
+  /** Our root query field type. Allows us to run any query from our mutation payload. */
+  query?: Maybe<Query>;
+  /** The `Users2Group` that was deleted by this mutation. */
+  users2Group?: Maybe<Users2Group>;
+  /** An edge for our `Users2Group`. May be used by Relay 1. */
+  users2GroupEdge?: Maybe<Users2GroupsEdge>;
+};
+
+
+/** The output of our delete `Users2Group` mutation. */
+export type DeleteUsers2GroupPayloadUsers2GroupEdgeArgs = {
+  orderBy?: InputMaybe<Array<Users2GroupsOrderBy>>;
 };
 
 /** All input for the `deleteUsers2OperationByNodeId` mutation. */
@@ -776,6 +1014,346 @@ export type FlywaySchemaHistoryPatch = {
   version?: InputMaybe<Scalars['String']>;
 };
 
+/** All input for the `getUserId` mutation. */
+export type GetUserIdInput = {
+  /**
+   * An arbitrary string value with no semantic meaning. Will be included in the
+   * payload verbatim. May be used to track mutations by the client.
+   */
+  clientMutationId?: InputMaybe<Scalars['String']>;
+};
+
+/** The output of our `getUserId` mutation. */
+export type GetUserIdPayload = {
+  __typename?: 'GetUserIdPayload';
+  /**
+   * The exact same `clientMutationId` that was provided in the mutation input,
+   * unchanged and unused. May be used by a client to track mutations.
+   */
+  clientMutationId?: Maybe<Scalars['String']>;
+  /** Our root query field type. Allows us to run any query from our mutation payload. */
+  query?: Maybe<Query>;
+  string?: Maybe<Scalars['String']>;
+};
+
+export type Group = Node & {
+  __typename?: 'Group';
+  code?: Maybe<Scalars['String']>;
+  createdAt: Scalars['Datetime'];
+  createdBy?: Maybe<Scalars['String']>;
+  deletedAt?: Maybe<Scalars['Datetime']>;
+  id: Scalars['Int'];
+  name: Scalars['String'];
+  /** A globally unique identifier. Can be used in various places throughout the system to identify this single value. */
+  nodeId: Scalars['ID'];
+  slugId: Scalars['String'];
+  /** Reads a single `GroupsType` that is related to this `Group`. */
+  type?: Maybe<GroupsType>;
+  typeId: Scalars['Int'];
+  updatedAt: Scalars['Datetime'];
+  updatedBy?: Maybe<Scalars['String']>;
+  /** Reads and enables pagination through a set of `Users2Group`. */
+  users2Groups: Users2GroupsConnection;
+};
+
+
+export type GroupUsers2GroupsArgs = {
+  after?: InputMaybe<Scalars['Cursor']>;
+  before?: InputMaybe<Scalars['Cursor']>;
+  condition?: InputMaybe<Users2GroupCondition>;
+  filter?: InputMaybe<Users2GroupFilter>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<Array<Users2GroupsOrderBy>>;
+};
+
+/** A condition to be used against `Group` object types. All fields are tested for equality and combined with a logical ‘and.’ */
+export type GroupCondition = {
+  /** Checks for equality with the object’s `code` field. */
+  code?: InputMaybe<Scalars['String']>;
+  /** Checks for equality with the object’s `createdAt` field. */
+  createdAt?: InputMaybe<Scalars['Datetime']>;
+  /** Checks for equality with the object’s `createdBy` field. */
+  createdBy?: InputMaybe<Scalars['String']>;
+  /** Checks for equality with the object’s `deletedAt` field. */
+  deletedAt?: InputMaybe<Scalars['Datetime']>;
+  /** Checks for equality with the object’s `id` field. */
+  id?: InputMaybe<Scalars['Int']>;
+  /** Checks for equality with the object’s `name` field. */
+  name?: InputMaybe<Scalars['String']>;
+  /** Checks for equality with the object’s `slugId` field. */
+  slugId?: InputMaybe<Scalars['String']>;
+  /** Checks for equality with the object’s `typeId` field. */
+  typeId?: InputMaybe<Scalars['Int']>;
+  /** Checks for equality with the object’s `updatedAt` field. */
+  updatedAt?: InputMaybe<Scalars['Datetime']>;
+  /** Checks for equality with the object’s `updatedBy` field. */
+  updatedBy?: InputMaybe<Scalars['String']>;
+};
+
+/** A filter to be used against `Group` object types. All fields are combined with a logical ‘and.’ */
+export type GroupFilter = {
+  /** Checks for all expressions in this list. */
+  and?: InputMaybe<Array<GroupFilter>>;
+  /** Filter by the object’s `code` field. */
+  code?: InputMaybe<StringFilter>;
+  /** Filter by the object’s `createdAt` field. */
+  createdAt?: InputMaybe<DatetimeFilter>;
+  /** Filter by the object’s `createdBy` field. */
+  createdBy?: InputMaybe<StringFilter>;
+  /** Filter by the object’s `deletedAt` field. */
+  deletedAt?: InputMaybe<DatetimeFilter>;
+  /** Filter by the object’s `id` field. */
+  id?: InputMaybe<IntFilter>;
+  /** Filter by the object’s `name` field. */
+  name?: InputMaybe<StringFilter>;
+  /** Negates the expression. */
+  not?: InputMaybe<GroupFilter>;
+  /** Checks for any expressions in this list. */
+  or?: InputMaybe<Array<GroupFilter>>;
+  /** Filter by the object’s `slugId` field. */
+  slugId?: InputMaybe<StringFilter>;
+  /** Filter by the object’s `typeId` field. */
+  typeId?: InputMaybe<IntFilter>;
+  /** Filter by the object’s `updatedAt` field. */
+  updatedAt?: InputMaybe<DatetimeFilter>;
+  /** Filter by the object’s `updatedBy` field. */
+  updatedBy?: InputMaybe<StringFilter>;
+};
+
+/** An input for mutations affecting `Group` */
+export type GroupInput = {
+  code?: InputMaybe<Scalars['String']>;
+  createdAt?: InputMaybe<Scalars['Datetime']>;
+  createdBy?: InputMaybe<Scalars['String']>;
+  deletedAt?: InputMaybe<Scalars['Datetime']>;
+  id?: InputMaybe<Scalars['Int']>;
+  name: Scalars['String'];
+  slugId: Scalars['String'];
+  typeId: Scalars['Int'];
+  updatedAt?: InputMaybe<Scalars['Datetime']>;
+  updatedBy?: InputMaybe<Scalars['String']>;
+};
+
+/** Represents an update to a `Group`. Fields that are set will be updated. */
+export type GroupPatch = {
+  code?: InputMaybe<Scalars['String']>;
+  createdAt?: InputMaybe<Scalars['Datetime']>;
+  createdBy?: InputMaybe<Scalars['String']>;
+  deletedAt?: InputMaybe<Scalars['Datetime']>;
+  id?: InputMaybe<Scalars['Int']>;
+  name?: InputMaybe<Scalars['String']>;
+  slugId?: InputMaybe<Scalars['String']>;
+  typeId?: InputMaybe<Scalars['Int']>;
+  updatedAt?: InputMaybe<Scalars['Datetime']>;
+  updatedBy?: InputMaybe<Scalars['String']>;
+};
+
+/** A connection to a list of `Group` values. */
+export type GroupsConnection = {
+  __typename?: 'GroupsConnection';
+  /** A list of edges which contains the `Group` and cursor to aid in pagination. */
+  edges: Array<GroupsEdge>;
+  /** A list of `Group` objects. */
+  nodes: Array<Maybe<Group>>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+  /** The count of *all* `Group` you could get from the connection. */
+  totalCount: Scalars['Int'];
+};
+
+/** A `Group` edge in the connection. */
+export type GroupsEdge = {
+  __typename?: 'GroupsEdge';
+  /** A cursor for use in pagination. */
+  cursor?: Maybe<Scalars['Cursor']>;
+  /** The `Group` at the end of the edge. */
+  node?: Maybe<Group>;
+};
+
+/** Methods to use when ordering `Group`. */
+export enum GroupsOrderBy {
+  CodeAsc = 'CODE_ASC',
+  CodeDesc = 'CODE_DESC',
+  CreatedAtAsc = 'CREATED_AT_ASC',
+  CreatedAtDesc = 'CREATED_AT_DESC',
+  CreatedByAsc = 'CREATED_BY_ASC',
+  CreatedByDesc = 'CREATED_BY_DESC',
+  DeletedAtAsc = 'DELETED_AT_ASC',
+  DeletedAtDesc = 'DELETED_AT_DESC',
+  IdAsc = 'ID_ASC',
+  IdDesc = 'ID_DESC',
+  NameAsc = 'NAME_ASC',
+  NameDesc = 'NAME_DESC',
+  Natural = 'NATURAL',
+  PrimaryKeyAsc = 'PRIMARY_KEY_ASC',
+  PrimaryKeyDesc = 'PRIMARY_KEY_DESC',
+  SlugIdAsc = 'SLUG_ID_ASC',
+  SlugIdDesc = 'SLUG_ID_DESC',
+  TypeIdAsc = 'TYPE_ID_ASC',
+  TypeIdDesc = 'TYPE_ID_DESC',
+  UpdatedAtAsc = 'UPDATED_AT_ASC',
+  UpdatedAtDesc = 'UPDATED_AT_DESC',
+  UpdatedByAsc = 'UPDATED_BY_ASC',
+  UpdatedByDesc = 'UPDATED_BY_DESC'
+}
+
+export type GroupsType = Node & {
+  __typename?: 'GroupsType';
+  color: Scalars['String'];
+  createdAt: Scalars['Datetime'];
+  createdBy?: Maybe<Scalars['String']>;
+  deletedAt?: Maybe<Scalars['Datetime']>;
+  description: Scalars['String'];
+  /** Reads and enables pagination through a set of `Group`. */
+  groupsByTypeId: GroupsConnection;
+  id: Scalars['Int'];
+  name: Scalars['String'];
+  /** A globally unique identifier. Can be used in various places throughout the system to identify this single value. */
+  nodeId: Scalars['ID'];
+  updatedAt: Scalars['Datetime'];
+  updatedBy?: Maybe<Scalars['String']>;
+};
+
+
+export type GroupsTypeGroupsByTypeIdArgs = {
+  after?: InputMaybe<Scalars['Cursor']>;
+  before?: InputMaybe<Scalars['Cursor']>;
+  condition?: InputMaybe<GroupCondition>;
+  filter?: InputMaybe<GroupFilter>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<Array<GroupsOrderBy>>;
+};
+
+/**
+ * A condition to be used against `GroupsType` object types. All fields are tested
+ * for equality and combined with a logical ‘and.’
+ */
+export type GroupsTypeCondition = {
+  /** Checks for equality with the object’s `color` field. */
+  color?: InputMaybe<Scalars['String']>;
+  /** Checks for equality with the object’s `createdAt` field. */
+  createdAt?: InputMaybe<Scalars['Datetime']>;
+  /** Checks for equality with the object’s `createdBy` field. */
+  createdBy?: InputMaybe<Scalars['String']>;
+  /** Checks for equality with the object’s `deletedAt` field. */
+  deletedAt?: InputMaybe<Scalars['Datetime']>;
+  /** Checks for equality with the object’s `description` field. */
+  description?: InputMaybe<Scalars['String']>;
+  /** Checks for equality with the object’s `id` field. */
+  id?: InputMaybe<Scalars['Int']>;
+  /** Checks for equality with the object’s `name` field. */
+  name?: InputMaybe<Scalars['String']>;
+  /** Checks for equality with the object’s `updatedAt` field. */
+  updatedAt?: InputMaybe<Scalars['Datetime']>;
+  /** Checks for equality with the object’s `updatedBy` field. */
+  updatedBy?: InputMaybe<Scalars['String']>;
+};
+
+/** A filter to be used against `GroupsType` object types. All fields are combined with a logical ‘and.’ */
+export type GroupsTypeFilter = {
+  /** Checks for all expressions in this list. */
+  and?: InputMaybe<Array<GroupsTypeFilter>>;
+  /** Filter by the object’s `color` field. */
+  color?: InputMaybe<StringFilter>;
+  /** Filter by the object’s `createdAt` field. */
+  createdAt?: InputMaybe<DatetimeFilter>;
+  /** Filter by the object’s `createdBy` field. */
+  createdBy?: InputMaybe<StringFilter>;
+  /** Filter by the object’s `deletedAt` field. */
+  deletedAt?: InputMaybe<DatetimeFilter>;
+  /** Filter by the object’s `description` field. */
+  description?: InputMaybe<StringFilter>;
+  /** Filter by the object’s `id` field. */
+  id?: InputMaybe<IntFilter>;
+  /** Filter by the object’s `name` field. */
+  name?: InputMaybe<StringFilter>;
+  /** Negates the expression. */
+  not?: InputMaybe<GroupsTypeFilter>;
+  /** Checks for any expressions in this list. */
+  or?: InputMaybe<Array<GroupsTypeFilter>>;
+  /** Filter by the object’s `updatedAt` field. */
+  updatedAt?: InputMaybe<DatetimeFilter>;
+  /** Filter by the object’s `updatedBy` field. */
+  updatedBy?: InputMaybe<StringFilter>;
+};
+
+/** An input for mutations affecting `GroupsType` */
+export type GroupsTypeInput = {
+  color: Scalars['String'];
+  createdAt?: InputMaybe<Scalars['Datetime']>;
+  createdBy?: InputMaybe<Scalars['String']>;
+  deletedAt?: InputMaybe<Scalars['Datetime']>;
+  description: Scalars['String'];
+  id?: InputMaybe<Scalars['Int']>;
+  name: Scalars['String'];
+  updatedAt?: InputMaybe<Scalars['Datetime']>;
+  updatedBy?: InputMaybe<Scalars['String']>;
+};
+
+/** Represents an update to a `GroupsType`. Fields that are set will be updated. */
+export type GroupsTypePatch = {
+  color?: InputMaybe<Scalars['String']>;
+  createdAt?: InputMaybe<Scalars['Datetime']>;
+  createdBy?: InputMaybe<Scalars['String']>;
+  deletedAt?: InputMaybe<Scalars['Datetime']>;
+  description?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['Int']>;
+  name?: InputMaybe<Scalars['String']>;
+  updatedAt?: InputMaybe<Scalars['Datetime']>;
+  updatedBy?: InputMaybe<Scalars['String']>;
+};
+
+/** A connection to a list of `GroupsType` values. */
+export type GroupsTypesConnection = {
+  __typename?: 'GroupsTypesConnection';
+  /** A list of edges which contains the `GroupsType` and cursor to aid in pagination. */
+  edges: Array<GroupsTypesEdge>;
+  /** A list of `GroupsType` objects. */
+  nodes: Array<Maybe<GroupsType>>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+  /** The count of *all* `GroupsType` you could get from the connection. */
+  totalCount: Scalars['Int'];
+};
+
+/** A `GroupsType` edge in the connection. */
+export type GroupsTypesEdge = {
+  __typename?: 'GroupsTypesEdge';
+  /** A cursor for use in pagination. */
+  cursor?: Maybe<Scalars['Cursor']>;
+  /** The `GroupsType` at the end of the edge. */
+  node?: Maybe<GroupsType>;
+};
+
+/** Methods to use when ordering `GroupsType`. */
+export enum GroupsTypesOrderBy {
+  ColorAsc = 'COLOR_ASC',
+  ColorDesc = 'COLOR_DESC',
+  CreatedAtAsc = 'CREATED_AT_ASC',
+  CreatedAtDesc = 'CREATED_AT_DESC',
+  CreatedByAsc = 'CREATED_BY_ASC',
+  CreatedByDesc = 'CREATED_BY_DESC',
+  DeletedAtAsc = 'DELETED_AT_ASC',
+  DeletedAtDesc = 'DELETED_AT_DESC',
+  DescriptionAsc = 'DESCRIPTION_ASC',
+  DescriptionDesc = 'DESCRIPTION_DESC',
+  IdAsc = 'ID_ASC',
+  IdDesc = 'ID_DESC',
+  NameAsc = 'NAME_ASC',
+  NameDesc = 'NAME_DESC',
+  Natural = 'NATURAL',
+  PrimaryKeyAsc = 'PRIMARY_KEY_ASC',
+  PrimaryKeyDesc = 'PRIMARY_KEY_DESC',
+  UpdatedAtAsc = 'UPDATED_AT_ASC',
+  UpdatedAtDesc = 'UPDATED_AT_DESC',
+  UpdatedByAsc = 'UPDATED_BY_ASC',
+  UpdatedByDesc = 'UPDATED_BY_DESC'
+}
+
 /** A filter to be used against Int fields. All fields are combined with a logical ‘and.’ */
 export type IntFilter = {
   /** Not equal to the specified value, treating null like an ordinary value. */
@@ -802,11 +1380,24 @@ export type IntFilter = {
   notIn?: InputMaybe<Array<Scalars['Int']>>;
 };
 
+export type ListenPayload = {
+  __typename?: 'ListenPayload';
+  /** Our root query field type. Allows us to run any query from our subscription payload. */
+  query?: Maybe<Query>;
+  relatedNode?: Maybe<Node>;
+  relatedNodeId?: Maybe<Scalars['ID']>;
+};
+
 /** The root mutation type which contains root level fields which mutate data. */
 export type Mutation = {
   __typename?: 'Mutation';
+  addUserToGroup?: Maybe<AddUserToGroupPayload>;
   /** Creates a single `FlywaySchemaHistory`. */
   createFlywaySchemaHistory?: Maybe<CreateFlywaySchemaHistoryPayload>;
+  /** Creates a single `Group`. */
+  createGroup?: Maybe<CreateGroupPayload>;
+  /** Creates a single `GroupsType`. */
+  createGroupsType?: Maybe<CreateGroupsTypePayload>;
   /** Creates a single `Operation`. */
   createOperation?: Maybe<CreateOperationPayload>;
   /** Creates a single `OperationCategory`. */
@@ -816,12 +1407,22 @@ export type Mutation = {
   createTask?: Maybe<CreateTaskPayload>;
   /** Creates a single `TaskStatus`. */
   createTaskStatus?: Maybe<CreateTaskStatusPayload>;
+  /** Creates a single `Users2Group`. */
+  createUsers2Group?: Maybe<CreateUsers2GroupPayload>;
   /** Creates a single `Users2Operation`. */
   createUsers2Operation?: Maybe<CreateUsers2OperationPayload>;
   /** Deletes a single `FlywaySchemaHistory` using a unique key. */
   deleteFlywaySchemaHistory?: Maybe<DeleteFlywaySchemaHistoryPayload>;
   /** Deletes a single `FlywaySchemaHistory` using its globally unique id. */
   deleteFlywaySchemaHistoryByNodeId?: Maybe<DeleteFlywaySchemaHistoryPayload>;
+  /** Deletes a single `Group` using a unique key. */
+  deleteGroup?: Maybe<DeleteGroupPayload>;
+  /** Deletes a single `Group` using its globally unique id. */
+  deleteGroupByNodeId?: Maybe<DeleteGroupPayload>;
+  /** Deletes a single `GroupsType` using a unique key. */
+  deleteGroupsType?: Maybe<DeleteGroupsTypePayload>;
+  /** Deletes a single `GroupsType` using its globally unique id. */
+  deleteGroupsTypeByNodeId?: Maybe<DeleteGroupsTypePayload>;
   /** Deletes a single `Operation` using a unique key. */
   deleteOperation?: Maybe<DeleteOperationPayload>;
   /** Deletes a single `Operation` using its globally unique id. */
@@ -838,10 +1439,15 @@ export type Mutation = {
   deleteTaskStatus?: Maybe<DeleteTaskStatusPayload>;
   /** Deletes a single `TaskStatus` using its globally unique id. */
   deleteTaskStatusByNodeId?: Maybe<DeleteTaskStatusPayload>;
+  /** Deletes a single `Users2Group` using a unique key. */
+  deleteUsers2Group?: Maybe<DeleteUsers2GroupPayload>;
+  /** Deletes a single `Users2Group` using its globally unique id. */
+  deleteUsers2GroupByNodeId?: Maybe<DeleteUsers2GroupPayload>;
   /** Deletes a single `Users2Operation` using a unique key. */
   deleteUsers2Operation?: Maybe<DeleteUsers2OperationPayload>;
   /** Deletes a single `Users2Operation` using its globally unique id. */
   deleteUsers2OperationByNodeId?: Maybe<DeleteUsers2OperationPayload>;
+  getUserId?: Maybe<GetUserIdPayload>;
   revokePrivilegesOfRoleOnSchema?: Maybe<RevokePrivilegesOfRoleOnSchemaPayload>;
   revokeSecurityFunctionsForRoleOnSchema?: Maybe<RevokeSecurityFunctionsForRoleOnSchemaPayload>;
   setAllPrivilegesForRoleOnSchema?: Maybe<SetAllPrivilegesForRoleOnSchemaPayload>;
@@ -850,6 +1456,14 @@ export type Mutation = {
   updateFlywaySchemaHistory?: Maybe<UpdateFlywaySchemaHistoryPayload>;
   /** Updates a single `FlywaySchemaHistory` using its globally unique id and a patch. */
   updateFlywaySchemaHistoryByNodeId?: Maybe<UpdateFlywaySchemaHistoryPayload>;
+  /** Updates a single `Group` using a unique key and a patch. */
+  updateGroup?: Maybe<UpdateGroupPayload>;
+  /** Updates a single `Group` using its globally unique id and a patch. */
+  updateGroupByNodeId?: Maybe<UpdateGroupPayload>;
+  /** Updates a single `GroupsType` using a unique key and a patch. */
+  updateGroupsType?: Maybe<UpdateGroupsTypePayload>;
+  /** Updates a single `GroupsType` using its globally unique id and a patch. */
+  updateGroupsTypeByNodeId?: Maybe<UpdateGroupsTypePayload>;
   /** Updates a single `Operation` using a unique key and a patch. */
   updateOperation?: Maybe<UpdateOperationPayload>;
   /** Updates a single `Operation` using its globally unique id and a patch. */
@@ -866,6 +1480,10 @@ export type Mutation = {
   updateTaskStatus?: Maybe<UpdateTaskStatusPayload>;
   /** Updates a single `TaskStatus` using its globally unique id and a patch. */
   updateTaskStatusByNodeId?: Maybe<UpdateTaskStatusPayload>;
+  /** Updates a single `Users2Group` using a unique key and a patch. */
+  updateUsers2Group?: Maybe<UpdateUsers2GroupPayload>;
+  /** Updates a single `Users2Group` using its globally unique id and a patch. */
+  updateUsers2GroupByNodeId?: Maybe<UpdateUsers2GroupPayload>;
   /** Updates a single `Users2Operation` using a unique key and a patch. */
   updateUsers2Operation?: Maybe<UpdateUsers2OperationPayload>;
   /** Updates a single `Users2Operation` using its globally unique id and a patch. */
@@ -874,8 +1492,26 @@ export type Mutation = {
 
 
 /** The root mutation type which contains root level fields which mutate data. */
+export type MutationAddUserToGroupArgs = {
+  input: AddUserToGroupInput;
+};
+
+
+/** The root mutation type which contains root level fields which mutate data. */
 export type MutationCreateFlywaySchemaHistoryArgs = {
   input: CreateFlywaySchemaHistoryInput;
+};
+
+
+/** The root mutation type which contains root level fields which mutate data. */
+export type MutationCreateGroupArgs = {
+  input: CreateGroupInput;
+};
+
+
+/** The root mutation type which contains root level fields which mutate data. */
+export type MutationCreateGroupsTypeArgs = {
+  input: CreateGroupsTypeInput;
 };
 
 
@@ -910,6 +1546,12 @@ export type MutationCreateTaskStatusArgs = {
 
 
 /** The root mutation type which contains root level fields which mutate data. */
+export type MutationCreateUsers2GroupArgs = {
+  input: CreateUsers2GroupInput;
+};
+
+
+/** The root mutation type which contains root level fields which mutate data. */
 export type MutationCreateUsers2OperationArgs = {
   input: CreateUsers2OperationInput;
 };
@@ -924,6 +1566,30 @@ export type MutationDeleteFlywaySchemaHistoryArgs = {
 /** The root mutation type which contains root level fields which mutate data. */
 export type MutationDeleteFlywaySchemaHistoryByNodeIdArgs = {
   input: DeleteFlywaySchemaHistoryByNodeIdInput;
+};
+
+
+/** The root mutation type which contains root level fields which mutate data. */
+export type MutationDeleteGroupArgs = {
+  input: DeleteGroupInput;
+};
+
+
+/** The root mutation type which contains root level fields which mutate data. */
+export type MutationDeleteGroupByNodeIdArgs = {
+  input: DeleteGroupByNodeIdInput;
+};
+
+
+/** The root mutation type which contains root level fields which mutate data. */
+export type MutationDeleteGroupsTypeArgs = {
+  input: DeleteGroupsTypeInput;
+};
+
+
+/** The root mutation type which contains root level fields which mutate data. */
+export type MutationDeleteGroupsTypeByNodeIdArgs = {
+  input: DeleteGroupsTypeByNodeIdInput;
 };
 
 
@@ -976,6 +1642,18 @@ export type MutationDeleteTaskStatusByNodeIdArgs = {
 
 
 /** The root mutation type which contains root level fields which mutate data. */
+export type MutationDeleteUsers2GroupArgs = {
+  input: DeleteUsers2GroupInput;
+};
+
+
+/** The root mutation type which contains root level fields which mutate data. */
+export type MutationDeleteUsers2GroupByNodeIdArgs = {
+  input: DeleteUsers2GroupByNodeIdInput;
+};
+
+
+/** The root mutation type which contains root level fields which mutate data. */
 export type MutationDeleteUsers2OperationArgs = {
   input: DeleteUsers2OperationInput;
 };
@@ -984,6 +1662,12 @@ export type MutationDeleteUsers2OperationArgs = {
 /** The root mutation type which contains root level fields which mutate data. */
 export type MutationDeleteUsers2OperationByNodeIdArgs = {
   input: DeleteUsers2OperationByNodeIdInput;
+};
+
+
+/** The root mutation type which contains root level fields which mutate data. */
+export type MutationGetUserIdArgs = {
+  input: GetUserIdInput;
 };
 
 
@@ -1020,6 +1704,30 @@ export type MutationUpdateFlywaySchemaHistoryArgs = {
 /** The root mutation type which contains root level fields which mutate data. */
 export type MutationUpdateFlywaySchemaHistoryByNodeIdArgs = {
   input: UpdateFlywaySchemaHistoryByNodeIdInput;
+};
+
+
+/** The root mutation type which contains root level fields which mutate data. */
+export type MutationUpdateGroupArgs = {
+  input: UpdateGroupInput;
+};
+
+
+/** The root mutation type which contains root level fields which mutate data. */
+export type MutationUpdateGroupByNodeIdArgs = {
+  input: UpdateGroupByNodeIdInput;
+};
+
+
+/** The root mutation type which contains root level fields which mutate data. */
+export type MutationUpdateGroupsTypeArgs = {
+  input: UpdateGroupsTypeInput;
+};
+
+
+/** The root mutation type which contains root level fields which mutate data. */
+export type MutationUpdateGroupsTypeByNodeIdArgs = {
+  input: UpdateGroupsTypeByNodeIdInput;
 };
 
 
@@ -1072,6 +1780,18 @@ export type MutationUpdateTaskStatusByNodeIdArgs = {
 
 
 /** The root mutation type which contains root level fields which mutate data. */
+export type MutationUpdateUsers2GroupArgs = {
+  input: UpdateUsers2GroupInput;
+};
+
+
+/** The root mutation type which contains root level fields which mutate data. */
+export type MutationUpdateUsers2GroupByNodeIdArgs = {
+  input: UpdateUsers2GroupByNodeIdInput;
+};
+
+
+/** The root mutation type which contains root level fields which mutate data. */
 export type MutationUpdateUsers2OperationArgs = {
   input: UpdateUsers2OperationInput;
 };
@@ -1090,13 +1810,12 @@ export type Node = {
 
 export type Operation = Node & {
   __typename?: 'Operation';
-  amount: Scalars['BigFloat'];
+  amount: Scalars['String'];
   /** Reads a single `OperationCategory` that is related to this `Operation`. */
   category?: Maybe<OperationCategory>;
   categoryId?: Maybe<Scalars['Int']>;
   createdAt: Scalars['Datetime'];
   createdBy?: Maybe<Scalars['String']>;
-  date: Scalars['Date'];
   deletedAt?: Maybe<Scalars['Datetime']>;
   description: Scalars['String'];
   id: Scalars['Int'];
@@ -1264,15 +1983,13 @@ export type OperationCategoryPatch = {
  */
 export type OperationCondition = {
   /** Checks for equality with the object’s `amount` field. */
-  amount?: InputMaybe<Scalars['BigFloat']>;
+  amount?: InputMaybe<Scalars['String']>;
   /** Checks for equality with the object’s `categoryId` field. */
   categoryId?: InputMaybe<Scalars['Int']>;
   /** Checks for equality with the object’s `createdAt` field. */
   createdAt?: InputMaybe<Scalars['Datetime']>;
   /** Checks for equality with the object’s `createdBy` field. */
   createdBy?: InputMaybe<Scalars['String']>;
-  /** Checks for equality with the object’s `date` field. */
-  date?: InputMaybe<Scalars['Date']>;
   /** Checks for equality with the object’s `deletedAt` field. */
   deletedAt?: InputMaybe<Scalars['Datetime']>;
   /** Checks for equality with the object’s `description` field. */
@@ -1290,7 +2007,7 @@ export type OperationCondition = {
 /** A filter to be used against `Operation` object types. All fields are combined with a logical ‘and.’ */
 export type OperationFilter = {
   /** Filter by the object’s `amount` field. */
-  amount?: InputMaybe<BigFloatFilter>;
+  amount?: InputMaybe<StringFilter>;
   /** Checks for all expressions in this list. */
   and?: InputMaybe<Array<OperationFilter>>;
   /** Filter by the object’s `categoryId` field. */
@@ -1299,8 +2016,6 @@ export type OperationFilter = {
   createdAt?: InputMaybe<DatetimeFilter>;
   /** Filter by the object’s `createdBy` field. */
   createdBy?: InputMaybe<StringFilter>;
-  /** Filter by the object’s `date` field. */
-  date?: InputMaybe<DateFilter>;
   /** Filter by the object’s `deletedAt` field. */
   deletedAt?: InputMaybe<DatetimeFilter>;
   /** Filter by the object’s `description` field. */
@@ -1321,11 +2036,10 @@ export type OperationFilter = {
 
 /** An input for mutations affecting `Operation` */
 export type OperationInput = {
-  amount: Scalars['BigFloat'];
+  amount: Scalars['String'];
   categoryId?: InputMaybe<Scalars['Int']>;
   createdAt?: InputMaybe<Scalars['Datetime']>;
   createdBy?: InputMaybe<Scalars['String']>;
-  date: Scalars['Date'];
   deletedAt?: InputMaybe<Scalars['Datetime']>;
   description: Scalars['String'];
   id?: InputMaybe<Scalars['Int']>;
@@ -1336,11 +2050,10 @@ export type OperationInput = {
 
 /** Represents an update to a `Operation`. Fields that are set will be updated. */
 export type OperationPatch = {
-  amount?: InputMaybe<Scalars['BigFloat']>;
+  amount?: InputMaybe<Scalars['String']>;
   categoryId?: InputMaybe<Scalars['Int']>;
   createdAt?: InputMaybe<Scalars['Datetime']>;
   createdBy?: InputMaybe<Scalars['String']>;
-  date?: InputMaybe<Scalars['Date']>;
   deletedAt?: InputMaybe<Scalars['Datetime']>;
   description?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['Int']>;
@@ -1381,8 +2094,6 @@ export enum OperationsOrderBy {
   CreatedAtDesc = 'CREATED_AT_DESC',
   CreatedByAsc = 'CREATED_BY_ASC',
   CreatedByDesc = 'CREATED_BY_DESC',
-  DateAsc = 'DATE_ASC',
-  DateDesc = 'DATE_DESC',
   DeletedAtAsc = 'DELETED_AT_ASC',
   DeletedAtDesc = 'DELETED_AT_DESC',
   DescriptionAsc = 'DESCRIPTION_ASC',
@@ -1421,6 +2132,16 @@ export type Query = Node & {
   flywaySchemaHistory?: Maybe<FlywaySchemaHistory>;
   /** Reads a single `FlywaySchemaHistory` using its globally unique `ID`. */
   flywaySchemaHistoryByNodeId?: Maybe<FlywaySchemaHistory>;
+  group?: Maybe<Group>;
+  /** Reads a single `Group` using its globally unique `ID`. */
+  groupByNodeId?: Maybe<Group>;
+  /** Reads and enables pagination through a set of `Group`. */
+  groups?: Maybe<GroupsConnection>;
+  groupsType?: Maybe<GroupsType>;
+  /** Reads a single `GroupsType` using its globally unique `ID`. */
+  groupsTypeByNodeId?: Maybe<GroupsType>;
+  /** Reads and enables pagination through a set of `GroupsType`. */
+  groupsTypes?: Maybe<GroupsTypesConnection>;
   /** Fetches an object given its globally unique `ID`. */
   node?: Maybe<Node>;
   /** The root query type must be a `Node` to work well with Relay 1 mutations. This just resolves to `query`. */
@@ -1450,6 +2171,11 @@ export type Query = Node & {
   taskStatuses?: Maybe<TaskStatusesConnection>;
   /** Reads and enables pagination through a set of `Task`. */
   tasks?: Maybe<TasksConnection>;
+  users2Group?: Maybe<Users2Group>;
+  /** Reads a single `Users2Group` using its globally unique `ID`. */
+  users2GroupByNodeId?: Maybe<Users2Group>;
+  /** Reads and enables pagination through a set of `Users2Group`. */
+  users2Groups?: Maybe<Users2GroupsConnection>;
   users2Operation?: Maybe<Users2Operation>;
   /** Reads a single `Users2Operation` using its globally unique `ID`. */
   users2OperationByNodeId?: Maybe<Users2Operation>;
@@ -1480,6 +2206,56 @@ export type QueryFlywaySchemaHistoryArgs = {
 /** The root query type which gives access points into the data universe. */
 export type QueryFlywaySchemaHistoryByNodeIdArgs = {
   nodeId: Scalars['ID'];
+};
+
+
+/** The root query type which gives access points into the data universe. */
+export type QueryGroupArgs = {
+  id: Scalars['Int'];
+};
+
+
+/** The root query type which gives access points into the data universe. */
+export type QueryGroupByNodeIdArgs = {
+  nodeId: Scalars['ID'];
+};
+
+
+/** The root query type which gives access points into the data universe. */
+export type QueryGroupsArgs = {
+  after?: InputMaybe<Scalars['Cursor']>;
+  before?: InputMaybe<Scalars['Cursor']>;
+  condition?: InputMaybe<GroupCondition>;
+  filter?: InputMaybe<GroupFilter>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<Array<GroupsOrderBy>>;
+};
+
+
+/** The root query type which gives access points into the data universe. */
+export type QueryGroupsTypeArgs = {
+  id: Scalars['Int'];
+};
+
+
+/** The root query type which gives access points into the data universe. */
+export type QueryGroupsTypeByNodeIdArgs = {
+  nodeId: Scalars['ID'];
+};
+
+
+/** The root query type which gives access points into the data universe. */
+export type QueryGroupsTypesArgs = {
+  after?: InputMaybe<Scalars['Cursor']>;
+  before?: InputMaybe<Scalars['Cursor']>;
+  condition?: InputMaybe<GroupsTypeCondition>;
+  filter?: InputMaybe<GroupsTypeFilter>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<Array<GroupsTypesOrderBy>>;
 };
 
 
@@ -1586,6 +2362,31 @@ export type QueryTasksArgs = {
   last?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
   orderBy?: InputMaybe<Array<TasksOrderBy>>;
+};
+
+
+/** The root query type which gives access points into the data universe. */
+export type QueryUsers2GroupArgs = {
+  id: Scalars['Int'];
+};
+
+
+/** The root query type which gives access points into the data universe. */
+export type QueryUsers2GroupByNodeIdArgs = {
+  nodeId: Scalars['ID'];
+};
+
+
+/** The root query type which gives access points into the data universe. */
+export type QueryUsers2GroupsArgs = {
+  after?: InputMaybe<Scalars['Cursor']>;
+  before?: InputMaybe<Scalars['Cursor']>;
+  condition?: InputMaybe<Users2GroupCondition>;
+  filter?: InputMaybe<Users2GroupFilter>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<Array<Users2GroupsOrderBy>>;
 };
 
 
@@ -1779,6 +2580,18 @@ export type StringFilter = {
   startsWith?: InputMaybe<Scalars['String']>;
   /** Starts with the specified string (case-insensitive). */
   startsWithInsensitive?: InputMaybe<Scalars['String']>;
+};
+
+/** The root subscription type: contains realtime events you can subscribe to with the `subscription` operation. */
+export type Subscription = {
+  __typename?: 'Subscription';
+  listen: ListenPayload;
+};
+
+
+/** The root subscription type: contains realtime events you can subscribe to with the `subscription` operation. */
+export type SubscriptionListenArgs = {
+  topic: Scalars['String'];
 };
 
 export type Task = Node & {
@@ -2114,6 +2927,102 @@ export type UpdateFlywaySchemaHistoryPayloadFlywaySchemaHistoryEdgeArgs = {
   orderBy?: InputMaybe<Array<FlywaySchemaHistoriesOrderBy>>;
 };
 
+/** All input for the `updateGroupByNodeId` mutation. */
+export type UpdateGroupByNodeIdInput = {
+  /**
+   * An arbitrary string value with no semantic meaning. Will be included in the
+   * payload verbatim. May be used to track mutations by the client.
+   */
+  clientMutationId?: InputMaybe<Scalars['String']>;
+  /** The globally unique `ID` which will identify a single `Group` to be updated. */
+  nodeId: Scalars['ID'];
+  /** An object where the defined keys will be set on the `Group` being updated. */
+  patch: GroupPatch;
+};
+
+/** All input for the `updateGroup` mutation. */
+export type UpdateGroupInput = {
+  /**
+   * An arbitrary string value with no semantic meaning. Will be included in the
+   * payload verbatim. May be used to track mutations by the client.
+   */
+  clientMutationId?: InputMaybe<Scalars['String']>;
+  id: Scalars['Int'];
+  /** An object where the defined keys will be set on the `Group` being updated. */
+  patch: GroupPatch;
+};
+
+/** The output of our update `Group` mutation. */
+export type UpdateGroupPayload = {
+  __typename?: 'UpdateGroupPayload';
+  /**
+   * The exact same `clientMutationId` that was provided in the mutation input,
+   * unchanged and unused. May be used by a client to track mutations.
+   */
+  clientMutationId?: Maybe<Scalars['String']>;
+  /** The `Group` that was updated by this mutation. */
+  group?: Maybe<Group>;
+  /** An edge for our `Group`. May be used by Relay 1. */
+  groupEdge?: Maybe<GroupsEdge>;
+  /** Our root query field type. Allows us to run any query from our mutation payload. */
+  query?: Maybe<Query>;
+  /** Reads a single `GroupsType` that is related to this `Group`. */
+  type?: Maybe<GroupsType>;
+};
+
+
+/** The output of our update `Group` mutation. */
+export type UpdateGroupPayloadGroupEdgeArgs = {
+  orderBy?: InputMaybe<Array<GroupsOrderBy>>;
+};
+
+/** All input for the `updateGroupsTypeByNodeId` mutation. */
+export type UpdateGroupsTypeByNodeIdInput = {
+  /**
+   * An arbitrary string value with no semantic meaning. Will be included in the
+   * payload verbatim. May be used to track mutations by the client.
+   */
+  clientMutationId?: InputMaybe<Scalars['String']>;
+  /** The globally unique `ID` which will identify a single `GroupsType` to be updated. */
+  nodeId: Scalars['ID'];
+  /** An object where the defined keys will be set on the `GroupsType` being updated. */
+  patch: GroupsTypePatch;
+};
+
+/** All input for the `updateGroupsType` mutation. */
+export type UpdateGroupsTypeInput = {
+  /**
+   * An arbitrary string value with no semantic meaning. Will be included in the
+   * payload verbatim. May be used to track mutations by the client.
+   */
+  clientMutationId?: InputMaybe<Scalars['String']>;
+  id: Scalars['Int'];
+  /** An object where the defined keys will be set on the `GroupsType` being updated. */
+  patch: GroupsTypePatch;
+};
+
+/** The output of our update `GroupsType` mutation. */
+export type UpdateGroupsTypePayload = {
+  __typename?: 'UpdateGroupsTypePayload';
+  /**
+   * The exact same `clientMutationId` that was provided in the mutation input,
+   * unchanged and unused. May be used by a client to track mutations.
+   */
+  clientMutationId?: Maybe<Scalars['String']>;
+  /** The `GroupsType` that was updated by this mutation. */
+  groupsType?: Maybe<GroupsType>;
+  /** An edge for our `GroupsType`. May be used by Relay 1. */
+  groupsTypeEdge?: Maybe<GroupsTypesEdge>;
+  /** Our root query field type. Allows us to run any query from our mutation payload. */
+  query?: Maybe<Query>;
+};
+
+
+/** The output of our update `GroupsType` mutation. */
+export type UpdateGroupsTypePayloadGroupsTypeEdgeArgs = {
+  orderBy?: InputMaybe<Array<GroupsTypesOrderBy>>;
+};
+
 /** All input for the `updateOperationByNodeId` mutation. */
 export type UpdateOperationByNodeIdInput = {
   /**
@@ -2306,6 +3215,55 @@ export type UpdateTaskStatusPayloadTaskStatusEdgeArgs = {
   orderBy?: InputMaybe<Array<TaskStatusesOrderBy>>;
 };
 
+/** All input for the `updateUsers2GroupByNodeId` mutation. */
+export type UpdateUsers2GroupByNodeIdInput = {
+  /**
+   * An arbitrary string value with no semantic meaning. Will be included in the
+   * payload verbatim. May be used to track mutations by the client.
+   */
+  clientMutationId?: InputMaybe<Scalars['String']>;
+  /** The globally unique `ID` which will identify a single `Users2Group` to be updated. */
+  nodeId: Scalars['ID'];
+  /** An object where the defined keys will be set on the `Users2Group` being updated. */
+  patch: Users2GroupPatch;
+};
+
+/** All input for the `updateUsers2Group` mutation. */
+export type UpdateUsers2GroupInput = {
+  /**
+   * An arbitrary string value with no semantic meaning. Will be included in the
+   * payload verbatim. May be used to track mutations by the client.
+   */
+  clientMutationId?: InputMaybe<Scalars['String']>;
+  id: Scalars['Int'];
+  /** An object where the defined keys will be set on the `Users2Group` being updated. */
+  patch: Users2GroupPatch;
+};
+
+/** The output of our update `Users2Group` mutation. */
+export type UpdateUsers2GroupPayload = {
+  __typename?: 'UpdateUsers2GroupPayload';
+  /**
+   * The exact same `clientMutationId` that was provided in the mutation input,
+   * unchanged and unused. May be used by a client to track mutations.
+   */
+  clientMutationId?: Maybe<Scalars['String']>;
+  /** Reads a single `Group` that is related to this `Users2Group`. */
+  group?: Maybe<Group>;
+  /** Our root query field type. Allows us to run any query from our mutation payload. */
+  query?: Maybe<Query>;
+  /** The `Users2Group` that was updated by this mutation. */
+  users2Group?: Maybe<Users2Group>;
+  /** An edge for our `Users2Group`. May be used by Relay 1. */
+  users2GroupEdge?: Maybe<Users2GroupsEdge>;
+};
+
+
+/** The output of our update `Users2Group` mutation. */
+export type UpdateUsers2GroupPayloadUsers2GroupEdgeArgs = {
+  orderBy?: InputMaybe<Array<Users2GroupsOrderBy>>;
+};
+
 /** All input for the `updateUsers2OperationByNodeId` mutation. */
 export type UpdateUsers2OperationByNodeIdInput = {
   /**
@@ -2354,6 +3312,122 @@ export type UpdateUsers2OperationPayload = {
 export type UpdateUsers2OperationPayloadUsers2OperationEdgeArgs = {
   orderBy?: InputMaybe<Array<Users2OperationsOrderBy>>;
 };
+
+export type Users2Group = Node & {
+  __typename?: 'Users2Group';
+  createdAt: Scalars['Datetime'];
+  deletedAt?: Maybe<Scalars['Datetime']>;
+  /** Reads a single `Group` that is related to this `Users2Group`. */
+  group?: Maybe<Group>;
+  groupId: Scalars['Int'];
+  id: Scalars['Int'];
+  /** A globally unique identifier. Can be used in various places throughout the system to identify this single value. */
+  nodeId: Scalars['ID'];
+  updatedAt: Scalars['Datetime'];
+  userId: Scalars['String'];
+};
+
+/**
+ * A condition to be used against `Users2Group` object types. All fields are tested
+ * for equality and combined with a logical ‘and.’
+ */
+export type Users2GroupCondition = {
+  /** Checks for equality with the object’s `createdAt` field. */
+  createdAt?: InputMaybe<Scalars['Datetime']>;
+  /** Checks for equality with the object’s `deletedAt` field. */
+  deletedAt?: InputMaybe<Scalars['Datetime']>;
+  /** Checks for equality with the object’s `groupId` field. */
+  groupId?: InputMaybe<Scalars['Int']>;
+  /** Checks for equality with the object’s `id` field. */
+  id?: InputMaybe<Scalars['Int']>;
+  /** Checks for equality with the object’s `updatedAt` field. */
+  updatedAt?: InputMaybe<Scalars['Datetime']>;
+  /** Checks for equality with the object’s `userId` field. */
+  userId?: InputMaybe<Scalars['String']>;
+};
+
+/** A filter to be used against `Users2Group` object types. All fields are combined with a logical ‘and.’ */
+export type Users2GroupFilter = {
+  /** Checks for all expressions in this list. */
+  and?: InputMaybe<Array<Users2GroupFilter>>;
+  /** Filter by the object’s `createdAt` field. */
+  createdAt?: InputMaybe<DatetimeFilter>;
+  /** Filter by the object’s `deletedAt` field. */
+  deletedAt?: InputMaybe<DatetimeFilter>;
+  /** Filter by the object’s `groupId` field. */
+  groupId?: InputMaybe<IntFilter>;
+  /** Filter by the object’s `id` field. */
+  id?: InputMaybe<IntFilter>;
+  /** Negates the expression. */
+  not?: InputMaybe<Users2GroupFilter>;
+  /** Checks for any expressions in this list. */
+  or?: InputMaybe<Array<Users2GroupFilter>>;
+  /** Filter by the object’s `updatedAt` field. */
+  updatedAt?: InputMaybe<DatetimeFilter>;
+  /** Filter by the object’s `userId` field. */
+  userId?: InputMaybe<StringFilter>;
+};
+
+/** An input for mutations affecting `Users2Group` */
+export type Users2GroupInput = {
+  createdAt?: InputMaybe<Scalars['Datetime']>;
+  deletedAt?: InputMaybe<Scalars['Datetime']>;
+  groupId: Scalars['Int'];
+  id?: InputMaybe<Scalars['Int']>;
+  updatedAt?: InputMaybe<Scalars['Datetime']>;
+  userId: Scalars['String'];
+};
+
+/** Represents an update to a `Users2Group`. Fields that are set will be updated. */
+export type Users2GroupPatch = {
+  createdAt?: InputMaybe<Scalars['Datetime']>;
+  deletedAt?: InputMaybe<Scalars['Datetime']>;
+  groupId?: InputMaybe<Scalars['Int']>;
+  id?: InputMaybe<Scalars['Int']>;
+  updatedAt?: InputMaybe<Scalars['Datetime']>;
+  userId?: InputMaybe<Scalars['String']>;
+};
+
+/** A connection to a list of `Users2Group` values. */
+export type Users2GroupsConnection = {
+  __typename?: 'Users2GroupsConnection';
+  /** A list of edges which contains the `Users2Group` and cursor to aid in pagination. */
+  edges: Array<Users2GroupsEdge>;
+  /** A list of `Users2Group` objects. */
+  nodes: Array<Maybe<Users2Group>>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+  /** The count of *all* `Users2Group` you could get from the connection. */
+  totalCount: Scalars['Int'];
+};
+
+/** A `Users2Group` edge in the connection. */
+export type Users2GroupsEdge = {
+  __typename?: 'Users2GroupsEdge';
+  /** A cursor for use in pagination. */
+  cursor?: Maybe<Scalars['Cursor']>;
+  /** The `Users2Group` at the end of the edge. */
+  node?: Maybe<Users2Group>;
+};
+
+/** Methods to use when ordering `Users2Group`. */
+export enum Users2GroupsOrderBy {
+  CreatedAtAsc = 'CREATED_AT_ASC',
+  CreatedAtDesc = 'CREATED_AT_DESC',
+  DeletedAtAsc = 'DELETED_AT_ASC',
+  DeletedAtDesc = 'DELETED_AT_DESC',
+  GroupIdAsc = 'GROUP_ID_ASC',
+  GroupIdDesc = 'GROUP_ID_DESC',
+  IdAsc = 'ID_ASC',
+  IdDesc = 'ID_DESC',
+  Natural = 'NATURAL',
+  PrimaryKeyAsc = 'PRIMARY_KEY_ASC',
+  PrimaryKeyDesc = 'PRIMARY_KEY_DESC',
+  UpdatedAtAsc = 'UPDATED_AT_ASC',
+  UpdatedAtDesc = 'UPDATED_AT_DESC',
+  UserIdAsc = 'USER_ID_ASC',
+  UserIdDesc = 'USER_ID_DESC'
+}
 
 export type Users2Operation = Node & {
   __typename?: 'Users2Operation';
@@ -2478,12 +3552,50 @@ export type MyMutationMutationVariables = Exact<{
 
 export type MyMutationMutation = { __typename?: 'Mutation', createOperationCategory?: { __typename?: 'CreateOperationCategoryPayload', operationCategory?: { __typename?: 'OperationCategory', name: string, id: number } | null } | null };
 
+export type GetGroupsTypesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetGroupsTypesQuery = { __typename?: 'Query', groupsTypes?: { __typename?: 'GroupsTypesConnection', nodes: Array<{ __typename?: 'GroupsType', name: string, id: number, description: string, color: string } | null> } | null };
+
+export type CreateGroupAndAddUserMutationVariables = Exact<{
+  input: CreateGroupInput;
+}>;
+
+
+export type CreateGroupAndAddUserMutation = { __typename?: 'Mutation', createGroup?: { __typename?: 'CreateGroupPayload', clientMutationId?: string | null, group?: { __typename?: 'Group', code?: string | null } | null } | null };
+
+export type AddUserToExistingGroupMutationVariables = Exact<{
+  input: AddUserToGroupInput;
+}>;
+
+
+export type AddUserToExistingGroupMutation = { __typename?: 'Mutation', addUserToGroup?: { __typename?: 'AddUserToGroupPayload', clientMutationId?: string | null, group?: { __typename?: 'Group', name: string } | null } | null };
+
 export type CreateOperationMutationVariables = Exact<{
   input: CreateOperationInput;
 }>;
 
 
 export type CreateOperationMutation = { __typename?: 'Mutation', createOperation?: { __typename?: 'CreateOperationPayload', operation?: { __typename?: 'Operation', id: number } | null } | null };
+
+export type GetOperationsCategoriesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetOperationsCategoriesQuery = { __typename?: 'Query', operationCategories?: { __typename?: 'OperationCategoriesConnection', nodes: Array<{ __typename?: 'OperationCategory', id: number, name: string } | null> } | null };
+
+export type CreateOperationCategoryMutationVariables = Exact<{
+  input: CreateOperationCategoryInput;
+}>;
+
+
+export type CreateOperationCategoryMutation = { __typename?: 'Mutation', createOperationCategory?: { __typename?: 'CreateOperationCategoryPayload', operationCategory?: { __typename?: 'OperationCategory', name: string, id: number } | null } | null };
+
+export type DeleteOperationCategoryByIdMutationVariables = Exact<{
+  input: DeleteOperationCategoryInput;
+}>;
+
+
+export type DeleteOperationCategoryByIdMutation = { __typename?: 'Mutation', deleteOperationCategory?: { __typename?: 'DeleteOperationCategoryPayload', operationCategory?: { __typename?: 'OperationCategory', id: number } | null } | null };
 
 export type CreateTaskMutationVariables = Exact<{
   input: CreateTaskInput;
@@ -2534,6 +3646,117 @@ export function useMyMutationMutation(baseOptions?: Apollo.MutationHookOptions<M
 export type MyMutationMutationHookResult = ReturnType<typeof useMyMutationMutation>;
 export type MyMutationMutationResult = Apollo.MutationResult<MyMutationMutation>;
 export type MyMutationMutationOptions = Apollo.BaseMutationOptions<MyMutationMutation, MyMutationMutationVariables>;
+export const GetGroupsTypesDocument = gql`
+    query GetGroupsTypes {
+  groupsTypes {
+    nodes {
+      name
+      id
+      description
+      color
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetGroupsTypesQuery__
+ *
+ * To run a query within a React component, call `useGetGroupsTypesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetGroupsTypesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetGroupsTypesQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetGroupsTypesQuery(baseOptions?: Apollo.QueryHookOptions<GetGroupsTypesQuery, GetGroupsTypesQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetGroupsTypesQuery, GetGroupsTypesQueryVariables>(GetGroupsTypesDocument, options);
+      }
+export function useGetGroupsTypesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetGroupsTypesQuery, GetGroupsTypesQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetGroupsTypesQuery, GetGroupsTypesQueryVariables>(GetGroupsTypesDocument, options);
+        }
+export type GetGroupsTypesQueryHookResult = ReturnType<typeof useGetGroupsTypesQuery>;
+export type GetGroupsTypesLazyQueryHookResult = ReturnType<typeof useGetGroupsTypesLazyQuery>;
+export type GetGroupsTypesQueryResult = Apollo.QueryResult<GetGroupsTypesQuery, GetGroupsTypesQueryVariables>;
+export const CreateGroupAndAddUserDocument = gql`
+    mutation CreateGroupAndAddUser($input: CreateGroupInput!) {
+  createGroup(input: $input) {
+    clientMutationId
+    group {
+      code
+    }
+  }
+}
+    `;
+export type CreateGroupAndAddUserMutationFn = Apollo.MutationFunction<CreateGroupAndAddUserMutation, CreateGroupAndAddUserMutationVariables>;
+
+/**
+ * __useCreateGroupAndAddUserMutation__
+ *
+ * To run a mutation, you first call `useCreateGroupAndAddUserMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useCreateGroupAndAddUserMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [createGroupAndAddUserMutation, { data, loading, error }] = useCreateGroupAndAddUserMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useCreateGroupAndAddUserMutation(baseOptions?: Apollo.MutationHookOptions<CreateGroupAndAddUserMutation, CreateGroupAndAddUserMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<CreateGroupAndAddUserMutation, CreateGroupAndAddUserMutationVariables>(CreateGroupAndAddUserDocument, options);
+      }
+export type CreateGroupAndAddUserMutationHookResult = ReturnType<typeof useCreateGroupAndAddUserMutation>;
+export type CreateGroupAndAddUserMutationResult = Apollo.MutationResult<CreateGroupAndAddUserMutation>;
+export type CreateGroupAndAddUserMutationOptions = Apollo.BaseMutationOptions<CreateGroupAndAddUserMutation, CreateGroupAndAddUserMutationVariables>;
+export const AddUserToExistingGroupDocument = gql`
+    mutation AddUserToExistingGroup($input: AddUserToGroupInput!) {
+  addUserToGroup(input: $input) {
+    clientMutationId
+    group {
+      name
+    }
+  }
+}
+    `;
+export type AddUserToExistingGroupMutationFn = Apollo.MutationFunction<AddUserToExistingGroupMutation, AddUserToExistingGroupMutationVariables>;
+
+/**
+ * __useAddUserToExistingGroupMutation__
+ *
+ * To run a mutation, you first call `useAddUserToExistingGroupMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useAddUserToExistingGroupMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [addUserToExistingGroupMutation, { data, loading, error }] = useAddUserToExistingGroupMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useAddUserToExistingGroupMutation(baseOptions?: Apollo.MutationHookOptions<AddUserToExistingGroupMutation, AddUserToExistingGroupMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<AddUserToExistingGroupMutation, AddUserToExistingGroupMutationVariables>(AddUserToExistingGroupDocument, options);
+      }
+export type AddUserToExistingGroupMutationHookResult = ReturnType<typeof useAddUserToExistingGroupMutation>;
+export type AddUserToExistingGroupMutationResult = Apollo.MutationResult<AddUserToExistingGroupMutation>;
+export type AddUserToExistingGroupMutationOptions = Apollo.BaseMutationOptions<AddUserToExistingGroupMutation, AddUserToExistingGroupMutationVariables>;
 export const CreateOperationDocument = gql`
     mutation CreateOperation($input: CreateOperationInput!) {
   createOperation(input: $input) {
@@ -2569,6 +3792,114 @@ export function useCreateOperationMutation(baseOptions?: Apollo.MutationHookOpti
 export type CreateOperationMutationHookResult = ReturnType<typeof useCreateOperationMutation>;
 export type CreateOperationMutationResult = Apollo.MutationResult<CreateOperationMutation>;
 export type CreateOperationMutationOptions = Apollo.BaseMutationOptions<CreateOperationMutation, CreateOperationMutationVariables>;
+export const GetOperationsCategoriesDocument = gql`
+    query GetOperationsCategories {
+  operationCategories {
+    nodes {
+      id
+      name
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetOperationsCategoriesQuery__
+ *
+ * To run a query within a React component, call `useGetOperationsCategoriesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetOperationsCategoriesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetOperationsCategoriesQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetOperationsCategoriesQuery(baseOptions?: Apollo.QueryHookOptions<GetOperationsCategoriesQuery, GetOperationsCategoriesQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetOperationsCategoriesQuery, GetOperationsCategoriesQueryVariables>(GetOperationsCategoriesDocument, options);
+      }
+export function useGetOperationsCategoriesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetOperationsCategoriesQuery, GetOperationsCategoriesQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetOperationsCategoriesQuery, GetOperationsCategoriesQueryVariables>(GetOperationsCategoriesDocument, options);
+        }
+export type GetOperationsCategoriesQueryHookResult = ReturnType<typeof useGetOperationsCategoriesQuery>;
+export type GetOperationsCategoriesLazyQueryHookResult = ReturnType<typeof useGetOperationsCategoriesLazyQuery>;
+export type GetOperationsCategoriesQueryResult = Apollo.QueryResult<GetOperationsCategoriesQuery, GetOperationsCategoriesQueryVariables>;
+export const CreateOperationCategoryDocument = gql`
+    mutation CreateOperationCategory($input: CreateOperationCategoryInput!) {
+  createOperationCategory(input: $input) {
+    operationCategory {
+      name
+      id
+    }
+  }
+}
+    `;
+export type CreateOperationCategoryMutationFn = Apollo.MutationFunction<CreateOperationCategoryMutation, CreateOperationCategoryMutationVariables>;
+
+/**
+ * __useCreateOperationCategoryMutation__
+ *
+ * To run a mutation, you first call `useCreateOperationCategoryMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useCreateOperationCategoryMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [createOperationCategoryMutation, { data, loading, error }] = useCreateOperationCategoryMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useCreateOperationCategoryMutation(baseOptions?: Apollo.MutationHookOptions<CreateOperationCategoryMutation, CreateOperationCategoryMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<CreateOperationCategoryMutation, CreateOperationCategoryMutationVariables>(CreateOperationCategoryDocument, options);
+      }
+export type CreateOperationCategoryMutationHookResult = ReturnType<typeof useCreateOperationCategoryMutation>;
+export type CreateOperationCategoryMutationResult = Apollo.MutationResult<CreateOperationCategoryMutation>;
+export type CreateOperationCategoryMutationOptions = Apollo.BaseMutationOptions<CreateOperationCategoryMutation, CreateOperationCategoryMutationVariables>;
+export const DeleteOperationCategoryByIdDocument = gql`
+    mutation DeleteOperationCategoryById($input: DeleteOperationCategoryInput!) {
+  deleteOperationCategory(input: $input) {
+    operationCategory {
+      id
+    }
+  }
+}
+    `;
+export type DeleteOperationCategoryByIdMutationFn = Apollo.MutationFunction<DeleteOperationCategoryByIdMutation, DeleteOperationCategoryByIdMutationVariables>;
+
+/**
+ * __useDeleteOperationCategoryByIdMutation__
+ *
+ * To run a mutation, you first call `useDeleteOperationCategoryByIdMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useDeleteOperationCategoryByIdMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [deleteOperationCategoryByIdMutation, { data, loading, error }] = useDeleteOperationCategoryByIdMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useDeleteOperationCategoryByIdMutation(baseOptions?: Apollo.MutationHookOptions<DeleteOperationCategoryByIdMutation, DeleteOperationCategoryByIdMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<DeleteOperationCategoryByIdMutation, DeleteOperationCategoryByIdMutationVariables>(DeleteOperationCategoryByIdDocument, options);
+      }
+export type DeleteOperationCategoryByIdMutationHookResult = ReturnType<typeof useDeleteOperationCategoryByIdMutation>;
+export type DeleteOperationCategoryByIdMutationResult = Apollo.MutationResult<DeleteOperationCategoryByIdMutation>;
+export type DeleteOperationCategoryByIdMutationOptions = Apollo.BaseMutationOptions<DeleteOperationCategoryByIdMutation, DeleteOperationCategoryByIdMutationVariables>;
 export const CreateTaskDocument = gql`
     mutation CreateTask($input: CreateTaskInput!) {
   createTask(input: $input) {

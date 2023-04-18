@@ -5,3 +5,32 @@ mutation CreateOperation($input: CreateOperationInput!) {
     }
   }
 }
+
+query GetOperationsCategories {
+  operationCategories {
+    nodes {
+      id
+      name
+    }
+  }
+}
+
+mutation CreateOperationCategory($input: CreateOperationCategoryInput!) {
+  createOperationCategory(input: $input) {
+    operationCategory {
+      name
+      id
+    }
+  }
+}
+
+mutation DeleteOperationCategoryById($input: DeleteOperationCategoryInput!) {
+  deleteOperationCategory(input: $input) {
+    operationCategory {
+      id
+    }
+  }
+}
+
+
+

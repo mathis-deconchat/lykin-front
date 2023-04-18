@@ -4,9 +4,8 @@ import "./operation-details-modal.css";
 
 type OperationDetailsProps = {
   modalIsOpen: boolean;
-  afterOpenModal: () => void;
-  closeModal: () => void;
   customStyles: any;
+  closeModal: () => void;
 };
 
 Modal.setAppElement("#root");
@@ -15,7 +14,6 @@ const OperationDetailsModal: React.FC<OperationDetailsProps> = (props) => {
   return (
     <Modal
       isOpen={props.modalIsOpen}
-      onAfterOpen={props.afterOpenModal}
       onRequestClose={props.closeModal}
       style={{
         overlay: {

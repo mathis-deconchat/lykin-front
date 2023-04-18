@@ -1,28 +1,28 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Modal from "react-modal";
 import { BackspaceIcon, DeviceTabletIcon } from "@heroicons/react/24/outline";
 
 import "animate.css";
 import "./operation-creation-modal-step-1.css"
+import { Operation } from "../../../generated/graphql-types";
 
 type OperationCreationModalStep1Props = {
   modalIsOpen: boolean;
-  afterOpenModal: () => void;
   closeModal: () => void;
-  customStyles: any;
-  operationValue: string;
-  setOperationValue: React.Dispatch<React.SetStateAction<string>>;
+  setOperationValue: React.Dispatch<React.SetStateAction<Partial<Operation | null>>>;
   validateFirstStep: () => void;
+  openModalIsCreationOperationStep2: () => void;
+  customStyles: any;
+  operationValue: Partial<Operation | null>;
 };
 const OperationCreationModalStep1: React.FC<OperationCreationModalStep1Props> = (props) => {
-  let euroFormatter = new Intl.NumberFormat("fr-FR", {
-    currency: "EUR",
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 2,
-    compactDisplay: "short",
-  });
+
 
   Modal.setAppElement('#root')
+
+  useEffect(() => {
+    setKeyPadValue( "");
+  }, [props.modalIsOpen]);
 
 
   const [keyPadValue, setKeyPadValue] = React.useState("");
@@ -44,14 +44,18 @@ const OperationCreationModalStep1: React.FC<OperationCreationModalStep1Props> = 
 
   const onValidateFirstStep = () => {
     props.validateFirstStep();
-    props.closeModal()
+    props.closeModal();
+    props.openModalIsCreationOperationStep2();
   };
 
   const onKeyPadClick = (key: string | number, e: any) => {
     e.preventDefault();
     if (key === "backspace") {
       setKeyPadValue(keyPadValue.toString().slice(0, -1));
-      props.setOperationValue(keyPadValue.toString().slice(0, -1));
+      props.setOperationValue({
+        ...props.operationValue,
+        amount: keyPadValue.toString().slice(0, -1),
+      });
 
     } else {
       if (
@@ -63,7 +67,10 @@ const OperationCreationModalStep1: React.FC<OperationCreationModalStep1Props> = 
       const newValue = keyPadValue + key;
       console.log("New value: ", newValue);
       setKeyPadValue(newValue);
-      props.setOperationValue(newValue);
+      props.setOperationValue({
+        ...props.operationValue,
+        amount: newValue,
+      });
     }
   };
   return (

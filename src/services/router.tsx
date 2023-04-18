@@ -11,6 +11,7 @@ import TasksPage from "../pages/tasks/tasks-page";
 import MultiStepForm from "../components/auth/forms/auth/multi-step-form-register/multi-step-form";
 import { ProvideMutliStepForm } from "../contexts/mutli-step-fom-context";
 import AuthWrapper from "../pages/auth/private-route/require-auth";
+import Carla from "../pages/carla";
 
 const AppRouter = () => {
   return (

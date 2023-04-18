@@ -13,6 +13,7 @@ import {
 } from "./types/schema";
 import { useAuth } from "../../../../../../hooks/auth/use-auth-hook";
 import { argsToArgsConfig } from "graphql/type/definition";
+import { Auth } from "aws-amplify";
 
 // A factoriser
 const strongPassword = new RegExp(
@@ -36,6 +37,15 @@ const RegisterForm = () => {
   // Auth management
   const { isLoading } = useAuth();
   const auth = useAuth();
+
+  useEffect(() => {
+    Auth.currentAuthenticatedUser().then((user) => {
+      if(user) {
+        next()
+      }
+    })
+  }, []);
+
 
   // Access to context
   const { next, isLastStep, userRegisterData, setUserRegisterData } =

@@ -35,7 +35,8 @@ const useProvideAuth = (): UseAuth => {
     try {
       if (!isLoading) setIsLoading(true);
       const authUser = await Auth.currentAuthenticatedUser();
-      setUsername(authUser.username);
+      console.log("authUser", authUser)
+      setUsername(authUser.attributes.nickname);
       setIsAuthenticated(true);
     } catch (e) {
       setUsername("");
@@ -169,6 +170,7 @@ const useProvideAuth = (): UseAuth => {
     setIsAuthenticated,
     resendConfirmationCode,
     updateUserAttributes,
-    signInWithGoogle
+    signInWithGoogle,
+    getCurrentAuthUser
   };
 };

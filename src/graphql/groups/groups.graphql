@@ -1,0 +1,28 @@
+query GetGroupsTypes {
+  groupsTypes {
+    nodes {
+      name
+      id
+      description
+      color
+    }
+  }
+}
+
+mutation CreateGroupAndAddUser($input: CreateGroupInput!) {
+  createGroup(input: $input) {
+    clientMutationId
+    group {
+      code
+    }
+  }
+}
+
+mutation AddUserToExistingGroup($input: AddUserToGroupInput!) {
+  addUserToGroup(input: $input) {
+    clientMutationId
+    group {
+      name
+    }
+  }
+}
