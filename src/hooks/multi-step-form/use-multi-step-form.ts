@@ -5,7 +5,7 @@ import { StepFormHeader } from "../../components/auth/forms/auth/multi-step-form
 export type UseMultiStepFormSteps = {
   step: JSX.Element;
   stepFromHeader?: StepFormHeader
-  isRegister: boolean;
+  showNav: boolean;
 }
 
 const useMultiStepFormZ = (steps: UseMultiStepFormSteps[]) => {

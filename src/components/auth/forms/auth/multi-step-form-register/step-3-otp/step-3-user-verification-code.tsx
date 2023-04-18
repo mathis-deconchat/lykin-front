@@ -2,7 +2,7 @@
 import React, { SetStateAction, useEffect } from "react";
 import { SubmitHandler, useForm, useFormContext } from "react-hook-form";
 import { BackspaceIcon } from "@heroicons/react/24/outline";
-import OtpInput from "./otp-input";
+import OtpInput from "./step-3-otp-input";
 import { ArrowSmallLeftIcon } from "@heroicons/react/24/outline";
 import { useAuth } from "../../../../../../hooks/auth/use-auth-hook";
 import { useMultiStepFormContext } from "../../../../../../contexts/mutli-step-fom-context";
@@ -28,6 +28,13 @@ const UserVerificationCode: React.FC<Props> = (props) => {
 
   // Auth management
   const auth = useAuth();
+
+  useEffect(() => {
+    auth.getCurrentAuthUser();
+    if(auth.isAuthenticated){
+      next()
+    }
+  }, []);
 
   // Context
   const { next, userRegisterData, setUserRegisterData, isLastStep } =

@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useEffect } from "react";
 import OperationCreationModalStep2 from "../../components/operations/operation-creation-modal-step-2/operation-creation-modal-step-2";
 
 const OperationCreationModalStep1 = lazy(
@@ -22,6 +22,14 @@ const OperationListItems = lazy(
 
 import Lottie from "lottie-react";
 import loadingAnimation from "../../assets/98288-loading.json";
+import { useModalContext } from "../../contexts/modal-context";
+import {
+  CreateOperationInput,
+  Operation,
+  OperationCategory,
+  useCreateOperationMutation,
+} from "../../generated/graphql-types";
+import apolloClient from "../../shared/apollo/apollo.provider";
 
 const customStyles = {
   content: {
@@ -34,21 +42,27 @@ const customStyles = {
   },
 };
 const OperationPage = () => {
-  const [operation, setOperation] = React.useState<string>("");
-  const [modalIsOpenKeyPad, setIsOpenModalKeyPad] = React.useState(false);
+  const [operation, setOperation] =
+    React.useState<Partial<Operation | null>>(null);
   const [modalIsOpenOperationDetail, setIsOpenModalOperationDetails] =
     React.useState(false);
-  const [modalIsOpenCreateOperation, setIsOpenModalCreateOperation] =
-    React.useState(false);
 
-  let subtitle: any;
+  const [createOperationGl, { data }] = useCreateOperationMutation();
+
+  function updateOperation(newData: Partial<Operation | OperationCategory>) {
+    console.log(newData);
+    setOperation({
+      ...operation,
+      category: newData as OperationCategory,
+    });
+  }
+
+  const modal = useModalContext();
 
   // OperationDetailModal
   function openOperationDetailModal() {
     setIsOpenModalOperationDetails(true);
   }
-
-  function afterOpenOperationDetailModal() {}
 
   function closeOperationDetailModal() {
     setIsOpenModalOperationDetails(false);
@@ -58,30 +72,32 @@ const OperationPage = () => {
     console.log(operation);
   }
 
-  // KeyPadModal
-  function openModalKeyPad() {
-    setIsOpenModalKeyPad(true);
+  function createOperation() {
+    const operationInput: CreateOperationInput = {
+      operation: {
+        amount: operation!.amount!,
+        categoryId: operation!.category!.id,
+        description: "test",
+      },
+    };
+
+    createOperationGl({
+      variables: {
+        input: operationInput,
+      }, onCompleted: (data) => {
+        console.log(data);
+        modal.closeModalIsCreationOperationStep2();
+        setOperation(null); 
+        apolloClient.refetchQueries({ include: ["GetOperations"] });
+      }
+    });
+
+    console.log(operation);
   }
 
-  function afterOpenModalKeyPad() {
-    subtitle.style.color = "#f00";
-  }
-
-  function closeModalKeyPad() {
-    setIsOpenModalKeyPad(false);
-    openModalCreateOperation();
-  }
-
-  // CreateOperationModal
-  function openModalCreateOperation() {
-    setIsOpenModalCreateOperation(true);
-  }
-
-  function afterOpenModalCreateOperation() {}
-
-  function closeModalCreateOperation() {
-    setIsOpenModalCreateOperation(false);
-  }
+  const deleteState = () => {
+    setOperation(null);
+  };
 
   return (
     <Suspense
@@ -99,20 +115,23 @@ const OperationPage = () => {
           validateFirstStep={validateFirstStep}
           operationValue={operation}
           setOperationValue={setOperation}
-          afterOpenModal={afterOpenModalKeyPad}
-          closeModal={closeModalKeyPad}
-          modalIsOpen={modalIsOpenKeyPad}
+          closeModal={modal.closeModalIsCreationOperationStep1}
+          modalIsOpen={modal.modalIsCreationOperationStep1}
           customStyles={customStyles}
+          openModalIsCreationOperationStep2={
+            modal.openModalIsCreationOperationStep2
+          }
         />
         <OperationCreationModalStep2
-          afterOpenModal={afterOpenModalCreateOperation}
-          modalIsOpen={modalIsOpenCreateOperation}
-          closeModal={closeModalCreateOperation}
+          createOperation={createOperation}
+          modalIsOpen={modal.modalIsCreationOperationStep2}
+          closeModal={modal.closeModalIsCreationOperationStep2}
           operationValue={operation}
+          updateOperation={updateOperation}
+          deleteState={deleteState}
         />
 
         <OperationDetailsModal
-          afterOpenModal={afterOpenOperationDetailModal}
           closeModal={closeOperationDetailModal}
           customStyles={{}}
           modalIsOpen={modalIsOpenOperationDetail}
@@ -120,9 +139,7 @@ const OperationPage = () => {
 
         <div className="bg-gray-300 rounded-full w-12 h-2 mr-auto ml-auto"></div>
         <p className="text-black text-xl font-bold">Catégories</p>
-        <button className="w-16 h-6 bg-gray-200 " onClick={openModalKeyPad}>
-          Modal
-        </button>
+
         <div className="flex overflow-x-scroll space-x-3">
           <OperationByCategorie />
           <OperationByCategorie />

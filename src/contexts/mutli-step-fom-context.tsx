@@ -17,8 +17,18 @@ export interface UseMultiForm {
 export type UseMultiStepFormSteps = {
   step: JSX.Element;
   stepFromHeader?: StepFormHeader;
-  isRegister: boolean;
+  showNav: boolean;
 };
+
+export type GroupInfo = {
+  groupName: string;
+  groupCreated: boolean;
+  groupJoined: boolean;
+  groupJoinStatus: string;
+  groupCode: string;
+  groupCodeConfirmed: boolean;
+  groupType: number;
+}
 
 export type UserRegisterData = {
   email: string;
@@ -30,6 +40,8 @@ export type UserRegisterData = {
   lastName: string;
   otp: boolean;
   confirmed: boolean;
+  groupInfo: GroupInfo;
+
 };
 
 export const multiFormContext = createContext({} as UseMultiForm);
@@ -59,8 +71,8 @@ export const useMultiStepForm = (): UseMultiForm => {
     React.useState<UserRegisterData>({} as UserRegisterData);
   const [steps, setSteps] = React.useState<UseMultiStepFormSteps[]>([
     {
-      step: <div>Loadingue</div>,
-      isRegister: true,
+      step: <div>Load</div>,
+      showNav: true,
     },
   ]);
 

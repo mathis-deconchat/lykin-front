@@ -17,6 +17,7 @@ export interface UseAuth {
   resendConfirmationCode: (username: string) => Promise<Result>;
   updateUserAttributes: (attributes: any) => Promise<Result>;
   signInWithGoogle: () => Promise<Result>;
+  getCurrentAuthUser: () => Promise<void>;
 }
 
 interface Result {

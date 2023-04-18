@@ -1,0 +1,8 @@
+.bg-zigzag {
+    background-color: #e5e5f7;
+    opacity: 0.4;
+    background-image:  linear-gradient(135deg, #5082ef 25%, transparent 25%), linear-gradient(225deg, #5082ef 25%, transparent 25%), linear-gradient(45deg, #5082ef 25%, transparent 25%), linear-gradient(315deg, #5082ef 25%, #e5e5f7 25%);
+    background-position:  4px 0, 4px 0, 0 0, 0 0;
+    background-size: 4px 4px;
+    background-repeat: repeat;
+}

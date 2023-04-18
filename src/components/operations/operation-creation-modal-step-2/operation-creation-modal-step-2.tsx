@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Modal from "react-modal";
 import { CheckCircleIcon } from "@heroicons/react/24/outline";
 import { TrashIcon } from "@heroicons/react/24/outline";
@@ -8,70 +8,124 @@ import { PlusCircleIcon } from "@heroicons/react/24/outline";
 import { PencilSquareIcon } from "@heroicons/react/24/outline";
 
 import "./operation-creation-modal-step-2.css";
+import {
+  Operation,
+  OperationCategory,
+  useCreateOperationCategoryMutation,
+  useDeleteOperationCategoryByIdMutation,
+  useGetOperationsCategoriesQuery,
+} from "../../../generated/graphql-types";
+import { useForm } from "react-hook-form";
 
 type OperationCreationModalStep2Props = {
   modalIsOpen: boolean;
-  afterOpenModal: () => void;
+  operationValue: Partial<Operation | null>;
   closeModal: () => void;
-  operationValue: string;
+  createOperation: () => void;
+  updateOperation: (newData: Partial<Operation | OperationCategory>) => void;
+  deleteState: () => void;
 };
 
-type MockCategory = {
-  id: number;
-  name: string;
+// Create a type that extends the Type OperationCatgory and add a field (justcreated'
+
+export type OperationCategoryWithJustCreated = OperationCategory & {
+  justCreated: boolean;
 };
 
-const OperationCreationModalStep2: React.FC<OperationCreationModalStep2Props> = (props) => {
+const OperationCreationModalStep2: React.FC<
+  OperationCreationModalStep2Props
+> = (props) => {
   const [isCreateCategory, setIsCreateCategory] = React.useState(false);
-  const [categories, setCategories] = React.useState<MockCategory[]>([
-    { id: 1, name: "Courses" },
-    { id: 2, name: "Restauration" },
-    { id: 3, name: "Vêtements" },
-    { id: 4, name: "Loisirs" },
-    { id: 5, name: "Santé" },
-    { id: 6, name: "Autres" },
-  ]);
-  const [selectedCategories, setSelectedCategories] = React.useState<
-    MockCategory[]
+  const [categories, setCategories] = React.useState<
+    Partial<OperationCategoryWithJustCreated | null>[]
   >([]);
+  const [selectedCategories, setSelectedCategories] =
+    React.useState<Partial<OperationCategoryWithJustCreated | null>>(null);
+
+  // Graphql
+  const { data, loading, error } = useGetOperationsCategoriesQuery();
+  const [createOperationCategory] = useCreateOperationCategoryMutation();
+  const [deleteOperationCatgoryById] = useDeleteOperationCategoryByIdMutation();
+
+  // Use form
+
+  useEffect(() => {
+    if (data && data.operationCategories) {
+      setCategories(data.operationCategories!.nodes!);
+    }
+  }, [data]);
 
   function addCategory(e: React.KeyboardEvent<HTMLInputElement>) {
     if (e.key === "Enter") {
-      setIsCreateCategory(false);
-      setSelectedCategories([ ...selectedCategories, { id: Math.random(), name: e.currentTarget.value}]);
+      if (e.currentTarget.value === "") return;
+      if (
+        categories.find((category) => category!.name === e.currentTarget.value)
+      ) {
+        setSelectedCategories(
+          categories.find(
+            (category) => category!.name === e.currentTarget.value
+          )!
+        );
+        console.log(props.updateOperation);
+        props.updateOperation({
+          id: props.operationValue!.id,
+        });
+        return;
+      }
+      createOperationCategory({
+        variables: {
+          input: {
+            operationCategory: {
+              name: e.currentTarget.value,
+            },
+          },
+        },
+      }).then((res) => {
+        if (res.data) {
+          setIsCreateCategory(false);
+          setSelectedCategories({
+            ...res.data!.createOperationCategory!.operationCategory!,
+            justCreated: true,
+          });
+          console.log(res.data!.createOperationCategory!.operationCategory!)
+
+          props.updateOperation({
+            id: res.data!.createOperationCategory!.operationCategory!.id,
+          });
+        }
+      });
     }
   }
 
-  function removeCategoryAsSelected(category: MockCategory) {
-    if (selectedCategories) {
-      const newSelectedCategories = selectedCategories.filter(
-        (selectedCategory) => selectedCategory.id !== category.id
-      );
-      setSelectedCategories(newSelectedCategories);
-      setCategories([...categories, category]);
+  function removeCategoryAsSelectedAndRemoveIfNew(
+    category: Partial<OperationCategoryWithJustCreated>
+  ) {
+    console.log(category);
+    if (category.justCreated) {
+      deleteOperationCatgoryById({
+        variables: {
+          input: {
+            id: category.id!,
+          },
+        },
+      }).then((res) => {
+        if (res.data) {
+          setSelectedCategories(null);
+        }
+      });
+    }
+    if (selectedCategories?.id === category.id) {
+      setSelectedCategories(null);
     }
   }
-  
-  function setCategoryAsSelected(category: MockCategory) {
-    if (selectedCategories) {
-      const isCategoryAlreadySelected = selectedCategories.find(
-        (selectedCategory) => selectedCategory.id === category.id
-      );
-      if (isCategoryAlreadySelected) {
-        const newSelectedCategories = selectedCategories.filter(
-          (selectedCategory) => selectedCategory.id !== category.id
-        );
-        setSelectedCategories(newSelectedCategories);
-      } else {
-        setSelectedCategories([...selectedCategories, category]);
-        setCategories(categories.filter((c) => c.id !== category.id));
-      }
-    }
+
+  function setCategoryAsSelected(category: Partial<OperationCategory>) {
+    console.log(category);
+    setSelectedCategories(category);
   }
   return (
     <Modal
       isOpen={props.modalIsOpen}
-      onAfterOpen={props.afterOpenModal}
       onRequestClose={props.closeModal}
       style={{
         overlay: {
@@ -88,7 +142,7 @@ const OperationCreationModalStep2: React.FC<OperationCreationModalStep2Props> = 
         <p className="text-white text-xl mb-3">Créer la dépense</p>
         <div className="flex items-center">
           <p className="text-xl font-semibold px-6 bg-white rounded-full p-[1px] text-blue-800 w-fit shadow-lg shadow-blue-600">
-            - {props.operationValue} €
+            - {props.operationValue?.amount} €
           </p>
           <p className="text-white ml-5 font-bold">Par Mathis Deconchat</p>
         </div>
@@ -97,13 +151,19 @@ const OperationCreationModalStep2: React.FC<OperationCreationModalStep2Props> = 
           <div className="flex flex-row w-full flex-wrap justify-start">
             {categories.map((category) => {
               return (
+                category!.id === selectedCategories?.id ? '' : (
                 <CategoryOperationCard
-                  category={category}
+                updateOperation={props.updateOperation}
+                  removeCategoryAsSelectedAndRemoveIfNew={
+                    removeCategoryAsSelectedAndRemoveIfNew
+                  }
+                  category={category!}
                   setCategoryAsSelected={setCategoryAsSelected}
-                  removeCategoryAsSelected={removeCategoryAsSelected}
                   isSelected={false}
                 />
+                )
               );
+              
             })}
           </div>
         </div>
@@ -115,9 +175,10 @@ const OperationCreationModalStep2: React.FC<OperationCreationModalStep2Props> = 
             <div className="ml-2">
               <input
                 autoFocus
+                onBlur={() => setIsCreateCategory(false)}
                 onKeyDown={(key) => addCategory(key)}
                 type={"text"}
-                className="ml-2 text-base text-white bg-transparent  focus:ring-0 focus:border-none active:border-none active:ring-0 focus:outline-none"
+                className="ml-2 text-base p-0 text-white bg-transparent h-fit w-fit  focus:ring-0 focus:border-none active:border-none active:ring-0 focus:outline-none"
               />
             </div>
           </div>
@@ -135,25 +196,33 @@ const OperationCreationModalStep2: React.FC<OperationCreationModalStep2Props> = 
           </div>
         )}
         <div className="flex flex-row w-full flex-wrap justify-start">
-          {selectedCategories.map((category) => {
-            return (
-              <CategoryOperationCard
-                category={category}
-                setCategoryAsSelected={setCategoryAsSelected}
-                removeCategoryAsSelected={removeCategoryAsSelected}
-                isSelected={true}
-              />
-            );
-          })}
+          {
+            <CategoryOperationCard
+            updateOperation={props.updateOperation}
+              removeCategoryAsSelectedAndRemoveIfNew={
+                removeCategoryAsSelectedAndRemoveIfNew
+              }
+              category={selectedCategories!}
+              setCategoryAsSelected={setCategoryAsSelected}
+              isSelected={true}
+            />
+          }
         </div>
       </div>
+
       <div className=" h-20 w-full bg-gray-100 rounded-2xl flex flex-row-reverse items-center px-4 space-x-4">
-        <button className="rounded-xl w-1/2 px-4 py-2 bg-blue-800 text-white h-2/4 ml-8 inline-flex items-center justify-center">
+        <button
+          className="rounded-xl w-1/2 px-4 py-2 bg-blue-800 text-white h-2/4 ml-8 inline-flex items-center justify-center"
+          onClick={() => props.createOperation()}
+        >
           <CheckCircleIcon className="h-6 w-6 text-white mr-2 " />
           Créer
         </button>
-        <button className="rounded-xl w-1/2 px-4 py-2 border-blue-800 border-2 text-blue-800 h-2/4 inline-flex items-center justify-center">
-          <TrashIcon className="h-6 w-6 mr-2" /> Annuler
+        <button className="rounded-xl w-1/2 px-4 py-2 border-blue-800 border-2 text-blue-800 h-2/4 inline-flex items-center justify-center" onClick={() => {
+            props.deleteState()
+            props.closeModal()
+          }}>
+          <TrashIcon className="h-6 w-6 mr-2"  /> Annuler
         </button>
       </div>
     </Modal>
