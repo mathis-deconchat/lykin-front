@@ -48,4 +48,13 @@ query GetAllOperationsForHomePage {
 }
 
 
+query GetOperationByIdForOperationDetails($id: Int!) {
+  operation(id: $id) {
+    amount
+    createdAt
+    category {
+      name
+    }
+  }
+}
 

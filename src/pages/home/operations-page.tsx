@@ -11,10 +11,7 @@ const OperationByCategorie = lazy(
   () => import("../../components/operations/operation-by-category")
 );
 const OperationDetailsModal = lazy(
-  () =>
-    import(
-      "../../components/operations/operation-details/operation-details-modal"
-    )
+  () => import("../../components/operations/operation-details/operation-details-modal")
 );
 const OperationListItems = lazy(
   () => import("../../components/operations/operation-list-items")
@@ -43,12 +40,12 @@ const customStyles = {
   },
 };
 
-
 const OperationPage = () => {
-  const [operation, setOperation] =
-    React.useState<Partial<Operation | null>>(null);
+  const [operation, setOperation] = React.useState<Partial<Operation | null>>(null);
   const [modalIsOpenOperationDetail, setIsOpenModalOperationDetails] =
     React.useState(false);
+
+  const [selectedOperation, setSelectedOperation] = React.useState<number | null>(null);
 
   const [createOperationGl] = useCreateOperationMutation();
   const { data, loading, error } = useGetAllOperationsForHomePageQuery();
@@ -123,9 +120,7 @@ const OperationPage = () => {
           closeModal={modal.closeModalIsCreationOperationStep1}
           modalIsOpen={modal.modalIsCreationOperationStep1}
           customStyles={customStyles}
-          openModalIsCreationOperationStep2={
-            modal.openModalIsCreationOperationStep2
-          }
+          openModalIsCreationOperationStep2={modal.openModalIsCreationOperationStep2}
         />
         <OperationCreationModalStep2
           createOperation={createOperation}
@@ -135,8 +130,9 @@ const OperationPage = () => {
           updateOperation={updateOperation}
           deleteState={deleteState}
         />
-
+        
         <OperationDetailsModal
+          selectedOperationId={selectedOperation}
           closeModal={closeOperationDetailModal}
           customStyles={{}}
           modalIsOpen={modalIsOpenOperationDetail}
@@ -152,19 +148,19 @@ const OperationPage = () => {
         </div>
         <p className="text-black text-xl font-bold mt-3">Activités</p>
         <div className="flex flex-col space-y-4 mb-6">
-          {(!loading && data && data.operations && data.operations.nodes.length > 0)
-            ? data.operations.nodes.map((operation) => (
-              operation ? (
-
-                <OperationListItems
-                  key={operation!.id}
-                  operation={operation}
-                  openModal={() => openOperationDetailModal()}
-                ></OperationListItems>
-              ) : null
-              ))
+          {!loading && data && data.operations && data.operations.nodes.length > 0
+            ? data.operations.nodes.map((operation) =>
+                operation ? (
+                  <div onClick={() => setSelectedOperation(operation.id)}>
+                    <OperationListItems
+                      key={operation!.id}
+                      operation={operation}
+                      openModal={() => openOperationDetailModal()}
+                    ></OperationListItems>
+                  </div>
+                ) : null
+              )
             : "loading"}
-
 
           <div className="bg-blue-200 p-1 px-3  text-sm  rounded-full text-gray-900 flex justify-center">
             <p>Voir plus</p>
