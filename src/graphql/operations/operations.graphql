@@ -32,6 +32,30 @@ mutation DeleteOperationCategoryById($input: DeleteOperationCategoryInput!) {
   }
 }
 
+query GetAmoutOfAllOperationsForMonth {
+  operations(filter: {createdAt: {greaterThanOrEqualTo: "01-04-2023"}}) {
+    nodes {
+      amount
+    }
+  }
+}
+
+query GetAmoutsOfOperationsByCategories {
+  operationCategories {
+    nodes {
+      name
+      id
+      operationsByCategoryId {
+        nodes {
+          amount
+        }
+      }
+    }
+  }
+}
+
+
+
 
 query GetAllOperationsForHomePage {
   operations {
