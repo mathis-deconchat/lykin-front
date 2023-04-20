@@ -3602,6 +3602,13 @@ export type GetAllOperationsForHomePageQueryVariables = Exact<{ [key: string]: n
 
 export type GetAllOperationsForHomePageQuery = { __typename?: 'Query', operations?: { __typename?: 'OperationsConnection', nodes: Array<{ __typename?: 'Operation', id: number, amount: string, createdAt: any, category?: { __typename?: 'OperationCategory', name: string, nodeId: string } | null } | null> } | null };
 
+export type GetOperationByIdForOperationDetailsQueryVariables = Exact<{
+  id: Scalars['Int'];
+}>;
+
+
+export type GetOperationByIdForOperationDetailsQuery = { __typename?: 'Query', operation?: { __typename?: 'Operation', amount: string, createdAt: any, category?: { __typename?: 'OperationCategory', name: string } | null } | null };
+
 export type CreateTaskMutationVariables = Exact<{
   input: CreateTaskInput;
 }>;
@@ -3947,6 +3954,45 @@ export function useGetAllOperationsForHomePageLazyQuery(baseOptions?: Apollo.Laz
 export type GetAllOperationsForHomePageQueryHookResult = ReturnType<typeof useGetAllOperationsForHomePageQuery>;
 export type GetAllOperationsForHomePageLazyQueryHookResult = ReturnType<typeof useGetAllOperationsForHomePageLazyQuery>;
 export type GetAllOperationsForHomePageQueryResult = Apollo.QueryResult<GetAllOperationsForHomePageQuery, GetAllOperationsForHomePageQueryVariables>;
+export const GetOperationByIdForOperationDetailsDocument = gql`
+    query GetOperationByIdForOperationDetails($id: Int!) {
+  operation(id: $id) {
+    amount
+    createdAt
+    category {
+      name
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetOperationByIdForOperationDetailsQuery__
+ *
+ * To run a query within a React component, call `useGetOperationByIdForOperationDetailsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetOperationByIdForOperationDetailsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetOperationByIdForOperationDetailsQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useGetOperationByIdForOperationDetailsQuery(baseOptions: Apollo.QueryHookOptions<GetOperationByIdForOperationDetailsQuery, GetOperationByIdForOperationDetailsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetOperationByIdForOperationDetailsQuery, GetOperationByIdForOperationDetailsQueryVariables>(GetOperationByIdForOperationDetailsDocument, options);
+      }
+export function useGetOperationByIdForOperationDetailsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetOperationByIdForOperationDetailsQuery, GetOperationByIdForOperationDetailsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetOperationByIdForOperationDetailsQuery, GetOperationByIdForOperationDetailsQueryVariables>(GetOperationByIdForOperationDetailsDocument, options);
+        }
+export type GetOperationByIdForOperationDetailsQueryHookResult = ReturnType<typeof useGetOperationByIdForOperationDetailsQuery>;
+export type GetOperationByIdForOperationDetailsLazyQueryHookResult = ReturnType<typeof useGetOperationByIdForOperationDetailsLazyQuery>;
+export type GetOperationByIdForOperationDetailsQueryResult = Apollo.QueryResult<GetOperationByIdForOperationDetailsQuery, GetOperationByIdForOperationDetailsQueryVariables>;
 export const CreateTaskDocument = gql`
     mutation CreateTask($input: CreateTaskInput!) {
   createTask(input: $input) {
