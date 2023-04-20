@@ -17,7 +17,6 @@ const useMultiStepFormZ = (steps: UseMultiStepFormSteps[]) => {
       if (i <= 0) return i;
       return i - 1;
     });
-    // setX(x + 1000);
   };
 
   const next = () => {
@@ -25,7 +24,6 @@ const useMultiStepFormZ = (steps: UseMultiStepFormSteps[]) => {
       if (i >= steps.length - 1) return i;
       return i + 1;
     });
-    // setX(x - 1000);
 
   };
 

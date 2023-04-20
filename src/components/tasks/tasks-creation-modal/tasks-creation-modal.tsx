@@ -87,7 +87,7 @@ const TasksCreationModal: React.FC<TaskCreationModalProps> = (props) => {
             <input
               {...register("description", { required: true })}
               type="textarea"
-              className="mt-1 p-1 bg-blue-600 placeholder-gray-100  outline-transparent placeholder:opacity-50  bg-transparent border-transparent focus:outline-none focus:ring-0 w-full caret-white"
+              className="text-white mt-1 p-1 bg-blue-600 placeholder-gray-100  outline-transparent placeholder:opacity-50  bg-transparent border-transparent focus:outline-none focus:ring-0 w-full caret-white"
               placeholder="Description"
             ></input>
             <div className="flex space-x-2 overflow-x-auto mt-4 w-full pb-3">
