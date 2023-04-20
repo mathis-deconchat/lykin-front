@@ -12,6 +12,7 @@ query GetAllTasks {
       id
       name
       description
+      createdAt
       status {
         name
       }

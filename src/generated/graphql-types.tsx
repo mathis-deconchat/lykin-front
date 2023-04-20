@@ -3629,7 +3629,7 @@ export type CreateTaskMutation = { __typename?: 'Mutation', createTask?: { __typ
 export type GetAllTasksQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetAllTasksQuery = { __typename?: 'Query', tasks?: { __typename?: 'TasksConnection', nodes: Array<{ __typename?: 'Task', id: number, name: string, description: string, status?: { __typename?: 'TaskStatus', name: string } | null } | null> } | null };
+export type GetAllTasksQuery = { __typename?: 'Query', tasks?: { __typename?: 'TasksConnection', nodes: Array<{ __typename?: 'Task', id: number, name: string, description: string, createdAt: any, status?: { __typename?: 'TaskStatus', name: string } | null } | null> } | null };
 
 
 export const MyMutationDocument = gql`
@@ -4123,6 +4123,7 @@ export const GetAllTasksDocument = gql`
       id
       name
       description
+      createdAt
       status {
         name
       }
