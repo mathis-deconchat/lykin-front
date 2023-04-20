@@ -116,6 +116,8 @@ const useProvideAuth = (): UseAuth => {
       });
       console.log("signUp result", result)
       setIsLoading(false);
+      setUsername(result.user.getUsername());
+
       return { success: true, message: "Signed up successfully" };
     } catch (e: unknown) {
       console.log(e);

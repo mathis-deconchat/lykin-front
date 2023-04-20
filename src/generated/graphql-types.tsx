@@ -3597,6 +3597,16 @@ export type DeleteOperationCategoryByIdMutationVariables = Exact<{
 
 export type DeleteOperationCategoryByIdMutation = { __typename?: 'Mutation', deleteOperationCategory?: { __typename?: 'DeleteOperationCategoryPayload', operationCategory?: { __typename?: 'OperationCategory', id: number } | null } | null };
 
+export type GetAmoutOfAllOperationsForMonthQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetAmoutOfAllOperationsForMonthQuery = { __typename?: 'Query', operations?: { __typename?: 'OperationsConnection', nodes: Array<{ __typename?: 'Operation', amount: string } | null> } | null };
+
+export type GetAmoutsOfOperationsByCategoriesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetAmoutsOfOperationsByCategoriesQuery = { __typename?: 'Query', operationCategories?: { __typename?: 'OperationCategoriesConnection', nodes: Array<{ __typename?: 'OperationCategory', name: string, id: number, operationsByCategoryId: { __typename?: 'OperationsConnection', nodes: Array<{ __typename?: 'Operation', amount: string } | null> } } | null> } | null };
+
 export type GetAllOperationsForHomePageQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -3912,6 +3922,84 @@ export function useDeleteOperationCategoryByIdMutation(baseOptions?: Apollo.Muta
 export type DeleteOperationCategoryByIdMutationHookResult = ReturnType<typeof useDeleteOperationCategoryByIdMutation>;
 export type DeleteOperationCategoryByIdMutationResult = Apollo.MutationResult<DeleteOperationCategoryByIdMutation>;
 export type DeleteOperationCategoryByIdMutationOptions = Apollo.BaseMutationOptions<DeleteOperationCategoryByIdMutation, DeleteOperationCategoryByIdMutationVariables>;
+export const GetAmoutOfAllOperationsForMonthDocument = gql`
+    query GetAmoutOfAllOperationsForMonth {
+  operations(filter: {createdAt: {greaterThanOrEqualTo: "01-04-2023"}}) {
+    nodes {
+      amount
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetAmoutOfAllOperationsForMonthQuery__
+ *
+ * To run a query within a React component, call `useGetAmoutOfAllOperationsForMonthQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetAmoutOfAllOperationsForMonthQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetAmoutOfAllOperationsForMonthQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetAmoutOfAllOperationsForMonthQuery(baseOptions?: Apollo.QueryHookOptions<GetAmoutOfAllOperationsForMonthQuery, GetAmoutOfAllOperationsForMonthQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetAmoutOfAllOperationsForMonthQuery, GetAmoutOfAllOperationsForMonthQueryVariables>(GetAmoutOfAllOperationsForMonthDocument, options);
+      }
+export function useGetAmoutOfAllOperationsForMonthLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetAmoutOfAllOperationsForMonthQuery, GetAmoutOfAllOperationsForMonthQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetAmoutOfAllOperationsForMonthQuery, GetAmoutOfAllOperationsForMonthQueryVariables>(GetAmoutOfAllOperationsForMonthDocument, options);
+        }
+export type GetAmoutOfAllOperationsForMonthQueryHookResult = ReturnType<typeof useGetAmoutOfAllOperationsForMonthQuery>;
+export type GetAmoutOfAllOperationsForMonthLazyQueryHookResult = ReturnType<typeof useGetAmoutOfAllOperationsForMonthLazyQuery>;
+export type GetAmoutOfAllOperationsForMonthQueryResult = Apollo.QueryResult<GetAmoutOfAllOperationsForMonthQuery, GetAmoutOfAllOperationsForMonthQueryVariables>;
+export const GetAmoutsOfOperationsByCategoriesDocument = gql`
+    query GetAmoutsOfOperationsByCategories {
+  operationCategories {
+    nodes {
+      name
+      id
+      operationsByCategoryId {
+        nodes {
+          amount
+        }
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetAmoutsOfOperationsByCategoriesQuery__
+ *
+ * To run a query within a React component, call `useGetAmoutsOfOperationsByCategoriesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetAmoutsOfOperationsByCategoriesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetAmoutsOfOperationsByCategoriesQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetAmoutsOfOperationsByCategoriesQuery(baseOptions?: Apollo.QueryHookOptions<GetAmoutsOfOperationsByCategoriesQuery, GetAmoutsOfOperationsByCategoriesQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetAmoutsOfOperationsByCategoriesQuery, GetAmoutsOfOperationsByCategoriesQueryVariables>(GetAmoutsOfOperationsByCategoriesDocument, options);
+      }
+export function useGetAmoutsOfOperationsByCategoriesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetAmoutsOfOperationsByCategoriesQuery, GetAmoutsOfOperationsByCategoriesQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetAmoutsOfOperationsByCategoriesQuery, GetAmoutsOfOperationsByCategoriesQueryVariables>(GetAmoutsOfOperationsByCategoriesDocument, options);
+        }
+export type GetAmoutsOfOperationsByCategoriesQueryHookResult = ReturnType<typeof useGetAmoutsOfOperationsByCategoriesQuery>;
+export type GetAmoutsOfOperationsByCategoriesLazyQueryHookResult = ReturnType<typeof useGetAmoutsOfOperationsByCategoriesLazyQuery>;
+export type GetAmoutsOfOperationsByCategoriesQueryResult = Apollo.QueryResult<GetAmoutsOfOperationsByCategoriesQuery, GetAmoutsOfOperationsByCategoriesQueryVariables>;
 export const GetAllOperationsForHomePageDocument = gql`
     query GetAllOperationsForHomePage {
   operations {

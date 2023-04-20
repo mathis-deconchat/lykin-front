@@ -11,7 +11,10 @@ const OperationByCategorie = lazy(
   () => import("../../components/operations/operation-by-category")
 );
 const OperationDetailsModal = lazy(
-  () => import("../../components/operations/operation-details/operation-details-modal")
+  () =>
+    import(
+      "../../components/operations/operation-details/operation-details-modal"
+    )
 );
 const OperationListItems = lazy(
   () => import("../../components/operations/operation-list-items")
@@ -26,8 +29,10 @@ import {
   OperationCategory,
   useCreateOperationMutation,
   useGetAllOperationsForHomePageQuery,
+  useGetAmoutsOfOperationsByCategoriesQuery,
 } from "../../generated/graphql-types";
 import apolloClient from "../../shared/apollo/apollo.provider";
+import OperationByCategory from "../../components/operations/operation-by-category";
 
 const customStyles = {
   content: {
@@ -41,14 +46,22 @@ const customStyles = {
 };
 
 const OperationPage = () => {
-  const [operation, setOperation] = React.useState<Partial<Operation | null>>(null);
+  const [operation, setOperation] =
+    React.useState<Partial<Operation | null>>(null);
   const [modalIsOpenOperationDetail, setIsOpenModalOperationDetails] =
     React.useState(false);
 
-  const [selectedOperation, setSelectedOperation] = React.useState<number | null>(null);
+  const [selectedOperation, setSelectedOperation] = React.useState<
+    number | null
+  >(null);
 
   const [createOperationGl] = useCreateOperationMutation();
   const { data, loading, error } = useGetAllOperationsForHomePageQuery();
+
+  const {
+    data: OperationByCategoriesData,
+    loading: OperationByCategoriesLoading,
+  } = useGetAmoutsOfOperationsByCategoriesQuery();
 
   function updateOperation(newData: Partial<Operation | OperationCategory>) {
     console.log(newData);
@@ -90,7 +103,13 @@ const OperationPage = () => {
         console.log(data);
         modal.closeModalIsCreationOperationStep2();
         setOperation(null);
-        apolloClient.refetchQueries({ include: ["GetAllOperationsForHomePage"] });
+        apolloClient.refetchQueries({
+          include: [
+            "GetAllOperationsForHomePage",
+            "GetAmoutsOfOperationsByCategories",
+            "GetAmoutOfAllOperationsForMonth"
+          ],
+        });
       },
     });
 
@@ -120,7 +139,9 @@ const OperationPage = () => {
           closeModal={modal.closeModalIsCreationOperationStep1}
           modalIsOpen={modal.modalIsCreationOperationStep1}
           customStyles={customStyles}
-          openModalIsCreationOperationStep2={modal.openModalIsCreationOperationStep2}
+          openModalIsCreationOperationStep2={
+            modal.openModalIsCreationOperationStep2
+          }
         />
         <OperationCreationModalStep2
           createOperation={createOperation}
@@ -130,7 +151,7 @@ const OperationPage = () => {
           updateOperation={updateOperation}
           deleteState={deleteState}
         />
-        
+
         <OperationDetailsModal
           selectedOperationId={selectedOperation}
           closeModal={closeOperationDetailModal}
@@ -142,25 +163,43 @@ const OperationPage = () => {
         <p className="text-black text-xl font-bold">Catégories</p>
 
         <div className="flex overflow-x-scroll space-x-3">
-          <OperationByCategorie />
-          <OperationByCategorie />
-          <OperationByCategorie />
+          {!OperationByCategoriesLoading &&
+          OperationByCategoriesData &&
+          OperationByCategoriesData.operationCategories ? (
+            OperationByCategoriesData.operationCategories.nodes.map(
+              (category) => (
+                <OperationByCategory key={category!.id} category={category} />
+              )
+            )
+          ) : (
+            <p className="text-gray-500 m-8 text-center">
+              Aucune opération pour le moment...
+            </p>
+          )}
         </div>
         <p className="text-black text-xl font-bold mt-3">Activités</p>
         <div className="flex flex-col space-y-4 mb-6">
-          {!loading && data && data.operations && data.operations.nodes.length > 0
-            ? data.operations.nodes.map((operation) =>
-                operation ? (
-                  <div onClick={() => setSelectedOperation(operation.id)}>
-                    <OperationListItems
-                      key={operation!.id}
-                      operation={operation}
-                      openModal={() => openOperationDetailModal()}
-                    ></OperationListItems>
-                  </div>
-                ) : null
-              )
-            : "loading"}
+          {!loading &&
+          data &&
+          data.operations &&
+          data.operations.nodes.length > 0 ? (
+            data.operations.nodes.map((operation) =>
+              operation ? (
+                <div onClick={() => setSelectedOperation(operation.id)}>
+                  <OperationListItems
+                    key={operation!.id}
+                    operation={operation}
+                    openModal={() => openOperationDetailModal()}
+                  ></OperationListItems>
+                </div>
+              ) : null
+            )
+          ) : (
+            <p className="text-gray-500 m-8 text-center">
+              Aucune opérations pour le moment...
+              <br /> Créez en pour commencer !
+            </p>
+          )}
 
           <div className="bg-blue-200 p-1 px-3  text-sm  rounded-full text-gray-900 flex justify-center">
             <p>Voir plus</p>
